@@ -8,3 +8,30 @@ $\mathbf{f}$ is continuous on $X$ if it is continuous at every point of $X$.
 
 Equivalently, $\mathbf{f}: X \to \mathbf{R}^m$ is continuous at $\mathbf{x}_0$ if and only if for every $\epsilon > 0$, there exists $\delta > 0$ such that when $|\mathbf{x} - \mathbf{x}_0| < \delta$, then $|\mathbf{f}(\mathbf{x}) - \mathbf{f}(\mathbf{x}_0)| < \epsilon$.
 \end{shaded}
+
+\begin{shaded}
+\textbf{Definition (Continuity and discontinuity).} Suppose $[a, b] \subset \mathbb{R}$. Consider a function $f : [a, b] \to \mathbb{R}$ and a point $c \in \mathbb{R}$. Supposed the one-sided limits
+$$ \lim_{x \to c^-} f(x) \qquad \textnormal{and} \qquad \lim_{x \to c^+} f(x) $$
+exist.
+
+(1) If
+$$ \lim_{x \to c^-} f(x) = \lim_{x \to c^+} f(x) = f(c) , $$
+then $f$ is \textbf{continuous} at $c$.
+
+(2) If
+$$ \lim_{x \to c^-} f(x) = \lim_{x \to c^+} f(x) \not= f(c) $$
+--- regardless of whether or not $f(x)$ exists --- then $f$ has a \textbf{removable discontinuity} at $c$.
+
+(3) If
+$$ \lim_{x \to c^-} f(x) \not= \lim_{x \to c^+} f(x) , $$
+then $f$ has a \textbf{jump discontinuity} at $c$.
+\end{shaded}
+
+\begin{shaded}
+\textbf{Definition (Piecewise continuous function) \cite{wikipedia_piecewise}.} A piecewise function is continuous on a given interval if the following conditions are met:
+\begin{itemize}
+	\item it is defined throughout that interval,
+	\item its constituent functions are continuous on the corresponding intervals (subdomains), and
+	\item there is no discontinuity at each endpoint of the subdomains within that interval.
+\end{itemize}
+\end{shaded}
