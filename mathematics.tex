@@ -1,6 +1,9 @@
 \chapter{Mathematics}
 \section{Calculus}
 
-Hello there \cite{hubbard_hubbard}.
-$$\int_a^b f(x)g(x) \ dx$$
+\textbf{Definition (Continuous function) \cite{hubbard_hubbard}.} Let $X \subset \mathbb{R}^n$. Then a mapping $\mathbf{f} : X \to \mathbb{R}^m$ is continuous at $\mathbf{x}_0 \in X$ if
+$$ \lim_{\mathbf{x} \to \mathbf{x}_0} \mathbf{f}(\mathbf{x}) = \mathbf{f}(\mathbf{x}_0); $$
+$\mathbf{f}$ is continuous on $X$ if it is continuous at every point of $X$.
+
+Equivalently, $\mathbf{f}: X \to \mathbf{R}^m$ is continuous at $\mathbf{x}_0$ if and only if for every $\epsilon > 0$, there exists $\delta > 0$ such that when $|\mathbf{x} - \mathbf{x}_0| < \delta$, then $|\mathbf{f}(\mathbf{x}) - \mathbf{f}(\mathbf{x}_0)| < \epsilon$.
 
