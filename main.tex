@@ -1,0 +1,25 @@
+\documentclass[oneside]{book}
+
+% PACKAGES
+\usepackage[utf8]{inputenc}
+\usepackage{biblatex}             	% bibliography
+%\usepackage{xeCJK}               	% Chinese
+\usepackage{csquotes}             	% quotes
+\usepackage{parskip}             	% paragraph indentation
+\usepackage{fancyhdr}            	% fancy headers
+\usepackage[yyyymmdd]{datetime}		% proper date format
+\usepackage{tgschola}				% Tex Gyre Schola (based on New Century Schoolbook)
+
+% SETTINGS
+\setlength{\parindent}{0em}
+\addbibresource{bibliography.bib}
+
+\begin{document}
+
+\tableofcontents
+
+\include{personal_finance}
+\include{computing}
+\include{mathematics}
+
+\end{document}

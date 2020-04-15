@@ -1,29 +1,8 @@
-\documentclass[oneside]{book}
-
-% PACKAGES
-\usepackage[utf8]{inputenc}
-\usepackage{biblatex}             % bibliography
-%\usepackage{xeCJK}               % Chinese
-\usepackage{csquotes}             % quotes
-\usepackage{parskip}              % paragraph indentation
-\usepackage{fancyhdr}             % fancy headers
-\usepackage[yyyymmdd]{datetime}   % proper date format
-\usepackage{tgschola}			 % Tex Gyre Schola (based on New Century Schoolbook)
-
-% SETTINGS
-\setlength{\parindent}{0em}
-\addbibresource{bibliography.bib}
-
-\begin{document}
-
-\tableofcontents
-
 \chapter{Personal finance}
 
 \section{Personal banking}
 
 \subsubsection{Terminology}
-
 \begin{itemize}
 	\item Retail banking --- ``Retail banking, also known as consumer banking, is the typical mass-market banking in which individual customers use local branches of larger commercial banks. Services offered include savings and checking accounts, mortgages, personal loans, debit/credit cards and certificates of deposit (CDs). In retail banking, the focus is on the individual consumer.'' --- Investopedia \cite{investopedia_retail_banking}
 	\item Direct banks (such as ING) don't have branch networks and operate remotely. This means they can significantly reduce costs.
@@ -150,31 +129,3 @@ Zero switching fees for \textbf{any} balance.
 	\item Weekly travel award --- After 8 journeys, all remaining fares for the week are half price; note that a tap-on must be 60 minutes after the last tap-off to be considered a new journey (Manly ferries exception of 2hrs 10 min).
 	\item A 30\% discount on metro/train fares outside of peak hours.
 \end{itemize}
-
-\chapter{Computing}
-
-\section{Programming styles}
-\subsection{Dynamic programming}
-\begin{itemize}
-	\item Top-down (memoisation)
-	\item Bottom-up
-\end{itemize}
-
-\section{Privacy}
-
-\section{Cloud computing}
-
-\subsection{Basics}
-
-\subsubsection{Service models}
-
-From Wikipedia \cite{wikipedia_cloud_computing}:
-\begin{itemize}
-	\item \textbf{SaaS} (application level) --- CRM, email, virtual desktop, communication, games, ...
-	\item \textbf{PaaS} (platform level) --- execution runtime, database, web server, development tools, ...
-	\item \textbf{IaaS} (infrastructure level) --- virtual machines, servers, storage, load balancers, network, ...
-\end{itemize}
-
-\printbibliography
-
-\end{document}
