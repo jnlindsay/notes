@@ -44,10 +44,10 @@ Moreover, $f$ is piecewise continuous on $\mathbb{R}$ if it is piecewise continu
 $$ f(c^-) = \lim_{x \to c^-} f(x) \qquad \textnormal{and} \qquad f(c^+) = \lim_{x \to c^+} f(x) , $$
 and let
 \begin{align*}
-	D^+ f(c) &= \lim_{x \to 0^+} \frac{f(c + h) - f(c^+)}{h} \qquad \text{and} \\
-	D^- f(c) &= \lim_{x \to 0^-} \frac{f(c + h) - f(c^-)}{h} .
+	D^+ f(c) &= \lim_{h \to 0^+} \frac{f(c + h) - f(c^+)}{h} \qquad \text{and} \\
+	D^- f(c) &= \lim_{h \to 0^-} \frac{f(c + h) - f(c^-)}{h} .
 \end{align*}
-Then $f$ is differentiable at $c$ if and only if $f(c^+) = f(c^-)$ and $D^+ f(c) = D^- f(c)$.
+%Then $f$ is differentiable at $c$ if and only if $f(c^+) = f(c^-)$ and $D^+ f(c) = D^- f(c)$.
 
 Warning: $D^{+/-} f(c)$ is not necessarily the same as $f'(c^{+/-}) = \lim_{x \to c^{+/-}} f'(x)$.
 \end{shaded}
@@ -62,4 +62,13 @@ Warning: $D^{+/-} f(c)$ is not necessarily the same as $f'(c^{+/-}) = \lim_{x \t
 (3) $f$ is differentiable on $(a, b)$ except at (at most) a finite number of points.
 
 Moreover, $f$ is piecewise differentiable on $\mathbb{R}$ if it is piecewise differentiable on any finite interval $[a, b] \subseteq \mathbb{R}$.
+\end{shaded}
+
+\begin{shaded}
+\textbf{Fourier series.} Consider a function $f : \mathbb{R} \to \mathbb{R}$ which is $2 \pi$-periodic and is square integrable (i.e., $\int_{-\pi}^\pi f(x)^2 \ dx < \infty $). Its Fourier series is given by
+$$ S_f(x) = \frac{a_0}{2} + \sum_{k = 1}^{\infty}( a_k \cos(kx) + b_k \sin(kx) ) . $$
+We can view the Fourier series as expression a function $f$ as a linear combination of the orthogonal functions $\frac{1}{2}, \cos(kx), ..., \sin(kx), k \geq 1$. Then, via vector decomposition, we can find the following formulas to yield the Fourier coefficients $a_k$ and $b_k$:
+$$ a _k = \frac{\int_{-\pi}^\pi f(x) \cos(kx) \ dx}{\pi}, \quad k = 0, 1, 2, ... $$
+and
+$$ b _k = \frac{\int_{-\pi}^\pi f(x) \sin(kx) \ dx}{\pi}, \quad k = 1, 2, 3, ... $$
 \end{shaded}
