@@ -134,10 +134,13 @@ $$ \text{div} \ \mathbf{F} = \nabla \cdot \mathbf{F} = \diffp{F_1}{x} + \diffp{F
 
 \begin{shaded}
 \textbf{Definition (curl) \cite{math2111_notes}.} If $\mathbf{F} = F_1 \mathbf{i} + F_2 \mathbf{j} + F_3 \mathbf{k}$, the \textbf{curl} of $\mathbf{F}$ is the vector field
-$$ \text{curl} \ \mathbf{F} = \nabla \times \mathbf{F} = 
-\begin{vmatrix}
+\begin{align*}
+\text{curl} \ \mathbf{F} &= \nabla \times \mathbf{F} \\
+&= \begin{vmatrix}[1.5]
 	\mathbf{i} & \mathbf{j} & \mathbf{k} \\
 	\diffp{}{x} & \diffp{}{y} & \diffp{}{z} \\
 	F_1 & F_2 & F_3
-\end{vmatrix} . $$
+\end{vmatrix} \\
+&= \left( \diffp{F_3}{y} - \diffp{F_2}{z} \right) \mathbf{i} + \left( \diffp{F_1}{z} - \diffp{F_3}{x} \right) \mathbf{j} + \left( \diffp{F_2}{x} - \diffp{F_1}{y} \right) \mathbf{k} .
+\end{align*} 
 \end{shaded}
