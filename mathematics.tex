@@ -10,7 +10,7 @@ Equivalently, $\mathbf{f}: X \to \mathbf{R}^m$ is continuous at $\mathbf{x}_0$ i
 \end{shaded}
 
 \begin{shaded}
-\textbf{Definition (Continuity and discontinuity).} Suppose $[a, b] \subset \mathbb{R}$. Consider a function $f : [a, b] \to \mathbb{R}$ and a point $c \in \mathbb{R}$. Supposed the one-sided limits
+\textbf{Definition (Continuity and discontinuity) \cite{math2111_notes}.} Suppose $[a, b] \subset \mathbb{R}$. Consider a function $f : [a, b] \to \mathbb{R}$ and a point $c \in \mathbb{R}$. Supposed the one-sided limits
 $$ f(c^-) = \lim_{x \to c^-} f(x) \qquad \textnormal{and} \qquad f(c^+) = \lim_{x \to c^+} f(x) $$
 exist.
 
@@ -28,7 +28,7 @@ then $f$ has a \textbf{jump discontinuity} at $c$.
 \end{shaded}
 
 \begin{shaded}
-\textbf{Definition (Piecewise continuous function) \cite{wikipedia_piecewise}.} A piecewise function is continuous on $[a, b] \subseteq \mathbb{R}$ if
+\textbf{Definition (Piecewise continuous function) \cite{math2111_notes}.} A piecewise function is continuous on $[a, b] \subseteq \mathbb{R}$ if
 
 (1) $f(x^-)$ exists for each $x \in (a, b]$;
 
@@ -40,7 +40,7 @@ Moreover, $f$ is piecewise continuous on $\mathbb{R}$ if it is piecewise continu
 \end{shaded}
 
 \begin{shaded}
-\textbf{Definition (Differentiability).} Consider a function $ f : \mathbb{R} \to \mathbb{R} $ and a point $c \in \mathbb{R}$. Let
+\textbf{Definition (Differentiability) \cite{math2111_notes}.} Consider a function $ f : \mathbb{R} \to \mathbb{R} $ and a point $c \in \mathbb{R}$. Let
 $$ f(c^-) = \lim_{x \to c^-} f(x) \qquad \textnormal{and} \qquad f(c^+) = \lim_{x \to c^+} f(x) , $$
 and let
 \begin{align*}
@@ -53,7 +53,7 @@ Warning: $D^{+/-} f(c)$ is not necessarily the same as $f'(c^{+/-}) = \lim_{x \t
 \end{shaded}
 
 \begin{shaded}
-\textbf{Definition (Piecewise differentiable function).} A function $f$ is piecewise differentiable on $[a, b] \subseteq \mathbb{R}$ if
+\textbf{Definition (Piecewise differentiable function) \cite{math2111_notes}.} A function $f$ is piecewise differentiable on $[a, b] \subseteq \mathbb{R}$ if
 
 (1) $D^- f(x)$ exists for each $x \in (a, b]$;
 
@@ -65,10 +65,69 @@ Moreover, $f$ is piecewise differentiable on $\mathbb{R}$ if it is piecewise dif
 \end{shaded}
 
 \begin{shaded}
-\textbf{Fourier series.} Consider a function $f : \mathbb{R} \to \mathbb{R}$ which is $2 \pi$-periodic and is square integrable (i.e., $\int_{-\pi}^\pi f(x)^2 \ dx < \infty $). Its Fourier series is given by
-$$ S_f(x) = \frac{a_0}{2} + \sum_{k = 1}^{\infty}( a_k \cos(kx) + b_k \sin(kx) ) . $$
+\textbf{Fourier series \cite{math2111_notes}.} Consider a function $f : \mathbb{R} \to \mathbb{R}$ which is $2 L$-periodic and is square integrable (i.e., $\int_{-\pi}^\pi f(x)^2 \ dx < \infty $). Its Fourier series is given by
+$$ S_f(x) = \frac{a_0}{2} + \sum_{k = 1}^{\infty} \left( a_k \cos \left( \frac{k \pi}{L}x \right) + b_k \sin \left( \frac{k \pi}{L}x \right) \right) . $$
 We can view the Fourier series as expression a function $f$ as a linear combination of the orthogonal functions $\frac{1}{2}, \cos(kx), ..., \sin(kx), k \geq 1$. Then, via vector decomposition, we can find the following formulas to yield the Fourier coefficients $a_k$ and $b_k$:
-$$ a _k = \frac{\int_{-\pi}^\pi f(x) \cos(kx) \ dx}{\pi}, \quad k = 0, 1, 2, ... $$
+$$ a _k = \frac{1}{L} \int_{-L}^L f(x) \cos \left( \frac{k \pi}{L}x \right) \ dx, \quad k = 0, 1, 2, ... $$
 and
-$$ b _k = \frac{\int_{-\pi}^\pi f(x) \sin(kx) \ dx}{\pi}, \quad k = 1, 2, 3, ... $$
+$$ b _k = \frac{1}{L} \int_{-L}^L f(x) \sin \left( \frac{k \pi}{L}x \right) \ dx, \quad k = 1, 2, 3, ... $$
+\end{shaded}
+
+\begin{shaded}
+\textbf{Definition (pointwise convergence) \cite{math2111_notes}.} Let $f_k : \mathbb{R} \to \mathbb{R}$. We say $f_k$ converges to $f$ on $[a, b]$ pointwisely if $f_k(x) \to f(x)$ for every $x \in [a, b]$ as $k \to \infty$.
+\end{shaded}
+
+\begin{shaded}
+\textbf{Theorem (pointwise convergence of Fourier series) \cite{math2111_notes}.} Let $c \in \mathbb{R}$, and suppose that a function $f : \mathbb{R} \to \mathbb{R}$ has the following properties:
+\begin{enumerate}
+	\item $f$ is $2 \pi$-periodic;
+	\item $f$ is piecewise continuous on $[-\pi, \pi]$;
+	\item $D^+ f(c)$ and $D^- f(c)$ exist.
+\end{enumerate}
+If $f$ is continuous at $c$, then the Fourier series of $f$ agrees with $f$ at $c$, i.e.,
+$$ S f(c) = f(c) . $$
+On the other hand, if $f$ has a jump discontinuity at $c$, then
+$$ S f(c) = \frac{1}{2} \left( f(c^+) + f(c^-) \right) . $$
+\end{shaded}
+
+\begin{shaded}
+\textbf{Definition (uniform convergence) \cite{math2111_notes}.} Let $f_k : \mathbb{R} \to \mathbb{R}$. We say $f_k$ converges to $f$ on $[a, b]$ uniformly if for every $\epsilon > 0$, there exists a $K$ (depends on $\epsilon$ only), such that
+$$ \sup_{x \in [a, b]} | f_k(x) - f(x) | \leq \epsilon \quad \text{for all} \quad k \geq K . $$
+Moreover, we say $\sum_{k = 1}^{\infty} f_k$ converges uniformly to $f$ if the partial sum $\tilde{f}_n = \sum_{k = 1}^{\infty} f_k$ converges uniformly to $f$ as $n \to \infty$.
+\end{shaded}
+
+\begin{shaded}
+\textbf{Theorem (Weierstrass test) \cite{math2111_notes}.} Let $f_k : \mathbb{R} \to \mathbb{R}$ be a sequence of functions defined on $[a, b]$. Suppose that there exists a sequence of numbers $c_k$ such that
+$$ |f_k(x)| \leq c_k \quad \text{for all} \quad x \in [a, b] $$
+and $\sum_{k = 1}^\infty c_k$ exists. Then, $\sum_{k = 1}^\infty f_k(x)$ converges uniformly to a function $f$ on $[a, b]$.
+\end{shaded}
+
+\begin{shaded}
+\textbf{Definition (norm convergence) \cite{math2111_notes}.} Consider the maximum norm $\lVert f \rVert_\infty = \sup_{x \in [a, b]} |f(x)|$. The definition of uniform convergence can be equivalently rewritten as: for every $\epsilon > 0$, there exists $K > 0$ such that
+$$ \lVert f_k - f \rVert \leq \epsilon \quad \text{for all} \quad k \geq K , $$
+or simply
+$$ \lim_{k \to \infty} \lVert f_k - f \rVert = 0 . $$
+\end{shaded}
+
+\begin{shaded}
+\textbf{Theorem (Parseval's theorem).} Let $f$ be $2 \pi$-periodic, bounded and $\int_{-\pi}^\pi f(x)^2 \ dx < + \infty$. Then, the Fourier series of $f$ converges to $f$ in the mean square sense, i.e.
+$$ \int_{- \pi}^\pi (S_n f(x) - f(x))^2 \ dx \to 0 \quad \text{as} \quad k \to \infty . $$
+That is to say, $\lVert S_n f - f \rVert_2 \to 0$ as $n \to \infty$. Moreover, the following \textbf{Parseval's identity} holds:
+$$ \int_{-\pi}^\pi f(x)^2 \ dx = \lVert f \rVert_2^2 = \frac{\pi}{2} a_0^2 + \pi \sum_{k = 1}^{\infty} (a_k^2 + b_k^2) . $$
+\end{shaded}
+
+\begin{shaded}
+\textbf{Even and odd functions.}
+\begin{itemize}
+	\item The product of two even functions is an even function.
+	\item The product of two odd functions is an even function.
+	\item The product of and even function and an odd function is an odd function.
+\end{itemize}
+
+This can be helpful when solving integrals of the form $\int f(x)g(x) \ dx$, where $f$ and $g$ are each even or odd.
+\end{shaded}
+
+\begin{shaded}
+\textbf{Definition (divergence) \cite{2111_notes}.} If $\mathbf{F} = F_1 \mathbf{i} F_2 \mathbf{j} F_2 \mathbf{k}$, the \textbf{divergence} of $\mathbf{F}$ is the scalar field
+$$ \div \mathbf{F} = \nabla \cdot \mathbf{F} = \pdv{F_1}{x} \pdv{F_2}{y} \pdv{F_3}{z} . $$
 \end{shaded}
