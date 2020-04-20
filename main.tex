@@ -21,6 +21,19 @@
 \setlength{\parindent}{0em}
 \addbibresource{bibliography.bib}
 
+% REDEFINITIONS
+
+% Credit to @StefanKottwitz on an answer on Tex Stack Exchange
+% This redefinition allows matrices to be stretched on the fly like so:
+% \begin{pmatrix}[1.5] ... \end{pmatrix}
+\makeatletter
+\renewcommand*\env@matrix[1][\arraystretch]{%
+  \edef\arraystretch{#1}%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{*\c@MaxMatrixCols c}}
+\makeatother
+
 \begin{document}
 
 \tableofcontents

@@ -131,3 +131,13 @@ This can be helpful when solving integrals of the form $\int f(x)g(x) \ dx$, whe
 \textbf{Definition (divergence) \cite{math2111_notes}.} If $\mathbf{F} = F_1 \mathbf{i} + F_2 \mathbf{j} + F_3 \mathbf{k}$, the \textbf{divergence} of $\mathbf{F}$ is the scalar field
 $$ \text{div} \ \mathbf{F} = \nabla \cdot \mathbf{F} = \diffp{F_1}{x} + \diffp{F_2}{y} + \diffp{F_3}{z} . $$
 \end{shaded}
+
+\begin{shaded}
+\textbf{Definition (curl) \cite{math2111_notes}.} If $\mathbf{F} = F_1 \mathbf{i} + F_2 \mathbf{j} + F_3 \mathbf{k}$, the \textbf{curl} of $\mathbf{F}$ is the vector field
+$$ \text{curl} \ \mathbf{F} = \nabla \times \mathbf{F} = 
+\begin{vmatrix}
+	\mathbf{i} & \mathbf{j} & \mathbf{k} \\
+	\diffp{}{x} & \diffp{}{y} & \diffp{}{z} \\
+	F_1 & F_2 & F_3
+\end{vmatrix} . $$
+\end{shaded}
