@@ -1,6 +1,8 @@
 \chapter{Mathematics}
 \section{Calculus}
 
+\subsection{Continuity and differentiability}
+
 \begin{shaded}
 \textbf{Definition (Continuous function) \cite{hubbard_hubbard}.} Let $X \subset \mathbb{R}^n$. Then a mapping $\mathbf{f} : X \to \mathbb{R}^m$ is continuous at $\mathbf{x}_0 \in X$ if
 $$ \lim_{\mathbf{x} \to \mathbf{x}_0} \mathbf{f}(\mathbf{x}) = \mathbf{f}(\mathbf{x}_0); $$
@@ -64,6 +66,8 @@ Warning: $D^{+/-} f(c)$ is not necessarily the same as $f'(c^{+/-}) = \lim_{x \t
 Moreover, $f$ is piecewise differentiable on $\mathbb{R}$ if it is piecewise differentiable on any finite interval $[a, b] \subseteq \mathbb{R}$.
 \end{shaded}
 
+\subsection{Fourier series and convergence}
+
 \begin{shaded}
 \textbf{Fourier series \cite{math2111_notes}.} Consider a function $f : \mathbb{R} \to \mathbb{R}$ which is $2 L$-periodic and is square integrable (i.e., $\int_{-\pi}^\pi f(x)^2 \ dx < \infty $). Its Fourier series is given by
 $$ S_f(x) = \frac{a_0}{2} + \sum_{k = 1}^{\infty} \left( a_k \cos \left( \frac{k \pi}{L}x \right) + b_k \sin \left( \frac{k \pi}{L}x \right) \right) . $$
@@ -116,16 +120,7 @@ That is to say, $\lVert S_n f - f \rVert_2 \to 0$ as $n \to \infty$. Moreover, t
 $$ \int_{-\pi}^\pi f(x)^2 \ dx = \lVert f \rVert_2^2 = \frac{\pi}{2} a_0^2 + \pi \sum_{k = 1}^{\infty} (a_k^2 + b_k^2) . $$
 \end{shaded}
 
-\begin{shaded}
-\textbf{Even and odd functions.}
-\begin{itemize}
-	\item The product of two even functions is an even function.
-	\item The product of two odd functions is an even function.
-	\item The product of and even function and an odd function is an odd function.
-\end{itemize}
-
-This can be helpful when solving integrals of the form $\int f(x)g(x) \ dx$, where $f$ and $g$ are each even or odd.
-\end{shaded}
+\subsection{Div, grad, curl}
 
 \begin{shaded}
 \textbf{Definition (divergence) \cite{math2111_notes}.} If $\mathbf{F} = F_1 \mathbf{i} + F_2 \mathbf{j} + F_3 \mathbf{k}$, the \textbf{divergence} of $\mathbf{F}$ is the scalar field
@@ -147,8 +142,10 @@ This can be helpful when solving integrals of the form $\int f(x)g(x) \ dx$, whe
 	F_1 & F_2 & F_3
 \end{vmatrix} \\
 &= \left( \diffp{F_3}{y} - \diffp{F_2}{z} \right) \mathbf{i} + \left( \diffp{F_1}{z} - \diffp{F_3}{x} \right) \mathbf{j} + \left( \diffp{F_2}{x} - \diffp{F_1}{y} \right) \mathbf{k} .
-\end{align*} 
+\end{align*}
 \end{shaded}
+
+\subsection{Line integrals}
 
 \begin{shaded}
 \textbf{Definition (line integral of a scalar field) \cite{marsden_vector_calculus}.} The \textbf{line integral of a scalar field}, or \textbf{path integral}, or the \textbf{integral of $f(x, y, z)$ along the path $\mathbf{c}$}, is defined when $\mathbf{c}: I = [a, b] \to \mathbb{R}^3$ is of class $C^1$ and when the composite function $t \mapsto f(x(t), y(t), z(t))$ is continuous on $I$. We define this integral by the equation
@@ -169,10 +166,53 @@ that is, we integrate the dot product of $\mathbf{F}$ with $\mathbf{c}'$ over th
 As is the case with scalar functions, we can also define $\int_\mathbf{c} \mathbf{F} \cdot d\mathbf{s}$ if $\mathbf{F}(\mathbf{c}(t)) \cdot \mathbf{c}'(t)$ is only piecewise continuous.
 \end{shaded}
 
+\subsection{Definitions and theorems about line integrals}
+
 \begin{shaded}
 \textbf{Definition (arc length) \cite{marsden_vector_calculus}.} The length of the path $\mathbf{c}(t) = (x(t), y(t), z(t))$ for $t_0 \leq t \leq t_1$, is
 \begin{align*}
 L(\mathbf{c})) &= \int_{t_0}^{t_1} \lVert \mathbf{c}'(t) \rVert \ dt \\
 &= \int_{t_0}^{t_1} \sqrt{[x'(t)]^2 + [y'(t)]^2 + [z'(t)]^2} \ dt .
 \end{align*}
+\end{shaded}
+
+\begin{shaded}
+\textbf{Theorem (line integrals of gradient vector fields) \cite{marsden_vector_calculus}.} Suppose $f : \mathbb{R}^3 \to \mathbb{R}$ is of class $C^1$ and that $\mathbf{c} : [a, b] \to \mathbb{R}^3$ is a piecewise $C^1$ path. Then
+$$ \int_{\mathbf{c}} \nabla f \cdot d\mathbf{s} = f(\mathbf{c}(b)) - f(\mathbf{c}(a)) . $$
+\end{shaded}
+
+\begin{shaded}
+\textbf{Theorem (cross partials of gradient vector fields) \cite{math2111_notes}.} Let
+$$ \mathbf{F} = (F_1, F_2, F_3) $$
+be a gradient vector field whose components ahve continuous partial derivatives. Then the cross partials are equal:
+$$ \diffp{F_1}{y} = \diffp{F_2}{x}, \quad \diffp{F_2}{z} = \diffp{F_3}{y}, \quad \diffp{F_3}{x} = \diffp{F_1}{z} . $$
+
+Similarly, if the vector field in the plane
+$$ \mathbf{F} = (F_1, F_2) $$
+is a gradient vector field, then
+$$ \diffp{F_1}{y} = \diffp{F_2}{x} . $$
+\end{shaded}
+
+\begin{shaded}
+\textbf{Green's theorem \cite{marsden_vector_calculus}.} Let $D$ be a simple region and let $C$ be its boundary. Suppose $P: D \to \mathbb{R}$ and $Q: D \to \mathbb{R}$ are of class $C^1$. Then
+$$ \int_{C^+} P \ dx + Q \ dy = \iint_D \left( \diffp{Q}{x} - \diffp{P}{y} \right) \ dx dy . $$
+
+\textsc{Vector form.} Let $D \subset \mathbb{R}^2$ be a region to which Green's theorem applies, let $\partial D$ be its (positively oriented) boundary, and let $\mathbf{F} = P \mathbf{i} + Q \mathbf{j}$ be a $C^1$ vector field on $D$. Then
+\begin{align*}
+\int_{\partial D} \mathbf{F} \cdot d\mathbf{s} &= \iint_D (\text{curl} \ \mathbf{F}) \cdot \mathbf{k} \ dA \\
+&= \iint_D (\nabla \times \mathbf{F}) \cdot \mathbf{k} \ dA
+\end{align*}
+\end{shaded}
+
+\subsection{Miscellaneous}
+
+\begin{shaded}
+\textbf{Even and odd functions.}
+\begin{itemize}
+	\item The product of two even functions is an even function.
+	\item The product of two odd functions is an even function.
+	\item The product of and even function and an odd function is an odd function.
+\end{itemize}
+
+This can be helpful when solving integrals of the form $\int f(x)g(x) \ dx$, where $f$ and $g$ are each even or odd.
 \end{shaded}
