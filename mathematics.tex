@@ -149,3 +149,22 @@ This can be helpful when solving integrals of the form $\int f(x)g(x) \ dx$, whe
 &= \left( \diffp{F_3}{y} - \diffp{F_2}{z} \right) \mathbf{i} + \left( \diffp{F_1}{z} - \diffp{F_3}{x} \right) \mathbf{j} + \left( \diffp{F_2}{x} - \diffp{F_1}{y} \right) \mathbf{k} .
 \end{align*} 
 \end{shaded}
+
+\begin{shaded}
+\textbf{Definition (line integral of a scalar field) \cite{marsden_vector_calculus}.} The \textbf{line integral of a scalar field}, or \textbf{path integral}, or the \textbf{integral of $f(x, y, z)$ along the path $\mathbf{c}$}, is defined when $\mathbf{c}: I = [a, b] \to \mathbb{R}^3$ is of class $C^1$ and when the composite function $t \mapsto f(x(t), y(t), z(t))$ is continuous on $I$. We define this integral by the equation
+$$ \int_{\mathbf{c}} f \ ds = \int_a^b f(x(t), y(t), z(t)) \ \lVert \mathbf{c}'(t) \rVert \ dt . $$
+Sometimes $\int_\mathbf{c} f \ ds$ is denoted
+$$ \int_\mathbf{c} f(x, y, z) \ ds $$
+or
+$$ \int_\mathbf{c} f(\mathbf{c}(t)) \ \lVert \mathbf{c}'(t) \rVert \ dt . $$
+
+If $\mathbf{c}(t)$ is only piecewise $C^1$ or $f(\mathbf{c}(t))$ is piecewise continuous, we define $\int_\mathbf{c} f \ ds$ by breaking $[a, b]$ into pieces over which $f(\mathbf{c}(t)) \ \lVert \mathbf{c}'(t) \rVert$ is continuous, and summing the integrals over the pieces.
+\end{shaded}
+
+\begin{shaded}
+\textbf{Definition (line integral of a vector field) \cite{marsden_vector_calculus}.} Let $\mathbf{F}$ be a vector field on $\mathbb{R}^3$ that is continuous on the $C^1$ path $\mathbf{c} : [a, b] \to \mathbb{R}^3$. We define $\int_\mathbf{c} \mathbf{F} \cdot d\mathbf{s}$, the \textbf{line integral} of $\mathbf{F}$ along $\mathbf{c}$, by the formula
+$$ \int_\mathbf{c} \mathbf{F} \cdot d\mathbf{s} = \int_a^b \mathbf{F}(\mathbf{c}(t)) \cdot \mathbf{c}'(t) \ dt ; $$
+that is, we integrate the dot product of $\mathbf{F}$ with $\mathbf{c}'$ over the interval $[a, b]$.
+
+As is the case with scalar functions, we can also define $\int_\mathbf{c} \mathbf{F} \cdot d\mathbf{s}$ if $\mathbf{F}(\mathbf{c}(t)) \cdot \mathbf{c}'(t)$ is only piecewise continuous.
+\end{shaded}

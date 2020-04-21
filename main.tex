@@ -27,7 +27,7 @@
 % This redefinition allows matrices to be stretched on the fly like so:
 % \begin{pmatrix}[1.5] ... \end{pmatrix}
 \makeatletter
-\renewcommand*\env@matrix[1][\arraystretch]{%
+\renewcommand*\env@matrix[1][\arraystretch]{
   \edef\arraystretch{#1}%
   \hskip -\arraycolsep
   \let\@ifnextchar\new@ifnextchar
