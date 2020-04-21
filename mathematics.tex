@@ -168,3 +168,11 @@ that is, we integrate the dot product of $\mathbf{F}$ with $\mathbf{c}'$ over th
 
 As is the case with scalar functions, we can also define $\int_\mathbf{c} \mathbf{F} \cdot d\mathbf{s}$ if $\mathbf{F}(\mathbf{c}(t)) \cdot \mathbf{c}'(t)$ is only piecewise continuous.
 \end{shaded}
+
+\begin{shaded}
+\textbf{Definition (arc length) \cite{marsden_vector_calculus}.} The length of the path $\mathbf{c}(t) = (x(t), y(t), z(t))$ for $t_0 \leq t \leq t_1$, is
+\begin{align*}
+L(\mathbf{c})) &= \int_{t_0}^{t_1} \lVert \mathbf{c}'(t) \rVert \ dt \\
+&= \int_{t_0}^{t_1} \sqrt{[x'(t)]^2 + [y'(t)]^2 + [z'(t)]^2} \ dt .
+\end{align*}
+\end{shaded}
