@@ -166,6 +166,13 @@ that is, we integrate the dot product of $\mathbf{F}$ with $\mathbf{c}'$ over th
 As is the case with scalar functions, we can also define $\int_\mathbf{c} \mathbf{F} \cdot d\mathbf{s}$ if $\mathbf{F}(\mathbf{c}(t)) \cdot \mathbf{c}'(t)$ is only piecewise continuous.
 \end{shaded}
 
+\textsc{Note \cite{marsden_vector_calculus}}. Another common way of writing line integrals is
+\begin{align*}
+\int_{\mathbf{c}} F_1 \ dx + F_2 \ dy + F_3 \ dz &= \int_a^b \left( F_1 \diff{x}{t} + F_2 \diff{y}{t} + F_3 \diff{z}{t} \right) \ dt \\
+&= \int_{\mathbf{c}} \mathbf{F} \cdot d \mathbf{s} .
+\end{align*}
+Note that we may think of $d \mathbf{s}$ as the differential form $d \mathbf{s} = dx \mathbf{i} + dy \mathbf{j} + dz \mathbf{k}$. Thus, the differential form $F_1 \ dx + F_2 \ dy + F_3 \ dz$ may be written as the dot product $\mathbf{F} \cdot d \mathbf{s}$.
+
 \subsection{Definitions and theorems about line integrals}
 
 \begin{shaded}
