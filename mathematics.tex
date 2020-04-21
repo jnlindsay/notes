@@ -176,11 +176,20 @@ Note that we may think of $d \mathbf{s}$ as the differential form $d \mathbf{s} 
 \subsection{Definitions and theorems about line integrals}
 
 \begin{shaded}
-\textbf{Definition (arc length) \cite{marsden_vector_calculus}.} The length of the path $\mathbf{c}(t) = (x(t), y(t), z(t))$ for $t_0 \leq t \leq t_1$, is
-\begin{align*}
-L(\mathbf{c})) &= \int_{t_0}^{t_1} \lVert \mathbf{c}'(t) \rVert \ dt \\
-&= \int_{t_0}^{t_1} \sqrt{[x'(t)]^2 + [y'(t)]^2 + [z'(t)]^2} \ dt .
-\end{align*}
+\textbf{Definition (arc length in $\mathbb{R}^n$) \cite{marsden_vector_calculus}.} Let $\mathbf{c}: [t_0, t_1] \to \mathbb{R}^n$ be a piecewise $C^1$ path. Its \textbf{length} is defined to be
+$$ L(\mathbf{c} = \int_{t_0}^{t_1} \lVert \mathbf{c}'(t) \rVert \ dt . $$
+The integrand is the square root of the sume of the squares of the coordinate functions of $\mathbf{c}'(t)$: If
+$$ \mathbf{c}(t) = (x_1(t), x_2(t), ..., x_n(t)) , $$
+then
+$$ L(\mathbf{c}) = \sqrt{[x'_1(t)]^2 + [x'_2(t)]^2 + ... + [x'_n(t)]^2} \ dt . $$
+\end{shaded}
+
+\begin{shaded}
+\textbf{Definition (arc length differential) \cite{marsden_vector_calculus}.} An \textbf{infinitesimal displacement} of a particle following a path $\mathbf{c}(t) = x(t) \mathbf{i} + y(t) \mathbf{j} + z(t) \mathbf{k}$ is
+$$ d \mathbf{s} = dx \mathbf{i} + dy \mathbf{j} + dz \mathbf{k} = \left( \diff{x}{t} \mathbf{i} + \diff{y}{t} \mathbf{j} + \diff{z}{t} \mathbf{k} \right) \ dt , $$
+and its length
+$$ ds = \sqrt{dx^2 + dy^2 + dz^2} = \sqrt{{\diff{x}{t}}^2 + {\diff{y}{t}}^2 + {\diff{z}{t}}^2} \ dt $$
+is the \textbf{differential of arc length}.
 \end{shaded}
 
 \begin{shaded}
