@@ -149,6 +149,21 @@ $$ \int_{-\pi}^\pi f(x)^2 \ dx = \lVert f \rVert_2^2 = \frac{\pi}{2} a_0^2 + \pi
 
 \subsection{Line integrals}
 
+\textsc{Notation \cite{marsden_vector_calculus}.} Cheat sheet for confusing notation:
+\begin{itemize}
+	\item Position along a path $\mathbf{c}(t) = x(t) \mathbf{i} + y(t) \mathbf{j} + z(t) \mathbf{k}$:
+\begin{align*}
+\mathbf{s} &= x \mathbf{i} + y \mathbf{j} + z \mathbf{k} \\
+\diff{\mathbf{s}}{t} &= \diff{x}{t} \mathbf{i} + \diff{y}{t} \mathbf{j} + \diff{z}{t} \mathbf{k}
+\end{align*}
+	\item An \textbf{infinitesimal displacement} of a particle following the path $\mathbf{c}$ is
+$$ d \mathbf{s} = dx \mathbf{i} + dy \mathbf{j} + dz \mathbf{k} = \left( \diff{x}{t} \mathbf{i} + \diff{y}{t} \mathbf{j} + \diff{z}{t} \mathbf{k} \right) \ dt , $$
+and its length
+$$ ds = \sqrt{dx^2 + dy^2 + dz^2} = \sqrt{{\diff{x}{t}}^2 + {\diff{y}{t}}^2 + {\diff{z}{t}}^2} \ dt $$
+is the \textbf{differential of arc length}.
+	\item Velocity vector
+\end{itemize}
+
 \begin{shaded}
 \textbf{Definition (line integral of a scalar field) \cite{marsden_vector_calculus}.} The \textbf{line integral of a scalar field}, or \textbf{path integral}, or the \textbf{integral of $f(x, y, z)$ along the path $\mathbf{c}$}, is defined when $\mathbf{c}: I = [a, b] \to \mathbb{R}^3$ is of class $C^1$ and when the composite function $t \mapsto f(x(t), y(t), z(t))$ is continuous on $I$. We define this integral by the equation
 $$ \int_{\mathbf{c}} f \ ds = \int_a^b f(x(t), y(t), z(t)) \ \lVert \mathbf{c}'(t) \rVert \ dt . $$
@@ -161,23 +176,18 @@ If $\mathbf{c}(t)$ is only piecewise $C^1$ or $f(\mathbf{c}(t))$ is piecewise co
 \end{shaded}
 
 \begin{shaded}
-\textbf{Definition (line integral of a vector field) \cite{marsden_vector_calculus} \cite{thomas_calculus}.} Let $\mathbf{F}$ be a vector field on $\mathbb{R}^3$ that is continuous on the $C^1$ path $\mathbf{c} : [a, b] \to \mathbb{R}^3$, and let $\mathbf{•}$ be the tangent vector $d\mathbf{s}/ds = \mathbf{v}/|\mathbf{v}|$.  (The vector $\mathbf{v} = d\mathbf{r}/dt$ is the velocity vector tangent to $\mathbf{c}$ at the point.) We define $\int_\mathbf{c} \mathbf{F} \cdot d\mathbf{s}$, the \textbf{line integral} of $\mathbf{F}$ along $\mathbf{c}$, by the formula
+\textbf{Definition (line integral of a vector field) \cite{marsden_vector_calculus} \cite{thomas_calculus}.} Let $\mathbf{F}$ be a vector field on $\mathbb{R}^3$ that is continuous on the $C^1$ path $\mathbf{c} : [a, b] \to \mathbb{R}^3$, and let $\mathbf{•}$ be the unit tangent vector to $\mathbf{c}$. We define $\int_\mathbf{c} \mathbf{F} \cdot d\mathbf{s}$, the \textbf{line integral} of $\mathbf{F}$ along $\mathbf{c}$, by the formula
 \begin{align*}
-\int_\mathbf{c} \mathbf{F} \cdot \mathbf{T} \ ds &= \int_\mathbf{c} \left( \mathbf{F} \cdot \diff{\mathbf{s}}{s} \right) \ ds \\
-&= \int_\mathbf{c} \mathbf{F} \cdot d\mathbf{s} \\
+\int_{\mathbf{c}} F_1 \ dx + F_2 \ dy + F_3 \ dz &= \int_a^b \left( F_1 \diff{x}{t} + F_2 \diff{y}{t} + F_3 \diff{z}{t} \right) \ dt \\
+&= \int_\mathbf{c} \mathbf{F} \cdot d \mathbf{s} \\
+&= \int_\mathbf{c} \left( \mathbf{F} \cdot \diff{\mathbf{s}}{s} \right) \ ds \\
+&= \int_\mathbf{c} \mathbf{F} \cdot \mathbf{T} \ ds \\
 &= \int_a^b \mathbf{F}(\mathbf{c}(t)) \cdot \mathbf{c}'(t) \ dt ;
 \end{align*}
 that is, we integrate the dot product of $\mathbf{F}$ with $\mathbf{c}'$ over the interval $[a, b]$.
 
 As is the case with scalar functions, we can also define $\int_\mathbf{c} \mathbf{F} \cdot d\mathbf{s}$ if $\mathbf{F}(\mathbf{c}(t)) \cdot \mathbf{c}'(t)$ is only piecewise continuous.
 \end{shaded}
-
-\textsc{Note \cite{marsden_vector_calculus}}. Another common way of writing line integrals is
-\begin{align*}
-\int_{\mathbf{c}} F_1 \ dx + F_2 \ dy + F_3 \ dz &= \int_a^b \left( F_1 \diff{x}{t} + F_2 \diff{y}{t} + F_3 \diff{z}{t} \right) \ dt \\
-&= \int_{\mathbf{c}} \mathbf{F} \cdot d \mathbf{s} .
-\end{align*}
-Note that we may think of $d \mathbf{s}$ as the differential form $d \mathbf{s} = dx \mathbf{i} + dy \mathbf{j} + dz \mathbf{k}$. Thus, the differential form $F_1 \ dx + F_2 \ dy + F_3 \ dz$ may be written as the dot product $\mathbf{F} \cdot d \mathbf{s}$.
 
 \subsection{Definitions and theorems about line integrals}
 
@@ -188,14 +198,6 @@ The integrand is the square root of the sume of the squares of the coordinate fu
 $$ \mathbf{c}(t) = (x_1(t), x_2(t), ..., x_n(t)) , $$
 then
 $$ L(\mathbf{c}) = \sqrt{[x'_1(t)]^2 + [x'_2(t)]^2 + ... + [x'_n(t)]^2} \ dt . $$
-\end{shaded}
-
-\begin{shaded}
-\textbf{Definition (arc length differential) \cite{marsden_vector_calculus}.} An \textbf{infinitesimal displacement} of a particle following a path $\mathbf{c}(t) = x(t) \mathbf{i} + y(t) \mathbf{j} + z(t) \mathbf{k}$ is
-$$ d \mathbf{s} = dx \mathbf{i} + dy \mathbf{j} + dz \mathbf{k} = \left( \diff{x}{t} \mathbf{i} + \diff{y}{t} \mathbf{j} + \diff{z}{t} \mathbf{k} \right) \ dt , $$
-and its length
-$$ ds = \sqrt{dx^2 + dy^2 + dz^2} = \sqrt{{\diff{x}{t}}^2 + {\diff{y}{t}}^2 + {\diff{z}{t}}^2} \ dt $$
-is the \textbf{differential of arc length}.
 \end{shaded}
 
 \begin{shaded}
