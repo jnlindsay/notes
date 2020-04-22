@@ -151,17 +151,18 @@ $$ \int_{-\pi}^\pi f(x)^2 \ dx = \lVert f \rVert_2^2 = \frac{\pi}{2} a_0^2 + \pi
 
 \textsc{Notation \cite{marsden_vector_calculus}.} Cheat sheet for confusing notation:
 \begin{itemize}
-	\item Position along a path $\mathbf{c}(t) = x(t) \mathbf{i} + y(t) \mathbf{j} + z(t) \mathbf{k}$:
-\begin{align*}
-\mathbf{s} &= x \mathbf{i} + y \mathbf{j} + z \mathbf{k} \\
-\diff{\mathbf{s}}{t} &= \diff{x}{t} \mathbf{i} + \diff{y}{t} \mathbf{j} + \diff{z}{t} \mathbf{k}
-\end{align*}
+	\item Velocity vector of a particle on a path
+	$$\mathbf{c}(t) = x(t) \mathbf{i} + y(t) \mathbf{j} + z(t) \mathbf{k} \qquad \text{or} \qquad \mathbf{s} = x \mathbf{i} + y \mathbf{j} + z \mathbf{k} $$
+is
+$$ \mathbf{c}'(t) = \mathbf{v} = \diff{\mathbf{s}}{t} = \diff{x}{t} \mathbf{i} + \diff{y}{t} \mathbf{j} + \diff{z}{t} \mathbf{k} . $$
+The speed of the particle is its magnitude: $\lVert \mathbf{c}'(t) \rVert = \lVert \mathbf{v} \rVert$.
 	\item An \textbf{infinitesimal displacement} of a particle following the path $\mathbf{c}$ is
 $$ d \mathbf{s} = dx \mathbf{i} + dy \mathbf{j} + dz \mathbf{k} = \left( \diff{x}{t} \mathbf{i} + \diff{y}{t} \mathbf{j} + \diff{z}{t} \mathbf{k} \right) \ dt , $$
 and its length
 $$ ds = \sqrt{dx^2 + dy^2 + dz^2} = \sqrt{{\diff{x}{t}}^2 + {\diff{y}{t}}^2 + {\diff{z}{t}}^2} \ dt $$
 is the \textbf{differential of arc length}.
-	\item Velocity vector
+	\item The unit tangent vector is the velocity vector divided by its magnitude, i.e.
+$$ \mathbf{T} = \frac{\mathbf{v}}{\lVert \mathbf{v} \rVert} . $$
 \end{itemize}
 
 \begin{shaded}
