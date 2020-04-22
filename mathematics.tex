@@ -161,8 +161,12 @@ If $\mathbf{c}(t)$ is only piecewise $C^1$ or $f(\mathbf{c}(t))$ is piecewise co
 \end{shaded}
 
 \begin{shaded}
-\textbf{Definition (line integral of a vector field) \cite{marsden_vector_calculus}.} Let $\mathbf{F}$ be a vector field on $\mathbb{R}^3$ that is continuous on the $C^1$ path $\mathbf{c} : [a, b] \to \mathbb{R}^3$. We define $\int_\mathbf{c} \mathbf{F} \cdot d\mathbf{s}$, the \textbf{line integral} of $\mathbf{F}$ along $\mathbf{c}$, by the formula
-$$ \int_\mathbf{c} \mathbf{F} \cdot d\mathbf{s} = \int_a^b \mathbf{F}(\mathbf{c}(t)) \cdot \mathbf{c}'(t) \ dt ; $$
+\textbf{Definition (line integral of a vector field) \cite{marsden_vector_calculus} \cite{thomas_calculus}.} Let $\mathbf{F}$ be a vector field on $\mathbb{R}^3$ that is continuous on the $C^1$ path $\mathbf{c} : [a, b] \to \mathbb{R}^3$, and let $\mathbf{•}$ be the tangent vector $d\mathbf{s}/ds = \mathbf{v}/|\mathbf{v}|$.  (The vector $\mathbf{v} = d\mathbf{r}/dt$ is the velocity vector tangent to $\mathbf{c}$ at the point.) We define $\int_\mathbf{c} \mathbf{F} \cdot d\mathbf{s}$, the \textbf{line integral} of $\mathbf{F}$ along $\mathbf{c}$, by the formula
+\begin{align*}
+\int_\mathbf{c} \mathbf{F} \cdot \mathbf{T} \ ds &= \int_\mathbf{c} \left( \mathbf{F} \cdot \diff{\mathbf{s}}{s} \right) \ ds \\
+&= \int_\mathbf{c} \mathbf{F} \cdot d\mathbf{s} \\
+&= \int_a^b \mathbf{F}(\mathbf{c}(t)) \cdot \mathbf{c}'(t) \ dt ;
+\end{align*}
 that is, we integrate the dot product of $\mathbf{F}$ with $\mathbf{c}'$ over the interval $[a, b]$.
 
 As is the case with scalar functions, we can also define $\int_\mathbf{c} \mathbf{F} \cdot d\mathbf{s}$ if $\mathbf{F}(\mathbf{c}(t)) \cdot \mathbf{c}'(t)$ is only piecewise continuous.
