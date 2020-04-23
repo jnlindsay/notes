@@ -198,17 +198,27 @@ If $\mathbf{c}(t)$ is only piecewise $C^1$ or $f(\mathbf{c}(t))$ is piecewise co
 \end{shaded}
 
 \begin{shaded}
-\textbf{Definition (line integral of a vector field) \cite{marsden_vector_calculus} \cite{thomas_calculus}.} Let $\mathbf{F}$ be a vector field on $\mathbb{R}^3$ that is continuous on the $C^1$ path $\mathbf{c} : [a, b] \to \mathbb{R}^3$, and let $\mathbf{•}$ be the unit tangent vector to $\mathbf{c}$. We define $\int_\mathbf{c} \mathbf{F} \cdot d\mathbf{s}$, the \textbf{line integral} of $\mathbf{F}$ along $\mathbf{c}$, by the formula
+\textbf{Definition (line integral of a vector field) \cite{thomas_calculus}.} Let $\mathbf{F}$ be a vector field with continuous components defined along a smooth curve $C$ parametrised by $\mathbf{c}(t), a \leq t \leq b$. Then the \textbf{line integral of} $\mathbf{F}$ along $\mathbf{C}$ is
 \begin{align*}
-\int_{\mathbf{c}} F_1 \ dx + F_2 \ dy + F_3 \ dz &= \int_a^b \left( F_1 \diff{x}{t} + F_2 \diff{y}{t} + F_3 \diff{z}{t} \right) \ dt \\
-&= \int_\mathbf{c} \mathbf{F} \cdot d \mathbf{s} \\
-&= \int_\mathbf{c} \left( \mathbf{F} \cdot \diff{\mathbf{s}}{s} \right) \ ds \\
-&= \int_\mathbf{c} \mathbf{F} \cdot \mathbf{T} \ ds \\
-&= \int_a^b \mathbf{F}(\mathbf{c}(t)) \cdot \mathbf{c}'(t) \ dt ;
+\int_C F_1 \ dx + F_2 \ dy + F_3 \ dz &= \int_a^b \left( F_1 \diff{x}{t} + F_2 \diff{y}{t} + F_3 \diff{z}{t} \right) \ dt \\
+&= \int_C \mathbf{F} \cdot d \mathbf{s} \\
+&= \int_C \left( \mathbf{F} \cdot \diff{\mathbf{s}}{s} \right) \ ds \\
+&= \int_C \mathbf{F} \cdot \mathbf{T} \ ds \\
+&= \int_a^b \mathbf{F}(\mathbf{c}(t)) \cdot \mathbf{c}'(t) \ dt
 \end{align*}
-that is, we integrate the dot product of $\mathbf{F}$ with $\mathbf{c}'$ over the interval $[a, b]$.
 
-As is the case with scalar functions, we can also define $\int_\mathbf{c} \mathbf{F} \cdot d\mathbf{s}$ if $\mathbf{F}(\mathbf{c}(t)) \cdot \mathbf{c}'(t)$ is only piecewise continuous.
+\textbf{Definition (flow integral, circulation) \cite{thomas_calculus}.} If $\mathbf{c}(t)$ parametrises a smooth curve $C$ in the domain of a continuous velocity field $\mathbf{F}$, the \textbf{flow} along the curve from $A = \mathbf{c}(a) to B = \mathbf{r}(b)$ is
+$$ \text{Flow} = \int_C \mathbf{F} \cdot \mathbf{T} \ ds . $$
+The integral is called a \textbf{flow integral}. If the curve starts and ends at the same point, so that $A = B$, the flow is called the \textbf{circulation} around the curve.
+\end{shaded}
+
+\begin{shaded}
+\textbf{Definition (flux in the plane) \cite{thomas_calculus}.} If $C$ is a smooth  simple closed curve in the domain of a continuous vector field $F = P(x, y) \mathbf{i} + Q(x, y) \mathbf{j}$ in the plane, and if $\mathbf{n}$ is the outward-pointing unit normal vector on $C$, the \textbf{flux} of $\mathbf{F}$ across $C$ is
+\begin{align*}
+\text{Flux of } \mathbf{F} \text{ across } C &= \int_C \mathbf{F} \cdot \mathbf{n} \ ds \\
+&= \oint_C P \ dy - Q \ dx .
+\end{align*}
+The integral can be evaluated from any smooth parametrisation $x = g(t), y = h(t), a \leq t \leq b$, that traces $C$ anticlockwise exactly once.
 \end{shaded}
 
 \subsection{Definitions and theorems about line integrals}
