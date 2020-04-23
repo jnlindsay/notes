@@ -166,6 +166,7 @@ $$ \mathbf{T} = \frac{\mathbf{v}}{\lVert \mathbf{v} \rVert} . $$
 	\item If $\mathbf{c}(t)$ is a smooth curve, then the principal unit normal is
 $$ \mathbf{N} = \frac{d\mathbf{T} / dt}{\lVert d\mathbf{T} / dt \rVert} , $$
 where $\mathbf{T} = \mathbf{v} / \lVert \mathbf{v} \rVert$ is the unit tangent vector. (More information about the derivation of this formula can be found in reference \cite{thomas_calculus} of the bibliography.)
+	\item $dA$ is shorthand for $dx dy$
 \end{itemize}
 
 \begin{shaded}
@@ -222,14 +223,22 @@ $$ \diffp{F_1}{y} = \diffp{F_2}{x} . $$
 \end{shaded}
 
 \begin{shaded}
-\textbf{Green's theorem \cite{marsden_vector_calculus}.} Let $D$ be a simple region and let $C$ be its boundary. Suppose $P: D \to \mathbb{R}$ and $Q: D \to \mathbb{R}$ are of class $C^1$. Then
-$$ \int_{C^+} P \ dx + Q \ dy = \iint_D \left( \diffp{Q}{x} - \diffp{P}{y} \right) \ dx dy . $$
-
-\textsc{Vector form.} Let $D \subset \mathbb{R}^2$ be a region to which Green's theorem applies, let $\partial D$ be its (positively oriented) boundary, and let $\mathbf{F} = P \mathbf{i} + Q \mathbf{j}$ be a $C^1$ vector field on $D$. Then
+\textbf{Green's theorem \cite{thomas_calculus}.} Let $C$ be a piecewise smooth, simple closed curve enclosing a region $R$ in the
+plane. Let $\mathbf{F} = P \mathbf{i} + Q \mathbf{j}$ be a vector field with $P$ and $Q$ having continuous first partial derivatives in an open region containing $R$. Then:
+\begin{itemize}
+	\item \textsc{Circulation-curl or tangential form} --- the anticlockwise circulation of $\mathbf{F}$ around $C$ equals the double integral of $(\text{curl} \ \mathbf{F}) \cdot \mathbf{k}$ over $R$.
 \begin{align*}
-\int_{\partial D} \mathbf{F} \cdot d\mathbf{s} &= \iint_D (\text{curl} \ \mathbf{F}) \cdot \mathbf{k} \ dA \\
-&= \iint_D (\nabla \times \mathbf{F}) \cdot \mathbf{k} \ dA
+\oint_C \mathbf{F} \cdot \mathbf{T} &= \oint_C P \ dx + Q \ dy \\
+&= \iint_R (\text{curl} \ \mathbf{F}) \cdot \mathbf{k} \ dA \\
+&= \iint_R \left( \diffp{Q}{x} - \diffp{P}{y} \right) \ dx dy
 \end{align*}
+	\item \textsc{Flux-divergence or normal form} --- the outward flux of $\mathbf{F}$ across $C$ equals the double integral of $\text{div} \ \mathbf{F}$ over the region $R$ enclosed by $C$.
+\begin{align*}
+\oint_C \mathbf{F} \cdot \mathbf{N} &= \oint_C P \ dy - Q \ dx \\
+&= \iint_R \text{div} \ \mathbf{F} \ dA \\
+&= \iint_R \left( \diffp{P}{x} + \diffp{Q}{y} \right) \ dx dy
+\end{align*}
+\end{itemize}
 \end{shaded}
 
 \subsection{Miscellaneous}
