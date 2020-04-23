@@ -122,7 +122,14 @@ That is to say, $\lVert S_n f - f \rVert_2 \to 0$ as $n \to \infty$. Moreover, t
 $$ \int_{-\pi}^\pi f(x)^2 \ dx = \lVert f \rVert_2^2 = \frac{\pi}{2} a_0^2 + \pi \sum_{k = 1}^{\infty} (a_k^2 + b_k^2) . $$
 \end{shaded}
 
-\subsection{Div, grad, curl}
+\subsection{Grad, div, curl}
+
+\begin{shaded}
+\textbf{Definition (gradient) \cite{thomas_calculus}.} The \textbf{gradient vector} (or \textbf{gradient}) of $f(x, y, z)$ is the vector
+$$ \nabla f = \diffp{f}{x} \mathbf{i} + \diffp{f}{y} \mathbf{j} + \diffp{f}{z} \mathbf{k} . $$
+The value of this gradient vector obtained by evaluating the partial derivatives at a point $P_0(x_0, y_0, z_0)$ is written
+$$ \nabla f |_{P_0} \qquad \text{or} \qquad \nabla f(x_0, y_0, z_0) . $$
+\end{shaded}
 
 \begin{shaded}
 \textbf{Definition (divergence) \cite{math2111_notes}.} If $\mathbf{F} = F_1 \mathbf{i} + F_2 \mathbf{j} + F_3 \mathbf{k}$, the \textbf{divergence} of $\mathbf{F}$ is the scalar field
