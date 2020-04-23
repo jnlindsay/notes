@@ -166,9 +166,17 @@ is
 $$ \mathbf{c}'(t) = \mathbf{v} = \diff{\mathbf{s}}{t} = \diff{x}{t} \mathbf{i} + \diff{y}{t} \mathbf{j} + \diff{z}{t} \mathbf{k} . $$
 The \textbf{speed} of the particle is its magnitude: $\lVert \mathbf{c}'(t) \rVert = \lVert \mathbf{v} \rVert$.
 	\item An \textbf{infinitesimal displacement} of a particle following the path $\mathbf{c}$ is
-$$ d \mathbf{s} = dx \mathbf{i} + dy \mathbf{j} + dz \mathbf{k} = \left( \diff{x}{t} \mathbf{i} + \diff{y}{t} \mathbf{j} + \diff{z}{t} \mathbf{k} \right) \ dt , $$
+\begin{align*}
+d \mathbf{s} &= dx \mathbf{i} + dy \mathbf{j} + dz \mathbf{k} \\
+&= \left( \diff{x}{t} \mathbf{i} + \diff{y}{t} \mathbf{j} + \diff{z}{t} \mathbf{k} \right) \ dt \\
+&= \mathbf{c}'(t) \ dt
+\end{align*}
 and its length
-$$ ds = \sqrt{dx^2 + dy^2 + dz^2} = \sqrt{{\diff{x}{t}}^2 + {\diff{y}{t}}^2 + {\diff{z}{t}}^2} \ dt $$
+\begin{align*}
+ds &= \sqrt{dx^2 + dy^2 + dz^2} \\
+&= \sqrt{\left(\diff{x}{t}\right)^2 + \left(\diff{y}{t}\right)^2 + \left(\diff{z}{t}\right)^2} \ dt \\
+&= \lVert \mathbf{c}'(t) \rVert \ dt
+\end{align*}
 is the \textbf{differential of arc length}.
 	\item The \textbf{unit tangent vector} is the velocity vector divided by its magnitude, i.e.
 $$ \mathbf{T} = \frac{\mathbf{v}}{\lVert \mathbf{v} \rVert} . $$
