@@ -149,7 +149,7 @@ $$ \int_{-\pi}^\pi f(x)^2 \ dx = \lVert f \rVert_2^2 = \frac{\pi}{2} a_0^2 + \pi
 
 \subsection{Line integrals}
 
-\textsc{Notation \cite{marsden_vector_calculus}.} Cheat sheet for confusing notation:
+\textsc{Notation \cite{marsden_vector_calculus} \cite{thomas_calculus}.}
 \begin{itemize}
 	\item Velocity vector of a particle on a path
 	$$\mathbf{c}(t) = x(t) \mathbf{i} + y(t) \mathbf{j} + z(t) \mathbf{k} \qquad \text{or} \qquad \mathbf{s} = x \mathbf{i} + y \mathbf{j} + z \mathbf{k} $$
@@ -163,6 +163,9 @@ $$ ds = \sqrt{dx^2 + dy^2 + dz^2} = \sqrt{{\diff{x}{t}}^2 + {\diff{y}{t}}^2 + {\
 is the \textbf{differential of arc length}.
 	\item The unit tangent vector is the velocity vector divided by its magnitude, i.e.
 $$ \mathbf{T} = \frac{\mathbf{v}}{\lVert \mathbf{v} \rVert} . $$
+	\item If $\mathbf{c}(t)$ is a smooth curve, then the principal unit normal is
+$$ \mathbf{N} = \frac{d\mathbf{T} / dt}{\lVert d\mathbf{T} / dt \rVert} , $$
+where $\mathbf{T} = \mathbf{v} / \lVert \mathbf{v} \rVert$ is the unit tangent vector. (More information about the derivation of this formula can be found in reference \cite{thomas_calculus} of the bibliography.)
 \end{itemize}
 
 \begin{shaded}
