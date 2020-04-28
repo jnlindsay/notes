@@ -20,6 +20,9 @@
 \textbf{Definition (memoisation (top-down method)) \cite{clrs_algorithms}.} In this approach, we write the procedure recursively in a natural manner, but modified to save the result of each sub-problem (usually in an array or hash table). The procedure now first checks to see whether it has previously solved this sub-problem. If so, it returns the saved value, saving further computation at this level; if not, the procedure computes the value in the usual manner. We say that the recursive procedure has been \textbf{memoised}; it ``remembers'' what results it has computed previously.
 \end{shaded}
 
+\begin{shaded}
+\textbf{Definition (bottom-up method) \cite{clrs_algorithms}.} This approach typically depends on some natural notion of the ``size'' of a sub-problem, such that solving any particular sub-problem depends only on solving ``smaller'' sub-problems. We sort the sub-problems by size and solve them in size order, smallest first. When solving a particular sub-problem, we have already solved all the smaller sub-problems its solution depends upon, and we have saved their solutions. We  solve each sub-problem only once, and when we first see it, we have already solved all of its prerequisite sub-problems.
+\end{shaded}
 
 \section{Cloud computing}
 
