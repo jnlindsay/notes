@@ -1,0 +1,10 @@
+# ignore everything...
+*
+
+# ...but don't ignore
+!*.tex
+!.gitignore
+!README.md
+!clean.sh
+!fonts
+!fonts/*
