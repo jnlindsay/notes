@@ -16,10 +16,10 @@
 \textbf{Definition \cite{clrs_algorithms}.} We say that a problem exhibits \textbf{optimal substructure} if optimal solutions to related sub-problems (which may be solved independently) are incorporated into optimal solutions of the problem itself.
 \end{shaded}
 
-\begin{itemize}
-	\item Top-down (memoisation)
-	\item Bottom-up
-\end{itemize}
+\begin{shaded}
+\textbf{Definition (memoisation (top-down method)) \cite{clrs_algorithms}.} In this approach, we write the procedure recursively in a natural manner, but modified to save the result of each sub-problem (usually in an array or hash table). The procedure now first checks to see whether it has previously solved this sub-problem. If so, it returns the saved value, saving further computation at this level; if not, the procedure computes the value in the usual manner. We say that the recursive procedure has been \textbf{memoised}; it ``remembers'' what results it has computed previously.
+\end{shaded}
+
 
 \section{Cloud computing}
 
