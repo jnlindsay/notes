@@ -1,1 +1,1 @@
-rm *.aux *.bcf *.bbl *.blg *.xml *.gz *.toc *.log *.pdf
+rm *.aux *.bcf *.bbl *.blg *.xml *.gz *.toc *.log *.pdf *.out
