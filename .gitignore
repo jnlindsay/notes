@@ -6,5 +6,6 @@
 !.gitignore
 !README.md
 !clean.sh
+!compile.sh
 !fonts
 !fonts/*
