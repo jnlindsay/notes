@@ -4,6 +4,15 @@
 \subsection{Continuity and differentiability}
 
 \begin{shaded}
+\textbf{Theorem (limit of function of several variables using vector sequences) \cite{math2111_notes}.} Given some function $f : \mathbb{R}^n \to \mathbb{R}$, the following identity holds:
+$$
+    \lim_{\mathbf{x} \to \mathbf{a}} f(\mathbf{x}) = b \quad
+    \iff \quad \lim_{n \to \infty} f(\mathbf{x}_n) = b \qquad
+    \forall \mathbf{x}_n \in \mathbb{R}^n : \lim_{n \to \infty} = \mathbf{a}
+$$
+\end{shaded}
+
+\begin{shaded}
 \textbf{Definition (continuous function) \cite{hubbard_hubbard}.} Let $X \subset \mathbb{R}^n$. Then a mapping $\mathbf{f} : X \to \mathbb{R}^m$ is continuous at $\mathbf{x}_0 \in X$ if
 $$ \lim_{\mathbf{x} \to \mathbf{x}_0} \mathbf{f}(\mathbf{x}) = \mathbf{f}(\mathbf{x}_0); $$
 $\mathbf{f}$ is continuous on $X$ if it is continuous at every point of $X$.
