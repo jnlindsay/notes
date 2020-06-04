@@ -5,14 +5,17 @@
 \usepackage{biblatex}				% bibliography
 %\usepackage{xeCJK}					% Chinese
 \usepackage{csquotes}				% quotes
-\usepackage{parskip}				% paragraph indentation
+\usepackage{parskip}                 % paragraph indentation
 \usepackage{fancyhdr}				% fancy headers
 \usepackage[yyyymmdd]{datetime}		% proper date format
 \usepackage{tgschola}				% Tex Gyre Schola (based on New Century Schoolbook)
 \usepackage{amsmath}
 \usepackage{amsfonts}
+\usepackage{amssymb}					% symbols
+\usepackage{amsthm}
+\usepackage{tcolorbox}				% boxes for theorems, definitions, etc.
 \usepackage{xcolor}
-\usepackage{framed}					% paragraph shading
+\usepackage{framed}    				% paragraph shading
 \usepackage[hidelinks]{hyperref}	% clickable table of contents
 \usepackage[italic]{esdiff}			% differentiation notation
 
@@ -20,6 +23,32 @@
 \colorlet{shadecolor}{lightgray!20}
 \setlength{\parindent}{0em}
 \addbibresource{bibliography.bib}
+\tcbuselibrary{most}
+
+% 'THEOREM' ENVIRONMENTS
+%\newtheorem{lemma}[theorem]{Lemma}
+
+% (tcb)
+\newtcbtheorem[number within=section]{definition}{Definition}%
+    {colback=blue!5, colframe=blue!35!black, sharp corners,
+    	 fonttitle=\bfseries, parbox=false,
+    	 separator sign={\ $\blacktriangleright$}}{def}
+
+\newtcbtheorem[number within=section]{theorem}{Theorem}%
+    {colback=red!5, colframe=red!35!black, sharp corners,
+     fonttitle=\bfseries, parbox=false,
+     separator sign={\ $\blacktriangleright$}}{th}
+     
+\newtcbtheorem[number within=section,
+               use counter from=theorem]{lemma}{Lemma}%
+    {colback=red!5, colframe=red!35!black, sharp corners,
+     fonttitle=\bfseries, parbox=false,
+     separator sign={\ $\blacktriangleright$}}{lem}
+     
+\tcolorboxenvironment{proof}{% 'proof' from 'amsthm'
+	blanker,breakable,left=3mm,
+	before skip=10pt,after skip=10pt,
+	borderline west={0.7mm}{0pt}{black}}
 
 % REDEFINITIONS
 
@@ -33,6 +62,8 @@
   \let\@ifnextchar\new@ifnextchar
   \array{*\c@MaxMatrixCols c}}
 \makeatother
+
+% #################################################################
 
 \begin{document}
 

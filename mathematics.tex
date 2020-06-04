@@ -258,8 +258,8 @@ is a gradient vector field, then
 $$ \diffp{F_1}{y} = \diffp{F_2}{x} . $$
 \end{shaded}
 
-\begin{shaded}
-\textbf{Green's theorem \cite{thomas_calculus}.} Let $C$ be a piecewise smooth, simple closed curve enclosing a region $R$ in the
+\begin{theorem}{Green's theorem \cite{thomas_calculus}}{greens_theorem}
+Let $C$ be a piecewise smooth, simple closed curve enclosing a region $R$ in the
 plane. Let $\mathbf{F} = P \mathbf{i} + Q \mathbf{j}$ be a vector field with $P$ and $Q$ having continuous first partial derivatives in an open region containing $R$. Then:
 \begin{itemize}
 	\item \textsc{Circulation-curl or tangential form} --- the anticlockwise circulation of $\mathbf{F}$ around $C$ equals the double integral of $(\text{curl} \ \mathbf{F}) \cdot \mathbf{k}$ over $R$.
@@ -275,11 +275,9 @@ plane. Let $\mathbf{F} = P \mathbf{i} + Q \mathbf{j}$ be a vector field with $P$
 &= \iint_R \left( \diffp{P}{x} + \diffp{Q}{y} \right) \ dx dy
 \end{align*}
 \end{itemize}
-\end{shaded}
+\end{theorem}
 
 \subsection{Miscellaneous}
-
-\begin{shaded}
 \textbf{Even and odd functions.}
 \begin{itemize}
 	\item The product of two even functions is an even function.
@@ -288,4 +286,64 @@ plane. Let $\mathbf{F} = P \mathbf{i} + Q \mathbf{j}$ be a vector field with $P$
 \end{itemize}
 
 This can be helpful when solving integrals of the form $\int f(x)g(x) \ dx$, where $f$ and $g$ are each even or odd.
-\end{shaded}
+
+\section{Linear algebra}
+\subsection{Groups and fields}
+
+\begin{definition}{Group \cite{math2601_notes}}{group}
+A \textbf{group} is a a set, $G$, together with an operation $*$ (called the \textbf{group law} of $G$) that combines any two elements $a$ and $b$ to form another element, denoted $a * b$ or $ab$. To qualify as a group, the set and operation, $(G, *)$, must satisfy four requirements known as the \textbf{group axioms}:
+\begin{itemize}
+ 	\item \textbf{Closure.} For all $a, b$ in $G$, the result of the operation, $a * b$, is also in $G$.
+ 	\item \textbf{Associativity.} For all $a, b$ and $c$ in $G, (a * b) * c = a * (b * c)$.
+ 	\item \textbf{Identity element.} There exists an element $e$ in $G$ such that, for every element $a$ in $G$, the equation $e * a = a * e = a$ holds. Such an element is unique, and thus one speaks of \textit{the} identity element.
+ 	\item \textbf{Inverse element.} For each $a$ in $G$, there exists an element $b$ in $G$, commonly denoted $a^{-1}$ (or $-a$, if the operation is denoted ``$+$''), such that $a * b = b * a = e$, where $e$ is the identity element.
+\end{itemize}
+\end{definition}
+
+A group $G$ is \textbf{abelian} if the operation satisfies the \textbf{commutative law}
+$$ a * b = b * a \qquad \text{for all} \ a, b \in G . $$
+
+We often write the \textbf{cyclic group of order $m$} as
+$$ C_m = \langle a : a^m = e \rangle , $$
+and say it is \textit{generated} by $a$.
+
+
+\begin{definition}{Subgroup \cite{math2601_notes}}{subgroup}
+Let $(G, *)$ be a group and $H$ a non-empty subset of $G$. If $H$ is a group under the restriction of $*$ to $H$, we call it a \textbf{subgroup} of $G$. We write this as $H \leq G$ and say $H$ \textit{inherits} the group structure from $G$.
+\end{definition}
+
+\begin{lemma}{}{subgroup}
+Let $(G, *)$ be a group and $H$ a non-empty subset of $G$. Then $H$ is a subgroup of $G$ if and only if
+\begin{itemize}
+	\item for all $a, b \in H, \ a * b \in H$;
+	\item for all $a \in H, \ a^{-1} \in H$,
+\end{itemize}
+i.e. $H$ is closed under $*$ and $^{-1}$.
+\end{lemma}
+
+\begin{definition}{Field \cite{math2601_notes}}{field}
+A \textbf{field}, $(\mathbb{F}, +, \times)$ is a set $\mathbb{F}$ with two binary operations on it --- addition ($+$) and multiplication ($\times$) --- where
+\begin{enumerate}
+	\item $(\mathbb{F}, +)$ is an abelian group,
+	\item $\mathbb{F}^{*} = \mathbb{F} \setminus \{0\}$ (where 0 is the additive identity) is an abelian group under multiplication,
+	\item the distributive laws $a \times (b + c) = a \times b + a \times c$ and $(a + b) \times c = a \times c + b \times c$ hold.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}{Subfield \cite{math2601_notes}}{subfield}
+If $(\mathbb{F}, +, \times)$ is a field and $\mathbb{E} \subset \mathbb{F}$ is also a field under the same operations (restricted to $\mathbb{E}$), then $(\mathbb{E}, +, \times)$ is a \textbf{subfield} of $(\mathbb{F}, +, \times)$, usually written $\mathbb{E} \leq \mathbb{F}$.
+\end{definition}
+
+\begin{lemma}{}{subfield}
+Let $\mathbb{E} \not = \{0\}$ be a non-empty subset of field $\mathbb{F}$. Then $\mathbb{E}$ is a subfield of $\mathbb{F}$ if and only if for all $a, b \in \mathbb{E}$:
+$$ a + b \in \mathbb{E}, \quad -b \in \mathbb{E}, \quad a \times b \in \mathbb{E}, \quad b^{-1} \in \mathbb{E} \text{ if } b \not = 0 . $$
+
+\begin{proof}
+The distributive laws are inherited from $\mathbb{F}$ to $\mathbb{E}$. The rest of the proof follows from applying the subgroup lemma to both $(\mathbb{E}, +)$ and $(\mathbb{E}^*, \times)$.
+\end{proof}
+\end{lemma}
+
+
+
+
+
