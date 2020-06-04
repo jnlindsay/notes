@@ -339,11 +339,82 @@ Let $\mathbb{E} \not = \{0\}$ be a non-empty subset of field $\mathbb{F}$. Then 
 $$ a + b \in \mathbb{E}, \quad -b \in \mathbb{E}, \quad a \times b \in \mathbb{E}, \quad b^{-1} \in \mathbb{E} \text{ if } b \not = 0 . $$
 
 \begin{proof}
-The distributive laws are inherited from $\mathbb{F}$ to $\mathbb{E}$. The rest of the proof follows from applying the subgroup lemma to both $(\mathbb{E}, +)$ and $(\mathbb{E}^*, \times)$.
+The distributive laws are inherited from $\mathbb{F}$ to $\mathbb{E}$. The rest of the proof follows from applying the subgroup lemma \ref{lem:subgroup} to both $(\mathbb{E}, +)$ and $(\mathbb{E}^*, \times)$.
 \end{proof}
 \end{lemma}
 
+\begin{definition}{General linear group \cite{math2601_notes}}{general_linear_group}
+Let $n \geq 1$ be any integer. The \textbf{general linear group}, $\operatorname{GL}(n, \mathbb{F})$ is the set of invertible $n \times n$ matrices over field $\mathbb{F}$ under matrix multiplication, and is non-abelian if $n > 1$.
+\end{definition}
 
+Subgroups of $\operatorname{GL}(n, \mathbb{F})$ include
+\begin{itemize}
+	\item the \textbf{special linear groups} $\operatorname{SL}(n, \mathbb{R})$ and $\operatorname{SL}(n, \mathbb{C})$ of matrices with determinant 1;
+	\item $\operatorname{O}(n) \leq \operatorname{GL}(n, \mathbb{R})$, the group of \textbf{orthogonal matrices};
+	\item $\operatorname{SO}(n) = \operatorname{O}(n) \cap \operatorname{SL}(n, \mathbb{R})$, the group of \textbf{special orthogonal matrices}.
+\end{itemize}
 
+\begin{definition}{Group homomorphism \cite{math2601_notes}}{group_homomorphism}
+Let $(G, *)$ and $(H, \circ)$ be two groups. A \textbf{(group) homomorphism} from $G$ to $H$ is a map $\phi : G \to H$ that respects the two operations, that is where
+$$ \phi (a * b) = \phi (a) \circ \phi (b) \qquad \text{for all } a, b \in G . $$
+A bijective homomorphism $\phi : G \to H$ is called an \textbf{isomorphism}: the groups are then said to be \textbf{isomorphic}.
+\end{definition}
+
+\begin{lemma}{\cite{math2601_notes}}{homomorphism}
+Let $(G, *)$ and $(H, \circ)$ be two groups and $\phi$ a homomorphism between them. Then
+\begin{itemize}
+	\item $\phi$ maps the identity of $G$ to the identity of $H$;
+	\item $\phi$	 maps inverse to inverses, i.e. $\phi (a^{-1}) = (\phi(a))^{-1}$ for all $a \in G$;
+	\item if $\phi$ is an isomorphism from $G$ to $H$ then $\phi^{-1}$ is an isomorphism from $H$ to $G$.
+\end{itemize}
+\end{lemma}
+
+\begin{definition}{Kernel and image \cite{math2601_notes}}{kernel_and_image}
+Let $\phi : G \to H$ be a group homomorphism, with $e'$ the identity of $H$.
+
+The \textbf{kernel} of $\phi$ is the set
+$$ \ker (\phi) = \{ g \in G : \phi (g) = e' \} . $$
+
+The \textbf{image} of $\phi$ is the set
+$$ \operatorname{im} (\phi) = \{ h \in H : h = \phi (g), \text{ some } g \in G \} . $$
+\end{definition}
+
+\begin{lemma}{\cite{math2601_notes}}{kernel_image_subgroups}
+For $\phi : G \to H$, a group homomorphism, $\ker \phi \leq G$ and $\operatorname{im} \phi \leq H$.
+
+\begin{proof}
+Let $e$ be the identity of $G$. From lemma \ref{lem:homomorphism}, $e \in \ker \phi$, so the kernel is non-empty.
+
+If $a, b \in \ker \phi$ then
+$$ \phi (a * b) = \phi (a) \circ \phi (b) = e' \circ e' = e' , $$
+so $a * b \in \ker \phi$.
+
+If $a \in \ker \phi$ then from lemma \ref{lem:homomorphism},
+$$ \phi (a^{-1}) = (\phi (a))^{-1} = (e')^{-1} = e' , $$
+and so $a^{-1} \in \ker \phi$.
+
+Thus by the subgroup lemma \ref{lem:homomorphism}, $\ker \phi \leq G$.
+
+\textit{The proof that $\operatorname{im} \phi \leq H$ is omitted.}
+\end{proof}
+\end{lemma}
+
+\begin{lemma}{\cite{math2601_notes}}{}
+A group homomorphism $\phi : G \to H$ is one-to-one if and only if $\ker \phi = \{e\}$, with $e$ the identity of $G$; if $\phi$ is one-to-one then $\operatorname{im} \phi$ is isomorphic to $G$.
+
+\begin{proof}
+From lemma \ref{lem:kernel_image_subgroups}, $e \in \ker \phi$, and if $\phi$ is one-to-one, $e$ is the only element that maps to $e'$, the identity of $H$.
+
+Conversely, suppose $\ker \phi = \{e\}$ and $\phi (a) = \phi (b)$, where $a, b \in G$. Then
+$$ \phi (a * b^{-1}) = \phi (a) \circ (\phi (b))^{-1} = e' $$
+and so $a * b^{-1} = e$ and $a = b$.
+
+If $\phi$ is one-to-one, it is a bijection from $G$ to $\operatorname{im} \phi$, and hence an isomorphism.
+\end{proof}
+\end{lemma}
+
+A common use of group homomorphisms is to look for a homomorphism $\phi : G \to \operatorname{GL}(n, \mathbb{F})$ for some $n$ and some field $F$. The group $\operatorname{im} (\phi)$ is called a \textbf{(linear) representation of $G$ on $\mathbb{F}^n$}.
+
+If $\phi$ is one-to-one (so every element maps to a distinct matrix), we call the representation \textbf{faithful}.
 
 
