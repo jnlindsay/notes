@@ -26,24 +26,21 @@
 \tcbuselibrary{most}
 
 % 'THEOREM' ENVIRONMENTS
-%\newtheorem{lemma}[theorem]{Lemma}
-
-% (tcb)
 \newtcbtheorem[number within=section]{definition}{Definition}%
     {colback=blue!5, colframe=blue!35!black, sharp corners,
     	 fonttitle=\bfseries, parbox=false,
-    	 separator sign={\ $\blacktriangleright$}}{def}
+    	 separator sign={\ ---}}{def}
 
 \newtcbtheorem[number within=section]{theorem}{Theorem}%
     {colback=red!5, colframe=red!35!black, sharp corners,
      fonttitle=\bfseries, parbox=false,
-     separator sign={\ $\blacktriangleright$}}{th}
+     separator sign={\ ---}}{th}
      
 \newtcbtheorem[number within=section,
                use counter from=theorem]{lemma}{Lemma}%
     {colback=red!5, colframe=red!35!black, sharp corners,
      fonttitle=\bfseries, parbox=false,
-     separator sign={\ $\blacktriangleright$}}{lem}
+     separator sign={\ ---}}{lem}
      
 \tcolorboxenvironment{proof}{% 'proof' from 'amsthm'
 	blanker,breakable,left=3mm,
