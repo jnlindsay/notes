@@ -1,0 +1,151 @@
+\section{Linear algebra}
+\subsection{Groups and fields}
+
+\begin{definition}{Group \cite{math2601_notes}}{group}
+A \textbf{group} is a a set, $G$, together with an operation $*$ (called the \textbf{group law} of $G$) that combines any two elements $a$ and $b$ to form another element, denoted $a * b$ or $ab$. To qualify as a group, the set and operation, $(G, *)$, must satisfy four requirements known as the \textbf{group axioms}:
+\begin{itemize}
+ 	\item \textbf{Closure.} For all $a, b$ in $G$, the result of the operation, $a * b$, is also in $G$.
+ 	\item \textbf{Associativity.} For all $a, b$ and $c$ in $G, (a * b) * c = a * (b * c)$.
+ 	\item \textbf{Identity element.} There exists an element $e$ in $G$ such that, for every element $a$ in $G$, the equation $e * a = a * e = a$ holds. Such an element is unique, and thus one speaks of \textit{the} identity element.
+ 	\item \textbf{Inverse element.} For each $a$ in $G$, there exists an element $b$ in $G$, commonly denoted $a^{-1}$ (or $-a$, if the operation is denoted ``$+$''), such that $a * b = b * a = e$, where $e$ is the identity element.
+\end{itemize}
+\end{definition}
+
+A group $G$ is \textbf{abelian} if the operation satisfies the \textbf{commutative law}
+$$ a * b = b * a \qquad \text{for all} \ a, b \in G . $$
+
+We often write the \textbf{cyclic group of order $m$} as
+$$ C_m = \langle a : a^m = e \rangle , $$
+and say it is \textit{generated} by $a$.
+
+
+\begin{definition}{Subgroup \cite{math2601_notes}}{subgroup}
+Let $(G, *)$ be a group and $H$ a non-empty subset of $G$. If $H$ is a group under the restriction of $*$ to $H$, we call it a \textbf{subgroup} of $G$. We write this as $H \leq G$ and say $H$ \textit{inherits} the group structure from $G$.
+\end{definition}
+
+\begin{lemma}{\cite{math2601_notes}}{subgroup}
+Let $(G, *)$ be a group and $H$ a non-empty subset of $G$. Then $H$ is a subgroup of $G$ if and only if
+\begin{itemize}
+	\item for all $a, b \in H, \ a * b \in H$;
+	\item for all $a \in H, \ a^{-1} \in H$,
+\end{itemize}
+i.e. $H$ is closed under $*$ and $^{-1}$.
+\end{lemma}
+
+\begin{definition}{Field \cite{math2601_notes}}{field}
+A \textbf{field}, $(\mathbb{F}, +, \times)$ is a set $\mathbb{F}$ with two binary operations on it --- addition ($+$) and multiplication ($\times$) --- where
+\begin{enumerate}
+	\item $(\mathbb{F}, +)$ is an abelian group,
+	\item $\mathbb{F}^{*} = \mathbb{F} \setminus \{0\}$ (where 0 is the additive identity) is an abelian group under multiplication,
+	\item the distributive laws $a \times (b + c) = a \times b + a \times c$ and $(a + b) \times c = a \times c + b \times c$ hold.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}{Subfield \cite{math2601_notes}}{subfield}
+If $(\mathbb{F}, +, \times)$ is a field and $\mathbb{E} \subset \mathbb{F}$ is also a field under the same operations (restricted to $\mathbb{E}$), then $(\mathbb{E}, +, \times)$ is a \textbf{subfield} of $(\mathbb{F}, +, \times)$, usually written $\mathbb{E} \leq \mathbb{F}$.
+\end{definition}
+
+\begin{lemma}{\cite{math2601_notes}}{subfield}
+Let $\mathbb{E} \not = \{0\}$ be a non-empty subset of field $\mathbb{F}$. Then $\mathbb{E}$ is a subfield of $\mathbb{F}$ if and only if for all $a, b \in \mathbb{E}$:
+$$ a + b \in \mathbb{E}, \quad -b \in \mathbb{E}, \quad a \times b \in \mathbb{E}, \quad b^{-1} \in \mathbb{E} \text{ if } b \not = 0 . $$
+
+\begin{proof}
+The distributive laws are inherited from $\mathbb{F}$ to $\mathbb{E}$. The rest of the proof follows from applying the subgroup lemma \ref{lem:subgroup} to both $(\mathbb{E}, +)$ and $(\mathbb{E}^*, \times)$.
+\end{proof}
+\end{lemma}
+
+\begin{definition}{General linear group \cite{math2601_notes}}{general_linear_group}
+Let $n \geq 1$ be any integer. The \textbf{general linear group}, $\operatorname{GL}(n, \mathbb{F})$ is the set of invertible $n \times n$ matrices over field $\mathbb{F}$ under matrix multiplication, and is non-abelian if $n > 1$.
+\end{definition}
+
+Subgroups of $\operatorname{GL}(n, \mathbb{F})$ include
+\begin{itemize}
+	\item the \textbf{special linear groups} $\operatorname{SL}(n, \mathbb{R})$ and $\operatorname{SL}(n, \mathbb{C})$ of matrices with determinant 1;
+	\item $\operatorname{O}(n) \leq \operatorname{GL}(n, \mathbb{R})$, the group of \textbf{orthogonal matrices};
+	\item $\operatorname{SO}(n) = \operatorname{O}(n) \cap \operatorname{SL}(n, \mathbb{R})$, the group of \textbf{special orthogonal matrices}.
+\end{itemize}
+
+\begin{definition}{Group homomorphism \cite{math2601_notes}}{group_homomorphism}
+Let $(G, *)$ and $(H, \circ)$ be two groups. A \textbf{(group) homomorphism} from $G$ to $H$ is a map $\phi : G \to H$ that respects the two operations, that is where
+$$ \phi (a * b) = \phi (a) \circ \phi (b) \qquad \text{for all } a, b \in G . $$
+A bijective homomorphism $\phi : G \to H$ is called an \textbf{isomorphism}: the groups are then said to be \textbf{isomorphic}.
+\end{definition}
+
+\begin{lemma}{\cite{math2601_notes}}{homomorphism}
+Let $(G, *)$ and $(H, \circ)$ be two groups and $\phi$ a homomorphism between them. Then
+\begin{itemize}
+	\item $\phi$ maps the identity of $G$ to the identity of $H$;
+	\item $\phi$	 maps inverse to inverses, i.e. $\phi (a^{-1}) = (\phi(a))^{-1}$ for all $a \in G$;
+	\item if $\phi$ is an isomorphism from $G$ to $H$ then $\phi^{-1}$ is an isomorphism from $H$ to $G$.
+\end{itemize}
+\end{lemma}
+
+\begin{definition}{Kernel and image \cite{math2601_notes}}{kernel_and_image}
+Let $\phi : G \to H$ be a group homomorphism, with $e'$ the identity of $H$.
+
+The \textbf{kernel} of $\phi$ is the set
+$$ \ker (\phi) = \{ g \in G : \phi (g) = e' \} . $$
+
+The \textbf{image} of $\phi$ is the set
+$$ \operatorname{im} (\phi) = \{ h \in H : h = \phi (g), \text{ some } g \in G \} . $$
+\end{definition}
+
+\begin{lemma}{\cite{math2601_notes}}{kernel_image_subgroups}
+For $\phi : G \to H$, a group homomorphism, $\ker \phi \leq G$ and $\operatorname{im} \phi \leq H$.
+
+\begin{proof}
+Let $e$ be the identity of $G$. From lemma \ref{lem:homomorphism}, $e \in \ker \phi$, so the kernel is non-empty.
+
+If $a, b \in \ker \phi$ then
+$$ \phi (a * b) = \phi (a) \circ \phi (b) = e' \circ e' = e' , $$
+so $a * b \in \ker \phi$.
+
+If $a \in \ker \phi$ then from lemma \ref{lem:homomorphism},
+$$ \phi (a^{-1}) = (\phi (a))^{-1} = (e')^{-1} = e' , $$
+and so $a^{-1} \in \ker \phi$.
+
+Thus by the subgroup lemma \ref{lem:homomorphism}, $\ker \phi \leq G$.
+
+\textit{The proof that $\operatorname{im} \phi \leq H$ is omitted.}
+\end{proof}
+\end{lemma}
+
+\begin{lemma}{\cite{math2601_notes}}{}
+A group homomorphism $\phi : G \to H$ is one-to-one if and only if $\ker \phi = \{e\}$, with $e$ the identity of $G$; if $\phi$ is one-to-one then $\operatorname{im} \phi$ is isomorphic to $G$.
+
+\begin{proof}
+From lemma \ref{lem:kernel_image_subgroups}, $e \in \ker \phi$, and if $\phi$ is one-to-one, $e$ is the only element that maps to $e'$, the identity of $H$.
+
+Conversely, suppose $\ker \phi = \{e\}$ and $\phi (a) = \phi (b)$, where $a, b \in G$. Then
+$$ \phi (a * b^{-1}) = \phi (a) \circ (\phi (b))^{-1} = e' $$
+and so $a * b^{-1} = e$ and $a = b$.
+
+If $\phi$ is one-to-one, it is a bijection from $G$ to $\operatorname{im} \phi$, and hence an isomorphism.
+\end{proof}
+\end{lemma}
+
+A common use of group homomorphisms is to look for a homomorphism $\phi : G \to \operatorname{GL}(n, \mathbb{F})$ for some $n$ and some field $F$. The group $\operatorname{im} (\phi)$ is called a \textbf{(linear) representation of $G$ on $\mathbb{F}^n$}.
+
+If $\phi$ is one-to-one (so every element maps to a distinct matrix), we call the representation \textbf{faithful}.
+
+\subsection{Vector spaces}
+
+\begin{definition}{Vector space \cite{math2601_notes}}{vector_space}
+Let $\mathbb{F}$ be a field. A \textbf{vector space over the field} $\mathbb{F}$ consists of an abelian group $(V, +)$ plus a function from $\mathbb{F} \times V$ to $V$ called \textbf{scalar multiplication} and written $\alpha \mathbf{v}$, where
+\begin{itemize}
+	\item $\alpha (\beta \mathbf{v}) = (\alpha \beta) \mathbf{v}$ for all $\alpha, \beta \in \mathbb{F}$ for all $\mathbf{v} \in V$.
+	\item $1 \mathbf{v} = \mathbf{v}$ for all $\mathbf{v} \in V$.
+	\item $\alpha (\mathbf{u} + \mathbf{v}) = \alpha \mathbf{u} + \alpha \mathbf{v}$ for all $\alpha \in \mathbb{F}$ and for all $\mathbf{u}, \mathbf{v} \in V$.
+	\item $(\alpha + \beta) \mathbf{u} = \alpha \mathbf{u} + \beta \mathbf{u}$ for all $\alpha, \beta \in \mathbb{F}$ for all $\mathbf{u} \in V$.
+\end{itemize}
+\end{definition}
+
+\begin{lemma}{\cite{math2601_notes}}{}
+Let $V$ be a vector space over field $\mathbb{F}$. For all $\mathbf{v}, \mathbf{w} \in V$ and $\lambda \in \mathbb{F}$:
+\begin{itemize}
+	\item $0 \mathbf{v} = \mathbf{0}$ and $\lambda \mathbf{0} = \mathbf{0}$;
+	\item $(-1) \mathbf{v} = - \mathbf{v}$;\
+	\item $\lambda \mathbf{v} = \mathbf{0}$ implies either $\lambda = 0$ or $\mathbf{v} = \mathbf{0}$;
+	\item if $\lambda \mathbf{v} = \lambda \mathbf{w}$ and $\lambda \not = 0$ then $\mathbf{v} = \mathbf{w}$.
+\end{itemize}
+\end{lemma}

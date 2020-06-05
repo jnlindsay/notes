@@ -1,0 +1,65 @@
+\chapter{Computing}
+
+\section{Graphics}
+
+\subsection{Basics}
+
+\begin{itemize}
+	\item Display rate --- number of distinct frames shown per second
+	\item Refresh rate --- number of times frames are updated (might be a lot higher than display rate)
+\end{itemize}
+
+\section{Algorithms}
+\subsection{Dynamic programming}
+
+\begin{shaded}
+\textbf{Definition \cite{clrs_algorithms}.} We say that a problem exhibits \textbf{optimal substructure} if optimal solutions to related sub-problems (which may be solved independently) are incorporated into optimal solutions of the problem itself.
+\end{shaded}
+
+\begin{shaded}
+\textbf{Definition (memoisation (top-down method)) \cite{clrs_algorithms}.} In this approach, we write the procedure recursively in a natural manner, but modified to save the result of each sub-problem (usually in an array or hash table). The procedure now first checks to see whether it has previously solved this sub-problem. If so, it returns the saved value, saving further computation at this level; if not, the procedure computes the value in the usual manner. We say that the recursive procedure has been \textbf{memoised}; it ``remembers'' what results it has computed previously.
+\end{shaded}
+
+\begin{shaded}
+\textbf{Definition (bottom-up method) \cite{clrs_algorithms}.} This approach typically depends on some natural notion of the ``size'' of a sub-problem, such that solving any particular sub-problem depends only on solving ``smaller'' sub-problems. We sort the sub-problems by size and solve them in size order, smallest first. When solving a particular sub-problem, we have already solved all the smaller sub-problems its solution depends upon, and we have saved their solutions. We  solve each sub-problem only once, and when we first see it, we have already solved all of its prerequisite sub-problems.
+\end{shaded}
+
+\subsection{Linear programming}
+\begin{shaded}
+\textbf{Definition (standard form) \cite{clrs_algorithms}.} We are given a vector $\mathbf{c}$ of coefficients $c_1, c_2, \ldots, c_n$, which is associated with a vector $\mathbf{x}$ of variables $x_1, x_2, \ldots, x_n$. The \textbf{objective function} is formed by taking the dot product of the two vectors:
+\begin{align*}
+\text{objective function} &= \mathbf{c} \cdot \mathbf{x} \\
+&= \sum_{j=1}^{n} c_j x_j \\
+&= c_1 x_1 + c_2 x_2 + \ldots + c_n x_n .
+\end{align*}
+
+We want to find values for each $x_j$ that maximises the objective function, subject to the constraints
+$$
+\begin{pmatrix}
+a_{11} & a_{12} & \ldots & a_{1n} \\
+a_{21} & a_{22} & \ldots & a_{2n} \\
+\vdots & \vdots & \ddots & a_{1n} \\
+a_{m1} & a_{m2} & \ldots & a_{mn} \\
+\end{pmatrix}
+\begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}
+\begin{matrix} \leq \\ \leq \\ \vdots \\ \leq \end{matrix}
+\begin{pmatrix} b_2 \\ b_2 \\ \vdots \\ b_m \end{pmatrix}
+$$
+and
+$$ x_j \geq 0 , $$
+for $i = 1, 2, \ldots, m$ and $j = 1, 2, \ldots, n$, where $a_{ij}, b_i \in \mathbb{R}$.
+
+\end{shaded}
+
+\section{Cloud computing}
+
+\subsection{Basics}
+
+\subsubsection{Service models}
+
+From Wikipedia \cite{wikipedia_cloud_computing}:
+\begin{itemize}
+	\item \textbf{SaaS} (application level) --- CRM, email, virtual desktop, communication, games, ...
+	\item \textbf{PaaS} (platform level) --- execution runtime, database, web server, development tools, ...
+	\item \textbf{IaaS} (infrastructure level) --- virtual machines, servers, storage, load balancers, network, ...
+\end{itemize}

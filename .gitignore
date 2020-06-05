@@ -1,11 +1,11 @@
-# ignore everything...
-*
-
-# ...but don't ignore
-!*.tex
-!.gitignore
-!README.md
-!clean.sh
-!compile.sh
-!fonts
-!fonts/*
+*.aux
+*.bcf
+*.bbl
+*.blg
+*.xml
+*.gz
+*.toc
+*.log
+*.pdf
+*.out
+*.ini
