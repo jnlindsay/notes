@@ -1,4 +1,89 @@
 \section{Statistics}
 
-\subsection{Something or other}
-Hello and welcome to Westworld.
+\subsection{Probability}
+
+\subsubsection{Probability spaces}
+
+\begin{definition}{Probability space \cite{math2901_notes}}{probability_space}
+In probability theory, a \textbf{probability space} or a \textbf{probability triple} $(\Omega, \mathcal{F}, P)$ is a mathematical construct that provides a formal model of a random process or ``experiment''.
+
+A probability space consists of three elements:
+\begin{enumerate}
+	\item A \textbf{sample space} $\Omega$, which is the set of all possible outcomes.
+	\item An \textbf{event space}, which is a set of events $\mathcal{F}$, an event being a set of outcomes in the sample space.
+	\item A \textbf{probability function}, which assigns each event in the event space a probability, which is a number between 0 and 1.
+\end{enumerate}
+\end{definition}
+
+The minimal assumption that we impose on $\mathcal{F}$ is that it should be an object called a $\sigma$-algebra.
+
+\begin{definition}{$\sigma$-algebra \cite{wikipedia_sigma_algebra}}{sigma-algebra}
+Let $X$ be some set, and let $\mathcal{P}(X)$ represent its power set. Then a subset $\Sigma \subseteq \mathcal{P}(X)$ is called a $\bm{\sigma}$\textbf{-algebra} if it satisfies the following three properties:
+
+\begin{enumerate}
+	\item $X$ is in $\Sigma$, and $X$ is considered to be the universal set in the following context;
+	\item $\Sigma$ is closed under complementation: if $A$ is in $\Sigma$, then so is its complement $X \setminus A$;
+	\item $\Sigma$ is closed under countable unions: if $A_1, A_2, A_3, \ldots$ are in $\Sigma$, then so is $A = A_1 \cup A_2 \cup A_3 \cup \ldots$
+\end{enumerate}
+\end{definition}
+
+Given a sample space $(\Sigma, \mathcal{F})$, a probability function $\mathbb{P}$ can be defined in the following way: to every event $A \in \mathcal{F}$ we assign a number $\mathbb{P} (A)$, the \textbf{probability that $A$ occurs}. The function $\mathbb{P}$ must satisfy the axioms
+
+\begin{enumerate}
+	\item $\mathbb{P} (A) \geq 0$ for each $A \subset \Omega$;
+	\item $\mathbb{P} (\Omega) = 1$;
+	\item if $A_1, A_2, \ldots$ are mutually exclusive (disjoint), i.e.
+	$$ A_i \cap A_j = \emptyset \text{ for all } i, j \text{ with } i \not = j  ,$$
+	then
+	$$ \mathbb{P} \left( \bigcup_{i = 1}^{\infty} A_i \right) = \sum_{i = 1}^{\infty} \mathbb{P} (A_i) . $$
+\end{enumerate}
+
+\begin{lemma}{\cite{math2901_notes}}{}
+\begin{enumerate}
+	\item If $A_1, A_2, \ldots, A_k$ are mutually exclusive, then
+	$$ \mathbb{P} \left( \bigcup_{i = 1}^{k} A_i \right) = \sum_{i = 1}^{k} \mathbb{P} (A_i) ; $$
+	\item $\mathbb{P} (\emptyset) = 0$;
+	\item for any $A \subseteq \Omega$, it holds that $0 \leq \mathbb{P} (A) \leq 1$ and $\mathbb{P} (\bar A) = 1 - \mathbb{P} (A)$;
+	\item if $B \subset A$, then $\mathbb{P} (B) \leq \mathbb{P} (A)$.
+\end{enumerate}
+\end{lemma}
+
+\subsubsection{Monotonic sequences of events}
+
+\begin{theorem}{Continuity properties \cite{math2901_notes}}{continuity_properties}
+If $A_1, A_2, \ldots$ is an increasing sequence of events, i.e., $A_1 \subset A_2 \subset \dots$, then
+$$ \lim_{n \to \infty} \mathbb{P} (A_n) = \mathbb{P} \left( \bigcup_{n = 1}^{\infty} \right) . $$
+We say that $\mathbb{P}$ is \textbf{continuous from below}.
+
+If $A_1, A_2, \ldots$ is a decreasing sequence of events, i.e., $A_1 \supseteq A_2 \supseteq \dots$, then
+$$ \lim_{n \to \infty} \mathbb{P} (A_n) = \mathbb{P} \left( \bigcap_{n = 1}^{\infty} \right) . $$
+We say that $\mathbb{P}$ is \textbf{continuous from above}.
+\end{theorem}
+
+\subsubsection{Conditional probability}
+
+\begin{definition}{Conditional probability \cite{math2901_notes}}{conditional_probability}
+The \textbf{conditional probability} that an event $A$ occurs, given that an event $B$ has occurred, is
+$$ \mathbb{P} (A | B) = \dfrac{\mathbb{P} (A \cap B)}{\mathbb{P} (B)} \text{ if } \mathbb{P} (B) \not = 0 . $$
+\end{definition}
+
+\begin{lemma}{\cite{math2901_notes}}{conditional_probability}
+$$ \mathbb{P} (A|B) = \mathbb{P} (A) \iff \mathbb{P} (B|A) = \mathbb{P} (B) $$
+\end{lemma}
+
+\subsubsection{Independent events}
+
+\begin{definition}{Independent events \cite{math2901_notes}}{independent_events}
+For a countable sequence of events $\{A_i\}$, the events are  
+\begin{itemize}
+	\item \textbf{pairwise independent} if
+$$ \mathbb{P} (A_i \cap A_j) = \mathbb{P} (A_i) \mathbb{P} (A_j) \text{ for all } i \not = j ; $$
+
+	\item \textbf{(mutually) independent} if for any sub-collection $A_{i_1}, \ldots, A_{i_n}$ we have
+$$ \mathbb{P} \left( \bigcap_{j = 1}^n A_{i_j} \right) = \prod_{j = 1}^n \mathbb{P} (A_{i_j}) . $$
+\end{itemize}
+\end{definition}
+
+Note that for any two events $A$ and $B$, $\mathbb{P} (A \cap B) = \mathbb{P} (A|B) \mathbb{P} (B)$, so $A$ and $B$ are independent if and only if the equalities in lemma \ref{lem:conditional_probability} are true.
+
+Also note that mutual independence implies pairwise independence (but not vice versa).
