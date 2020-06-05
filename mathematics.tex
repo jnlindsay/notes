@@ -417,4 +417,26 @@ A common use of group homomorphisms is to look for a homomorphism $\phi : G \to 
 
 If $\phi$ is one-to-one (so every element maps to a distinct matrix), we call the representation \textbf{faithful}.
 
+\subsection{Vector spaces}
+
+\begin{definition}{Vector space \cite{math2601_notes}}{vector_space}
+Let $\mathbb{F}$ be a field. A \textbf{vector space over the field} $\mathbb{F}$ consists of an abelian group $(V, +)$ plus a function from $\mathbb{F} \times V$ to $V$ called \textbf{scalar multiplication} and written $\alpha \mathbf{v}$, where
+\begin{itemize}
+	\item $\alpha (\beta \mathbf{v}) = (\alpha \beta) \mathbf{v}$ for all $\alpha, \beta \in \mathbb{F}$ for all $\mathbf{v} \in V$.
+	\item $1 \mathbf{v} = \mathbf{v}$ for all $\mathbf{v} \in V$.
+	\item $\alpha (\mathbf{u} + \mathbf{v}) = \alpha \mathbf{u} + \alpha \mathbf{v}$ for all $\alpha \in \mathbb{F}$ and for all $\mathbf{u}, \mathbf{v} \in V$.
+	\item $(\alpha + \beta) \mathbf{u} = \alpha \mathbf{u} + \beta \mathbf{u}$ for all $\alpha, \beta \in \mathbb{F}$ for all $\mathbf{u} \in V$.
+\end{itemize}
+\end{definition}
+
+\begin{lemma}{\cite{math2601_notes}}{}
+Let $V$ be a vector space over field $\mathbb{F}$. For all $\mathbf{v}, \mathbf{w} \in V$ and $\lambda \in \mathbb{F}$:
+\begin{itemize}
+	\item $0 \mathbf{v} = \mathbf{0}$ and $\lambda \mathbf{0} = \mathbf{0}$;
+	\item $(-1) \mathbf{v} = - \mathbf{v}$;\
+	\item $\lambda \mathbf{v} = \mathbf{0}$ implies either $\lambda = 0$ or $\mathbf{v} = \mathbf{0}$;
+	\item if $\lambda \mathbf{v} = \lambda \mathbf{w}$ and $\lambda \not = 0$ then $\mathbf{v} = \mathbf{w}$.
+\end{itemize}
+\end{lemma}
+
 
