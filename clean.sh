@@ -1,1 +1,1 @@
-rm *.aux *.bcf *.bbl *.blg *.xml *.gz *.toc *.log *.pdf *.out
+find . -regextype posix-egrep -regex ".*\.(aux|bcf|bbl|blg|xml|gz|toc|log|pdf|out)$" -type f -delete
