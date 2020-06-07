@@ -2,25 +2,25 @@
 
 \subsection{Continuity and differentiability}
 
-\begin{shaded}
-\textbf{Theorem (limit of function of several variables using vector sequences) \cite{math2111_notes}.} Given some function $f : \mathbb{R}^n \to \mathbb{R}$, the following identity holds:
+\begin{theorem}{Limit of function of several variables using vector sequences \cite{math2111_notes}}{limit_function_sequences}
+Given some function $f : \mathbb{R}^n \to \mathbb{R}$, the following identity holds:
 $$
     \lim_{\mathbf{x} \to \mathbf{a}} f(\mathbf{x}) = b \quad
     \iff \quad \lim_{n \to \infty} f(\mathbf{x}_n) = b \qquad
     \forall \mathbf{x}_n \in \mathbb{R}^n : \lim_{n \to \infty} = \mathbf{a}
 $$
-\end{shaded}
+\end{theorem}
 
-\begin{shaded}
-\textbf{Definition (continuous function) \cite{hubbard_hubbard}.} Let $X \subset \mathbb{R}^n$. Then a mapping $\mathbf{f} : X \to \mathbb{R}^m$ is continuous at $\mathbf{x}_0 \in X$ if
+\begin{definition}{Continuous function \cite{hubbard_hubbard}}{continuous_function}
+Let $X \subset \mathbb{R}^n$. Then a mapping $\mathbf{f} : X \to \mathbb{R}^m$ is continuous at $\mathbf{x}_0 \in X$ if
 $$ \lim_{\mathbf{x} \to \mathbf{x}_0} \mathbf{f}(\mathbf{x}) = \mathbf{f}(\mathbf{x}_0); $$
 $\mathbf{f}$ is continuous on $X$ if it is continuous at every point of $X$.
 
 Equivalently, $\mathbf{f}: X \to \mathbf{R}^m$ is continuous at $\mathbf{x}_0$ if and only if for every $\epsilon > 0$, there exists $\delta > 0$ such that when $|\mathbf{x} - \mathbf{x}_0| < \delta$, then $|\mathbf{f}(\mathbf{x}) - \mathbf{f}(\mathbf{x}_0)| < \epsilon$.
-\end{shaded}
+\end{definition}
 
-\begin{shaded}
-\textbf{Definition (continuity and discontinuity) \cite{math2111_notes}.} Suppose $[a, b] \subset \mathbb{R}$. Consider a function $f : [a, b] \to \mathbb{R}$ and a point $c \in \mathbb{R}$. Supposed the one-sided limits
+\begin{definition}{Continuity and discontinuity \cite{math2111_notes}}{continuity_discontinuity}
+Suppose $[a, b] \subset \mathbb{R}$. Consider a function $f : [a, b] \to \mathbb{R}$ and a point $c \in \mathbb{R}$. Supposed the one-sided limits
 $$ f(c^-) = \lim_{x \to c^-} f(x) \qquad \textnormal{and} \qquad f(c^+) = \lim_{x \to c^+} f(x) $$
 exist.
 
@@ -35,10 +35,10 @@ $$ f(c^-) = f(c^+) \not= f(c) $$
 (3) If
 $$ f(c^-) \not= f(c^+) , $$
 then $f$ has a \textbf{jump discontinuity} at $c$.
-\end{shaded}
+\end{definition}
 
-\begin{shaded}
-\textbf{Definition (piecewise continuous function) \cite{math2111_notes}.} A piecewise function is continuous on $[a, b] \subseteq \mathbb{R}$ if
+\begin{definition}{Piecewise continuous function \cite{math2111_notes}}{piecewise_continuous_function}
+A piecewise function is continuous on $[a, b] \subseteq \mathbb{R}$ if
 
 (1) $f(x^-)$ exists for each $x \in (a, b]$;
 
@@ -47,10 +47,10 @@ then $f$ has a \textbf{jump discontinuity} at $c$.
 (3) $f$ is continuous on $(a, b)$ except at (at most) a finite number of points where there exist jump discontinuities.
 
 Moreover, $f$ is piecewise continuous on $\mathbb{R}$ if it is piecewise continuous on any finite interval $[a, b] \subseteq \mathbb{R}$.
-\end{shaded}
+\end{definition}
 
-\begin{shaded}
-\textbf{Definition (differentiability) \cite{math2111_notes}.} Consider a function $ f : \mathbb{R} \to \mathbb{R} $ and a point $c \in \mathbb{R}$. Let
+\begin{definition}{Differentiability) \cite{math2111_notes}}{differentiability}
+Consider a function $ f : \mathbb{R} \to \mathbb{R} $ and a point $c \in \mathbb{R}$. Let
 $$ f(c^-) = \lim_{x \to c^-} f(x) \qquad \textnormal{and} \qquad f(c^+) = \lim_{x \to c^+} f(x) , $$
 and let
 \begin{align*}
@@ -60,10 +60,10 @@ and let
 %Then $f$ is differentiable at $c$ if and only if $f(c^+) = f(c^-)$ and $D^+ f(c) = D^- f(c)$.
 
 Warning: $D^{+/-} f(c)$ is not necessarily the same as $f'(c^{+/-}) = \lim_{x \to c^{+/-}} f'(x)$.
-\end{shaded}
+\end{definition}
 
-\begin{shaded}
-\textbf{Definition (piecewise differentiable function) \cite{math2111_notes}.} A function $f$ is piecewise differentiable on $[a, b] \subseteq \mathbb{R}$ if
+\begin{definition}{Piecewise differentiable function \cite{math2111_notes}}{piecewise_differentiable_function}
+A function $f$ is piecewise differentiable on $[a, b] \subseteq \mathbb{R}$ if
 
 (1) $D^- f(x)$ exists for each $x \in (a, b]$;
 
@@ -72,25 +72,25 @@ Warning: $D^{+/-} f(c)$ is not necessarily the same as $f'(c^{+/-}) = \lim_{x \t
 (3) $f$ is differentiable on $(a, b)$ except at (at most) a finite number of points.
 
 Moreover, $f$ is piecewise differentiable on $\mathbb{R}$ if it is piecewise differentiable on any finite interval $[a, b] \subseteq \mathbb{R}$.
-\end{shaded}
+\end{definition}
 
 \subsection{Fourier series and convergence}
 
-\begin{shaded}
-\textbf{Fourier series \cite{math2111_notes}.} Consider a function $f : \mathbb{R} \to \mathbb{R}$ which is $2 L$-periodic and is square integrable (i.e., $\int_{-\pi}^\pi f(x)^2 \ dx < \infty $). Its Fourier series is given by
+\begin{definition}{Fourier series \cite{math2111_notes}}{fourier_series}
+Consider a function $f : \mathbb{R} \to \mathbb{R}$ which is $2 L$-periodic and is square integrable (i.e., $\int_{-\pi}^\pi f(x)^2 \ dx < \infty $). Its Fourier series is given by
 $$ S_f(x) = \frac{a_0}{2} + \sum_{k = 1}^{\infty} \left( a_k \cos \left( \frac{k \pi}{L}x \right) + b_k \sin \left( \frac{k \pi}{L}x \right) \right) . $$
 We can view the Fourier series as expression a function $f$ as a linear combination of the orthogonal functions $\frac{1}{2}, \cos(kx), ..., \sin(kx), k \geq 1$. Then, via vector decomposition, we can find the following formulas to yield the Fourier coefficients $a_k$ and $b_k$:
-$$ a _k = \frac{1}{L} \int_{-L}^L f(x) \cos \left( \frac{k \pi}{L}x \right) \ dx, \quad k = 0, 1, 2, ... $$
+$$ a_k = \frac{1}{L} \int_{-L}^L f(x) \cos \left( \frac{k \pi}{L}x \right) \ dx, \quad k = 0, 1, 2, ... $$
 and
-$$ b _k = \frac{1}{L} \int_{-L}^L f(x) \sin \left( \frac{k \pi}{L}x \right) \ dx, \quad k = 1, 2, 3, ... $$
-\end{shaded}
+$$ b_k = \frac{1}{L} \int_{-L}^L f(x) \sin \left( \frac{k \pi}{L}x \right) \ dx, \quad k = 1, 2, 3, ... $$
+\end{definition}
 
-\begin{shaded}
-\textbf{Definition (pointwise convergence) \cite{math2111_notes}.} Let $f_k : \mathbb{R} \to \mathbb{R}$. We say $f_k$ converges to $f$ on $[a, b]$ pointwisely if $f_k(x) \to f(x)$ for every $x \in [a, b]$ as $k \to \infty$.
-\end{shaded}
+\begin{definition}{Pointwise convergence \cite{math2111_notes}}{pointwise_convergence}
+Let $f_k : \mathbb{R} \to \mathbb{R}$. We say $f_k$ converges to $f$ on $[a, b]$ pointwisely if $f_k(x) \to f(x)$ for every $x \in [a, b]$ as $k \to \infty$.
+\end{definition}
 
-\begin{shaded}
-\textbf{Theorem (pointwise convergence of Fourier series) \cite{math2111_notes}.} Let $c \in \mathbb{R}$, and suppose that a function $f : \mathbb{R} \to \mathbb{R}$ has the following properties:
+\begin{theorem}{Pointwise convergence of Fourier series \cite{math2111_notes}}{pointwise_convergence_fourier_series}
+Let $c \in \mathbb{R}$, and suppose that a function $f : \mathbb{R} \to \mathbb{R}$ has the following properties:
 \begin{enumerate}
 	\item $f$ is $2 \pi$-periodic;
 	\item $f$ is piecewise continuous on $[-\pi, \pi]$;
@@ -100,59 +100,58 @@ If $f$ is continuous at $c$, then the Fourier series of $f$ agrees with $f$ at $
 $$ S f(c) = f(c) . $$
 On the other hand, if $f$ has a jump discontinuity at $c$, then
 $$ S f(c) = \frac{1}{2} \left( f(c^+) + f(c^-) \right) . $$
-\end{shaded}
+\end{theorem}
 
-\begin{shaded}
-\textbf{Definition (uniform convergence) \cite{math2111_notes}.} Let $f_k : \mathbb{R} \to \mathbb{R}$. We say $f_k$ converges to $f$ on $[a, b]$ uniformly if for every $\epsilon > 0$, there exists a $K$ (depends on $\epsilon$ only), such that
+\begin{definition}{Uniform convergence \cite{math2111_notes}}{uniform_convergence}
+Let $f_k : \mathbb{R} \to \mathbb{R}$. We say $f_k$ converges to $f$ on $[a, b]$ uniformly if for every $\epsilon > 0$, there exists a $K$ (depends on $\epsilon$ only), such that
 $$ \sup_{x \in [a, b]} | f_k(x) - f(x) | \leq \epsilon \quad \text{for all} \quad k \geq K . $$
 Moreover, we say $\sum_{k = 1}^{\infty} f_k$ converges uniformly to $f$ if the partial sum $\tilde{f}_n = \sum_{k = 1}^{\infty} f_k$ converges uniformly to $f$ as $n \to \infty$
 
 \textbf{Theorem.} If $f_k : \mathbb{R} \to \mathbb{R}$ is continuous on $[a, b]$ for all $n$ and if $f_k$ converge to $f$ uniformly on $[a, b]$, then $f$ is continuous on $[a, b]$.
-\end{shaded}
+\end{definition}
 
-\begin{shaded}
-\textbf{Theorem (Weierstrass test) \cite{math2111_notes}.} Let $f_k : \mathbb{R} \to \mathbb{R}$ be a sequence of functions defined on $[a, b]$. Suppose that there exists a sequence of numbers $c_k$ such that
+\begin{theorem}{Weierstrass test \cite{math2111_notes}}{weierstrass_test}
+Let $f_k : \mathbb{R} \to \mathbb{R}$ be a sequence of functions defined on $[a, b]$. Suppose that there exists a sequence of numbers $c_k$ such that
 $$ |f_k(x)| \leq c_k \quad \text{for all} \quad x \in [a, b] $$
 and $\sum_{k = 1}^\infty c_k$ exists. Then, $\sum_{k = 1}^\infty f_k(x)$ converges uniformly to a function $f$ on $[a, b]$.
-\end{shaded}
+\end{theorem}
 
-\begin{shaded}
-\textbf{Definition (norm convergence) \cite{math2111_notes}.} Consider the maximum norm $\lVert f \rVert_\infty = \sup_{x \in [a, b]} |f(x)|$. The definition of uniform convergence can be equivalently rewritten as: for every $\epsilon > 0$, there exists $K > 0$ such that
+\begin{definition}{Norm convergence \cite{math2111_notes}}{norm_convergence}
+Consider the maximum norm $\lVert f \rVert_\infty = \sup_{x \in [a, b]} |f(x)|$. The definition of uniform convergence can be equivalently rewritten as: for every $\epsilon > 0$, there exists $K > 0$ such that
 $$ \lVert f_k - f \rVert \leq \epsilon \quad \text{for all} \quad k \geq K , $$
 or simply
 $$ \lim_{k \to \infty} \lVert f_k - f \rVert = 0 . $$
-\end{shaded}
+\end{definition}
 
-\begin{shaded}
-\textbf{Theorem (Parseval's theorem).} Let $f$ be $2 \pi$-periodic, bounded and $\int_{-\pi}^\pi f(x)^2 \ dx < + \infty$. Then, the Fourier series of $f$ converges to $f$ in the mean square sense, i.e.
+\begin{theorem}{Parseval's theorem}{parsevals_theorem}
+Let $f$ be $2 \pi$-periodic, bounded and $\int_{-\pi}^\pi f(x)^2 \ dx < + \infty$. Then, the Fourier series of $f$ converges to $f$ in the mean square sense, i.e.
 $$ \int_{- \pi}^\pi (S_n f(x) - f(x))^2 \ dx \to 0 \quad \text{as} \quad k \to \infty . $$
 That is to say, $\lVert S_n f - f \rVert_2 \to 0$ as $n \to \infty$. Moreover, the following \textbf{Parseval's identity} holds:
 $$ \int_{-\pi}^\pi f(x)^2 \ dx = \lVert f \rVert_2^2 = \frac{\pi}{2} a_0^2 + \pi \sum_{k = 1}^{\infty} (a_k^2 + b_k^2) . $$
-\end{shaded}
+\end{theorem}
 
 \subsection{Grad, div, curl}
 
-\begin{shaded}
-\textbf{Definition (gradient) \cite{thomas_calculus}.} The \textbf{gradient vector} (or \textbf{gradient}) of $f(x, y, z)$ is the vector
+\begin{definition}{Gradient \cite{thomas_calculus}}{gradient}
+The \textbf{gradient vector} (or \textbf{gradient}) of $f(x, y, z)$ is the vector
 $$ \nabla f = \diffp{f}{x} \mathbf{i} + \diffp{f}{y} \mathbf{j} + \diffp{f}{z} \mathbf{k} . $$
 The value of this gradient vector obtained by evaluating the partial derivatives at a point $P_0(x_0, y_0, z_0)$ is written
 $$ \nabla f |_{P_0} \qquad \text{or} \qquad \nabla f(x_0, y_0, z_0) . $$
-\end{shaded}
+\end{definition}
 
-\begin{shaded}
-\textbf{Definition (divergence) \cite{math2111_notes}.} If $\mathbf{F} = F_1 \mathbf{i} + F_2 \mathbf{j} + F_3 \mathbf{k}$, the \textbf{divergence} of $\mathbf{F}$ is the scalar field
+\begin{definition}{Divergence \cite{math2111_notes}}{divergence} If $\mathbf{F} = F_1 \mathbf{i} + F_2 \mathbf{j} + F_3 \mathbf{k}$, the \textbf{divergence} of $\mathbf{F}$ is the scalar field
 \begin{align*}
 \text{div} \ \mathbf{F} &= \nabla \cdot \mathbf{F} \\
 &= \begin{pmatrix}[2] \diffp{}{x} & \diffp{}{y} & \diffp{}{z} \end{pmatrix}^{T}
 \cdot \begin{pmatrix} F_1 \\ F_2 \\ F_3 \end{pmatrix} \\
 &= \diffp{F_1}{x} + \diffp{F_2}{y} + \diffp{F_3}{z} .
 \end{align*}
-\end{shaded}
+\end{definition}
 
 An \textbf{incompressible} liquid is one that has zero divergence.
 
-\begin{shaded}
-\textbf{Definition (curl) \cite{math2111_notes}.} If $\mathbf{F} = F_1 \mathbf{i} + F_2 \mathbf{j} + F_3 \mathbf{k}$, the \textbf{curl} of $\mathbf{F}$ is the vector field
+\begin{definition}{Curl \cite{math2111_notes}}{curl}
+If $\mathbf{F} = F_1 \mathbf{i} + F_2 \mathbf{j} + F_3 \mathbf{k}$, the \textbf{curl} of $\mathbf{F}$ is the vector field
 \begin{align*}
 \text{curl} \ \mathbf{F} &= \nabla \times \mathbf{F} \\
 &= \begin{vmatrix}[1.5]
@@ -162,7 +161,7 @@ An \textbf{incompressible} liquid is one that has zero divergence.
 \end{vmatrix} \\
 &= \left( \diffp{F_3}{y} - \diffp{F_2}{z} \right) \mathbf{i} + \left( \diffp{F_1}{z} - \diffp{F_3}{x} \right) \mathbf{j} + \left( \diffp{F_2}{x} - \diffp{F_1}{y} \right) \mathbf{k} .
 \end{align*}
-\end{shaded}
+\end{definition}
 
 \subsection{Line integrals}
 
@@ -194,8 +193,8 @@ where $\mathbf{T} = \mathbf{v} / \lVert \mathbf{v} \rVert$ is the unit tangent v
 	\item $dA$ is shorthand for $dx dy$
 \end{itemize}
 
-\begin{shaded}
-\textbf{Definition (line integral of a scalar field) \cite{marsden_vector_calculus}.} The \textbf{line integral of a scalar field}, or \textbf{path integral}, or the \textbf{integral of $f(x, y, z)$ along the path $\mathbf{c}$}, is defined when $\mathbf{c}: I = [a, b] \to \mathbb{R}^3$ is of class $C^1$ and when the composite function $t \mapsto f(x(t), y(t), z(t))$ is continuous on $I$. We define this integral by the equation
+\begin{definition}{Line integral of a scalar field \cite{marsden_vector_calculus}}{line_integral_scalar_field}
+The \textbf{line integral of a scalar field}, or \textbf{path integral}, or the \textbf{integral of $f(x, y, z)$ along the path $\mathbf{c}$}, is defined when $\mathbf{c}: I = [a, b] \to \mathbb{R}^3$ is of class $C^1$ and when the composite function $t \mapsto f(x(t), y(t), z(t))$ is continuous on $I$. We define this integral by the equation
 $$ \int_{\mathbf{c}} f \ ds = \int_a^b f(x(t), y(t), z(t)) \ \lVert \mathbf{c}'(t) \rVert \ dt . $$
 Sometimes $\int_\mathbf{c} f \ ds$ is denoted
 $$ \int_\mathbf{c} f(x, y, z) \ ds $$
@@ -203,10 +202,10 @@ or
 $$ \int_\mathbf{c} f(\mathbf{c}(t)) \ \lVert \mathbf{c}'(t) \rVert \ dt . $$
 
 If $\mathbf{c}(t)$ is only piecewise $C^1$ or $f(\mathbf{c}(t))$ is piecewise continuous, we define $\int_\mathbf{c} f \ ds$ by breaking $[a, b]$ into pieces over which $f(\mathbf{c}(t)) \ \lVert \mathbf{c}'(t) \rVert$ is continuous, and summing the integrals over the pieces.
-\end{shaded}
+\end{definition}
 
-\begin{shaded}
-\textbf{Definition (line integral of a vector field) \cite{thomas_calculus}.} Let $\mathbf{F}$ be a vector field with continuous components defined along a smooth curve $C$ parametrised by $\mathbf{c}(t), a \leq t \leq b$. Then the \textbf{line integral of} $\mathbf{F}$ along $\mathbf{C}$ is
+\begin{definition}{Line integral of a vector field \cite{thomas_calculus}}{line_integral_vector_field}
+Let $\mathbf{F}$ be a vector field with continuous components defined along a smooth curve $C$ parametrised by $\mathbf{c}(t), a \leq t \leq b$. Then the \textbf{line integral of} $\mathbf{F}$ along $\mathbf{C}$ is
 \begin{align*}
 \int_C F_1 \ dx + F_2 \ dy + F_3 \ dz &= \int_a^b \left( F_1 \diff{x}{t} + F_2 \diff{y}{t} + F_3 \diff{z}{t} \right) \ dt \\
 &= \int_C \mathbf{F} \cdot d \mathbf{s} \\
@@ -214,39 +213,41 @@ If $\mathbf{c}(t)$ is only piecewise $C^1$ or $f(\mathbf{c}(t))$ is piecewise co
 &= \int_C \mathbf{F} \cdot \mathbf{T} \ ds \\
 &= \int_a^b \mathbf{F}(\mathbf{c}(t)) \cdot \mathbf{c}'(t) \ dt
 \end{align*}
+\end{definition}
 
-\textbf{Definition (flow integral, circulation) \cite{thomas_calculus}.} If $\mathbf{c}(t)$ parametrises a smooth curve $C$ in the domain of a continuous velocity field $\mathbf{F}$, the \textbf{flow} along the curve from $A = \mathbf{c}(a) to B = \mathbf{r}(b)$ is
+\begin{definition}{Flow integral, circulation \cite{thomas_calculus}}{flow_integral_circulation}
+If $\mathbf{c}(t)$ parametrises a smooth curve $C$ in the domain of a continuous velocity field $\mathbf{F}$, the \textbf{flow} along the curve from $A = \mathbf{c}(a) to B = \mathbf{r}(b)$ is
 $$ \text{Flow} = \int_C \mathbf{F} \cdot \mathbf{T} \ ds . $$
 The integral is called a \textbf{flow integral}. If the curve starts and ends at the same point, so that $A = B$, the flow is called the \textbf{circulation} around the curve.
-\end{shaded}
+\end{definition}
 
-\begin{shaded}
-\textbf{Definition (flux in the plane) \cite{thomas_calculus}.} If $C$ is a smooth  simple closed curve in the domain of a continuous vector field $F = P(x, y) \mathbf{i} + Q(x, y) \mathbf{j}$ in the plane, and if $\mathbf{n}$ is the outward-pointing unit normal vector on $C$, the \textbf{flux} of $\mathbf{F}$ across $C$ is
+\begin{definition}{Flux in the plane \cite{thomas_calculus}}{flux_plane}
+If $C$ is a smooth  simple closed curve in the domain of a continuous vector field $F = P(x, y) \mathbf{i} + Q(x, y) \mathbf{j}$ in the plane, and if $\mathbf{n}$ is the outward-pointing unit normal vector on $C$, the \textbf{flux} of $\mathbf{F}$ across $C$ is
 \begin{align*}
 \text{Flux of } \mathbf{F} \text{ across } C &= \int_C \mathbf{F} \cdot \mathbf{n} \ ds \\
 &= \oint_C P \ dy - Q \ dx .
 \end{align*}
 The integral can be evaluated from any smooth parametrisation $x = g(t), y = h(t), a \leq t \leq b$, that traces $C$ anticlockwise exactly once.
-\end{shaded}
+\end{definition}
 
 \subsection{Definitions and theorems about line integrals}
 
-\begin{shaded}
-\textbf{Definition (arc length in $\mathbb{R}^n$) \cite{marsden_vector_calculus}.} Let $\mathbf{c}: [t_0, t_1] \to \mathbb{R}^n$ be a piecewise $C^1$ path. Its \textbf{length} is defined to be
+\begin{definition}{Arc length in $\mathbb{R}^n$ \cite{marsden_vector_calculus}}{arc_length_Rn}
+Let $\mathbf{c}: [t_0, t_1] \to \mathbb{R}^n$ be a piecewise $C^1$ path. Its \textbf{length} is defined to be
 $$ L(\mathbf{c} = \int_{t_0}^{t_1} \lVert \mathbf{c}'(t) \rVert \ dt . $$
 The integrand is the square root of the sume of the squares of the coordinate functions of $\mathbf{c}'(t)$: If
 $$ \mathbf{c}(t) = (x_1(t), x_2(t), ..., x_n(t)) , $$
 then
 $$ L(\mathbf{c}) = \sqrt{[x'_1(t)]^2 + [x'_2(t)]^2 + ... + [x'_n(t)]^2} \ dt . $$
-\end{shaded}
+\end{definition}
 
-\begin{shaded}
-\textbf{Theorem (fundamental theorem of line integrals) \cite{thomas_calculus}.} Let $C$ be a smooth curve joining the point $A$ to the point $B$ in the plane or in space and parametrised by $\mathbf{c}(t)$. Let $f$ be a differentiable function with a continuous gradient vector $\mathbf{F} = \nabla f$ on a domain $D$ containing $C$. Then
+\begin{theorem}{Fundamental theorem of line integrals \cite{thomas_calculus}}{fundamental_line_integrals}
+Let $C$ be a smooth curve joining the point $A$ to the point $B$ in the plane or in space and parametrised by $\mathbf{c}(t)$. Let $f$ be a differentiable function with a continuous gradient vector $\mathbf{F} = \nabla f$ on a domain $D$ containing $C$. Then
 $$ \int_C \mathbf{F} \cdot d \mathbf{r} = f(B) - f(A) . $$
-\end{shaded}
+\end{theorem}
 
-\begin{shaded}
-\textbf{Theorem (cross partials of gradient vector fields) \cite{math2111_notes}.} Let
+\begin{theorem}{Cross partials of gradient vector fields \cite{math2111_notes}}{cross_partials_gradient_vector_fields}
+Let
 $$ \mathbf{F} = (F_1, F_2, F_3) $$
 be a gradient vector field whose components have continuous partial derivatives. Then the cross partials are equal:
 $$ \diffp{F_1}{y} = \diffp{F_2}{x}, \quad \diffp{F_2}{z} = \diffp{F_3}{y}, \quad \diffp{F_3}{x} = \diffp{F_1}{z} . $$
@@ -255,7 +256,7 @@ Similarly, if the vector field in the plane
 $$ \mathbf{F} = (F_1, F_2) $$
 is a gradient vector field, then
 $$ \diffp{F_1}{y} = \diffp{F_2}{x} . $$
-\end{shaded}
+\end{theorem}
 
 \begin{theorem}{Green's theorem \cite{thomas_calculus}}{greens_theorem}
 Let $C$ be a piecewise smooth, simple closed curve enclosing a region $R$ in the

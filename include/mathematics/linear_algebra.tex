@@ -1,4 +1,79 @@
 \section{Linear algebra}
+
+\subsection{Matrices}
+
+\subsubsection{Inverse matrices}
+
+\begin{definition}{Inverse matrix \cite{math1141_notes}}{inverse_matrix}
+A matrix $X$ is said to be the \textbf{inverse} of a matrix $A$ if both
+$$ AX = I \qquad \text{and} \qquad XA = I , $$
+where $I$ is the identity matrix of appropriate size.
+\end{definition}
+
+If a matrix $A$ has an inverse, then $A$ is said to be an \textbf{invertible matrix}. If a matrix $A$ is not an invertible matrix, then it is called a \textbf{singular} matrix.
+
+\begin{lemma}{\cite{math1141_notes}}{}
+All invertible matrices are square.
+\end{lemma}
+
+\begin{lemma}{}{singular_matrix}
+A (square) matrix is singular if its determinant is $0$.
+\end{lemma}
+
+\begin{definition}{Right/left inverse \cite{math1141_notes}}{right_left_inverse}
+\begin{itemize}
+	\item An $n \times m$ matrix $X$ is said to be a \textbf{right inverse} of the $m \times n$ matrix $A$ if
+$$ AX = I_m ; $$
+
+	\item An $n \times m$ matrix $Y$ is said to be a \textbf{left inverse} of the $m \times n$ matrix $A$ if
+$$ YA = I_n . $$
+\end{itemize}
+\end{definition}
+
+\textbf{Finding the inverse of a matrix}. A matrix $A$ is invertible if and only if it can be reduced by elementary row operations to an identity matrix $I$ and if $(A|I)$ can be reduced to $(I|B)$, in which case, $B = A^{-1}$.
+
+\begin{formula}{Inverse of a $2 \times 2$ matrix}{inverse_2b2_matrix}
+$$
+\begin{pmatrix}
+	a & b \\
+	c & d
+\end{pmatrix}^{-1}
+= \dfrac{1}{ad - bc}
+\begin{pmatrix}
+	d & -b \\
+	-c & a
+\end{pmatrix} , \quad
+\text{provided } ad - bc \not = 0.
+$$
+\end{formula}
+
+\subsubsection{Determinants}
+
+\begin{definition}{Determinant of a $2 \times 2$ matrix}{determinant_2b2}
+Given the matrix
+$$ A = \begin{pmatrix}
+a_{11} & a_{12} \\
+a_{21} & a_{22}
+\end{pmatrix} , $$
+its \textbf{determinant} is
+$$ \det (A) = a_{11} a_{22} - a_{12} a_{21} . $$
+\end{definition}
+
+\begin{definition}{Determinant}{determinant}
+First, define the row $i$, column $j$ \textbf{minor} of a matrix $X$ to be the resulting matrix obtained by deleting row $i$ and column $j$ from $X$, denoted by $ \lvert X_{ij} \rvert$.
+
+Then the \textbf{determinant} of an $n \times n$ matrix $A$ is
+\begin{align*}
+\lvert A \rvert &=
+a_{11} \lvert A_{11} \rvert 
+- a_{12} \lvert A_{12} \rvert
++ a_{13} \lvert A_{13} \rvert
+- \dots +
+(-1)^{1+n} a_{1n} \lvert A_{1n} \rvert \\
+&= \sum_{k = 1}^n (-1)^{1+k} a_{1k} \lvert A_{1k} \rvert .
+\end{align*}
+\end{definition}
+
 \subsection{Groups and fields}
 
 \begin{definition}{Group \cite{math2601_notes}}{group}

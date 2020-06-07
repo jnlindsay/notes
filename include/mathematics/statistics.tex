@@ -87,3 +87,43 @@ $$ \mathbb{P} \left( \bigcap_{j = 1}^n A_{i_j} \right) = \prod_{j = 1}^n \mathbb
 Note that for any two events $A$ and $B$, $\mathbb{P} (A \cap B) = \mathbb{P} (A|B) \mathbb{P} (B)$, so $A$ and $B$ are independent if and only if the equalities in lemma \ref{lem:conditional_probability} are true.
 
 Also note that mutual independence implies pairwise independence (but not vice versa).
+
+\subsubsection{Probability laws}
+
+\begin{theorem}{Multiplicative law}{multiplicative}
+For events $A_1, A_2$,
+$$ \mathbb{P} (A_1 \cap A_2) = \mathbb{P} (A_2 \cap A_1) = \mathbb{P} (A_2 \vert A_1) \mathbb{P} (A_1) . $$
+
+For events $A_1, A_2, A_3$,
+\begin{align*}
+\mathbb{P} (A_1 \cap A_2 \cap A_3)
+&= \mathbb{P} (A_3 \cap A_2 \cap A_1) \\
+&= \mathbb{P} (A_3 \vert A_2 \cap A_1) \mathbb{P} (A_2 \cap A_1) \\
+&= \mathbb{P} (A_3 \vert A_1 \cap A_2) \mathbb{P} (A_2 \vert A_1) \mathbb{P} (A_1) .
+\end{align*}
+
+(The same pattern applies to higher numbers of events.)
+\end{theorem}
+
+\begin{theorem}{Additive Law}{additive}
+For events $A$ and $B$,
+$$ \mathbb{P} (A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B) . $$
+\end{theorem}
+
+\begin{theorem}{Total probability}{total_probability}
+Suppose $A_1, A_2, \ldots, A_k$ are mutually exclusive ---
+$$ A_i \cap A_j = \emptyset \quad \text{for all } i \not = j $$
+--- and \textbf{exhaustive} ---
+$$ \bigcup_{i = 1}^k A_i = \Omega = \text{sample space} $$
+--- that is, $A_1, \ldots, A_k$ form a \textbf{partition} of $\Omega$. Then, for any event $B$,
+$$ \mathbb{P}(B) = \sum_{i=1}^k \mathbb{P}(B \vert A_i) \mathbb{P}(A_i) . $$
+\end{theorem}
+
+\begin{theorem}{Bayes' theorem}{bayes}
+For a partition $A_1, A_2, \ldots, A_k$ and an event $B$,
+$$
+\mathbb{P}(A_j \vert B) 
+= \dfrac{\mathbb{P}(B \vert A_j) \mathbb{P}(A_j)}{\mathbb{P}(B)} \\
+= \dfrac{\mathbb{P}(B \vert A_j) \mathbb{P}(A_j)}{\sum_{i=1}^k \mathbb{P}(B|A_i) \mathbb{P}(A_i)}
+$$
+\end{theorem}

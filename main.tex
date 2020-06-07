@@ -43,6 +43,17 @@
      fonttitle=\bfseries, parbox=false,
      separator sign={\ ---}}{lem}
      
+\newtcbtheorem[number within=section,
+               use counter from=theorem]{law}{Law}%
+    {colback=red!5, colframe=red!35!black, sharp corners,
+     fonttitle=\bfseries, parbox=false,
+     separator sign={\ ---}}{law}
+
+\newtcbtheorem[number within=section]{formula}{Formula}%
+    {colback=green!5, colframe=green!35!black, sharp corners,
+     fonttitle=\bfseries, parbox=false,
+     separator sign={\ ---}}{form}
+       
 \tcolorboxenvironment{proof}{% 'proof' from 'amsthm'
 	blanker,breakable,left=3mm,
 	before skip=10pt,after skip=10pt, parbox=false,
@@ -68,8 +79,8 @@
 \tableofcontents
 
 \include{include/mathematics}
-\include{include/computing}
-\include{include/finance}
+%\include{include/computing}
+%\include{include/finance}
 
 \printbibliography
 
