@@ -1,14 +1,5 @@
 \chapter{Computing}
 
-\section{Graphics}
-
-\subsection{Basics}
-
-\begin{itemize}
-	\item Display rate --- number of distinct frames shown per second
-	\item Refresh rate --- number of times frames are updated (might be a lot higher than display rate)
-\end{itemize}
-
 \section{Algorithms}
 \subsection{Dynamic programming}
 
@@ -51,15 +42,12 @@ for $i = 1, 2, \ldots, m$ and $j = 1, 2, \ldots, n$, where $a_{ij}, b_i \in \mat
 
 \end{shaded}
 
-\section{Cloud computing}
+\section{Programming languages}
 
-\subsection{Basics}
+\subsection{General}
 
-\subsubsection{Service models}
+\subsubsection{Operator associativity}
 
-From Wikipedia \cite{wikipedia_cloud_computing}:
-\begin{itemize}
-	\item \textbf{SaaS} (application level) --- CRM, email, virtual desktop, communication, games, ...
-	\item \textbf{PaaS} (platform level) --- execution runtime, database, web server, development tools, ...
-	\item \textbf{IaaS} (infrastructure level) --- virtual machines, servers, storage, load balancers, network, ...
-\end{itemize}
+\begin{quote}
+Consider the expression \code{a ~ b ~ c}. If the operator \code{~} has left associativity, this expression would be interpreted as \code{(a ~ b) ~ c}. If the operator has right associativity, the expression would be interpreted as a \code{~ (b ~ c)}. If the operator is non-associative, the expression might be a syntax error, or it might have some special meaning. Some mathematical operators have inherent associativity. For example, subtraction and division, as used in conventional math notation, are inherently left-associative. Addition and multiplication, by contrast, are both left and right associative. (e.g. \code{(a * b) * c = a * (b * c)}). \cite{wikipedia_operator_associativity}
+\end{quote}
