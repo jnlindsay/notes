@@ -236,3 +236,42 @@ Let $V$ be a vector space over field $\mathbb{F}$. For all $\mathbf{v}, \mathbf{
 	\item if $\lambda \mathbf{v} = \lambda \mathbf{w}$ and $\lambda \not = 0$ then $\mathbf{v} = \mathbf{w}$.
 \end{itemize}
 \end{lemma}
+
+\begin{definition}{Linear (vector) subspace \cite{math2601_notes}}{linear_subspace}
+If $V$ is a vector space over $\mathbb{F}$ and $U \subseteq V$, then $U$ is a \textbf{subspace} of $V$, written $U \leq V$, if it is a vector space over $\mathbb{F}$ with the same addition and scalar multiplication as in $V$.
+\end{definition}
+
+\begin{lemma}{(Linear) subspace test}{subspace_test}
+Suppose $V$ is a vector space over the field $\mathbb{F}$ and $U$ is a non-empty subset of $V$. Then $U$ is a subspace of $V$ if and only if for all $\mathbf{u}, \mathbf{v}, \in U$ and $\alpha \in \mathbb{F}$, it holds that $\alpha \mathbf{u} + \mathbf{v} \in U$.
+
+\begin{proof}
+Most of the axioms will be simply inherited from $V$: all we really need to prove is closure and that the zero vector is in $U$.
+
+But setting $\alpha = 1$ proves $U$ is closed under addition.
+
+With $\alpha = -1$ and $\mathbf{v} = \mathbf{u}$ we get $\mathbf{0} \in U$.
+
+Hence we can set $\mathbf{v} = \mathbf{0}$ to get closure under scalar multiplication.
+
+``The rest is easy.''
+\end{proof}
+\end{lemma}
+
+Examples:
+\begin{itemize}
+	\item Every vector space has ${\mathbf{0}}$ (the \textbf{trivial subspace}) and itself as subspaces.
+	\item Polynomials and functions: $\mathcal{P}_n(\mathbb{R})$ is a subspace of $\mathcal{P}(\mathbb{R})$, which is a subspace of $\mathcal{R}[\mathbb{R}]$.
+\end{itemize}
+
+\begin{definition}{Linear combination \cite{math2601_notes}}{linear_combination}
+Let $V$ be a vector space over $\mathbb{F}$. A \textbf{(finite) linear combination} of vectors $\mathbf{v}_1 + \mathbf{v}_2, \ldots, \mathbf{v}_n$ in $V$ is any vector which can be expressed
+$$ \alpha_1 \mathbf{v}_1 + \alpha_2 \mathbf{v}_2 + \dots + \alpha_n \mathbf{v}_n , $$
+where the $\alpha_k$ are scalars.
+\end{definition}
+
+\begin{definition}{Span \cite{math2601_notes}}{span}
+If $S$ is a subset of $V$, then the \textbf{span} of $S$ is
+$$ \operatorname{span}(S) = \{ \text{all finite linear combinations of vectors in } S \} . $$
+If $\operatorname{span}(S) = V$, we say that $S$ \textbf{spans} $V$, or \textbf{is a spanning set for} $V$.
+\end{definition}
+
