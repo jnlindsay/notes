@@ -23,6 +23,7 @@
 \usepackage{framed}    				% paragraph shading
 \usepackage[hidelinks]{hyperref}     % clickable table of contents
 \usepackage[italic]{esdiff}			% differentiation notation
+\usepackage[shortlabels]{enumitem}
 
 % SETTINGS
 \colorlet{shadecolor}{lightgray!20}
@@ -65,6 +66,12 @@
     {colback=red!5, colframe=red!35!black, sharp corners,
      fonttitle=\bfseries, parbox=false,
      separator sign={\ ---}}{lem}
+     
+\newtcbtheorem[number within=section,
+               use counter from=theorem]{corollary}{Corollary}%
+    {colback=red!5, colframe=red!35!black, sharp corners,
+     fonttitle=\bfseries, parbox=false,
+     separator sign={\ ---}}{cor}
      
 \newtcbtheorem[number within=section,
                use counter from=theorem]{law}{Law}%

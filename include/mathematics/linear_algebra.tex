@@ -105,7 +105,6 @@ We often write the \textbf{cyclic group of order $m$} as
 $$ C_m = \langle a : a^m = e \rangle , $$
 and say it is \textit{generated} by $a$.
 
-
 \begin{definition}{Subgroup \cite{math2601_notes}}{subgroup}
 Let $(G, *)$ be a group and $H$ a non-empty subset of $G$. If $H$ is a group under the restriction of $*$ to $H$, we call it a \textbf{subgroup} of $G$. We write this as $H \leq G$ and say $H$ \textit{inherits} the group structure from $G$.
 \end{definition}
@@ -237,6 +236,8 @@ Let $V$ be a vector space over field $\mathbb{F}$. For all $\mathbf{v}, \mathbf{
 \end{itemize}
 \end{lemma}
 
+\subsubsection{Subspaces}
+
 \begin{definition}{Linear (vector) subspace \cite{math2601_notes}}{linear_subspace}
 If $V$ is a vector space over $\mathbb{F}$ and $U \subseteq V$, then $U$ is a \textbf{subspace} of $V$, written $U \leq V$, if it is a vector space over $\mathbb{F}$ with the same addition and scalar multiplication as in $V$.
 \end{definition}
@@ -263,6 +264,8 @@ Examples:
 	\item Polynomials and functions: $\mathcal{P}_n(\mathbb{R})$ is a subspace of $\mathcal{P}(\mathbb{R})$, which is a subspace of $\mathcal{R}[\mathbb{R}]$.
 \end{itemize}
 
+\subsubsection{Linear combinations, spans and independence}
+
 \begin{definition}{Linear combination \cite{math2601_notes}}{linear_combination}
 Let $V$ be a vector space over $\mathbb{F}$. A \textbf{(finite) linear combination} of vectors $\mathbf{v}_1 + \mathbf{v}_2, \ldots, \mathbf{v}_n$ in $V$ is any vector which can be expressed
 $$ \alpha_1 \mathbf{v}_1 + \alpha_2 \mathbf{v}_2 + \dots + \alpha_n \mathbf{v}_n , $$
@@ -275,3 +278,124 @@ $$ \operatorname{span}(S) = \{ \text{all finite linear combinations of vectors i
 If $\operatorname{span}(S) = V$, we say that $S$ \textbf{spans} $V$, or \textbf{is a spanning set for} $V$.
 \end{definition}
 
+\begin{lemma}{\cite{math2601_notes}}{}
+If $S$ is a non-empty subset of a vector space $V$, then $\operatorname{span}(S)$ is a subspace of $V$.
+
+\begin{proof}
+Since $S \subseteq \operatorname{span}(S)$, we know that $\operatorname{span}(S)$ is non-empty.
+
+But if $\mathbf{v}, \mathbf{w} \in \operatorname{span}(S)$, then $\lambda \mathbf{v} + \mathbf{w}$ is a linear combination of two linear combinations of elements of $S$, and so is a linear combination of elements of $S$.
+
+Thus $\lambda \mathbf{v} + \mathbf{w} \in \operatorname{span}(S)$ and $\operatorname{span}(S) \leq V$.
+\end{proof}
+\end{lemma}
+
+\begin{definition}{Linear independence \cite{math2601_notes}}{linear_independence}
+A subset $S$ of a vector space $V$ is \textbf{linearly independent} if for all vectors $\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n$ in $S$ (with $n \geq 1$) the equation
+$$ \alpha_1 \mathbf{v}_1 + \alpha_2 \mathbf{v}_2 + \dots + \alpha_n \mathbf{v}_n = \mathbf{0} , $$
+with $\alpha_i \in \mathbb{F}$, implies $\alpha_i = 0$ for all $i = 1 \ldots n$.
+
+A set which is not linearly independent is said to be \textbf{linearly dependent}.
+\end{definition}
+
+\begin{lemma}{Linear dependence \cite{math2601_notes}}{linear_dependence}
+If $S = \{ \mathbf{v}_1, \ldots, \mathbf{v}_n \}$ is a linearly dependent set in $V$, then there is an $i$ where $2 \leq i \leq n$ such that
+$$ \mathbf{v}_i = \sum_{j = 1}^{i - 1} \beta_j \mathbf{v}_j , $$
+where $\beta_j \in \mathbb{F}$ for $j = 1 \ldots i - 1$.
+
+In other words, in an ordered linearly dependent set, at least one vector is a linear combination of its predecessors.
+\end{lemma}
+
+\subsubsection{Bases}
+
+\begin{definition}{Basis \cite{math2601_notes}}{basis}
+Let $S \subseteq V$. The set $S$ is a \textbf{basis} for $V$ over $\mathbb{F}$ if and only $V = \operatorname{span}(S)$, and $S$ is a linearly independent set.
+\end{definition}
+
+\subsubsection{Dimension}
+
+\begin{theorem}{Existence of finite basis \cite{math2601_notes}}{existence_finite_basis}
+Let $V$ be a vector space over $\mathbb{F}$ and $S$ a finite set that spans $V$. Then $S$ contains a finite basis for $V$.
+\end{theorem}
+
+\begin{lemma}{Exchange Lemma \cite{math2601_notes}}{exchange}
+Suppose that $S$ is a finite spanning set for $V$ and that $T$ is a (finite) linearly independent subset of $V$ with $\lvert T \rvert \leq \lvert S \rvert$. Then there is a spanning set $S'$ of $V$ such that
+$$ T \subseteq S' \quad \text{and} \quad \lvert S' \rvert = \lvert S \rvert . $$
+\end{lemma}
+
+\begin{corollary}{\cite{math2601_notes}}{size_independent_spanning}
+If $S$ is a finite spanning set for a vector space $V$, and $T$ is a linearly independent subset of $V$, then $T$ is finite and $\lvert T \rvert \leq \lvert S \rvert$.
+
+In other words, \textit{independent sets are no larger than spanning sets (if there is a finite spanning set}.
+
+\begin{proof}
+Suppose that $\lvert T \rvert > \lvert S \rvert$, and consider any subset $T_0$ of $T$ with exactly $\lvert S \rvert$ elements.
+
+Let $\mathbf{v}$ be an element of $T \setminus T_0$.
+
+Applying the Exchange Lemma (lemma \ref{lem:exchange}) to $T_0$ and $S$ gives a spanning set $S'$ for which
+$$ T_0 \subseteq S' \quad \text{and} \quad \lvert S' \rvert = \lvert T_0 \rvert . $$
+But this implies that $T_0 = S'$ and so $T_0$ is a spanning set for $V$.
+
+But then $v$ is in $\operatorname{span}(T_0)$, implying that $T$ is linearly dependent. This is a contradiction, so in fact $\lvert T \rvert \leq \lvert S \rvert$.
+\end{proof}
+\end{corollary}
+
+\begin{theorem}{\cite{math2601_notes}}{}
+Let $V$ be a vector space over $\mathbb{F}$ with a finite spanning set and $T$ a linearly independent subset of $V$. Then there is a basis $B$ of $V$ which contains $T$.
+
+In other words, \textit{any linearly independent set can be extended to a basis (if there is a finite spanning set)}.
+
+\begin{proof}
+By the Exchange Lemma (lemma \ref{lem:exchange}), there is a finite spanning set $S'$ with $T \subseteq S'$.
+
+Consider the (non-empty) collection of all the linearly independent subsets of $S'$ that contain $T$.
+
+This collection must be finite (as $S'$ is), so there must be least one that is maximal; let $B$ be one such.
+
+But for every $\mathbf{v} \in S'$, the set $B \cup \{\mathbf{v}\}$ is linearly dependent (by maximality of $B$) and so $\mathbf{v} \in \operatorname{span}(B)$. Therefore
+$$ V = \operatorname{span}(S') \subseteq \operatorname{span}B) . $$
+So $B$, which by construction contains $T$, is a basis for $V$.
+\end{proof}
+\end{theorem}
+
+\begin{theorem}{Size of all bases \cite{math2601_notes}}{size_all_bases}
+If vector space $V$ admits a finite spanning set, it admits a finite basis and all bases contain the same number of elements.
+
+\begin{proof}
+By theorem \ref{th:existence_finite_basis}, $V$ must contain at least one finite basis, $\mathcal{B}_1$, say.
+
+Suppose that $\mathcal{B}_2$ is a second basis for $V$.
+
+Since $\mathcal{B}_2$ is linearly independent and $\mathcal{B}_1$ spans $V$, corollary \ref{cor:size_independent_spanning} says that $\lvert \mathcal{B}_2 \rvert \leq \lvert \mathcal{B}_1 \rvert$, so $\mathcal{B}_2$ is also finite.
+
+But then similarly, $\lvert \mathcal{B}_1 \rvert \leq \lvert \mathcal{B}_2 \rvert$, and this completes the proof.
+\end{proof}
+\end{theorem}
+
+\begin{definition}{Dimension \cite{math2601_notes}}{dimension}
+The \textbf{dimension} of a vector space $V$ is the size of a basis if $V$ has a finite basis or infinity otherwise.
+
+The notation is $\dim (V) = n$ or $\dim(V) = \infty$.
+
+If we need to emphasis the field, we use the notation $\dim_\mathbb{F}(V)$.
+\end{definition}
+
+\begin{lemma}{\cite{math2601_notes}}{}
+Let $V$ be a finite dimensional vector space and suppose $\dim (V) = n$.
+\begin{enumerate}[a)]
+	\item The number of elements in any spanning set is at least $n$.
+	\item The number of elements in any independent set is no more than $n$.
+	\item If $\operatorname{span} (S) = V$ and $\lvert S \rvert = n$ then $S$ is a basis.
+	\item If $S$ is a linearly independent set and $\lvert S \rvert = n$ then $S$ is a basis.
+\end{enumerate}
+\end{lemma}
+
+\begin{theorem}{}{}
+Let $V$ be a finite dimensional vector space over $\mathbb{F}$.
+
+Then $\mathcal{B} = \{ \mathbf{v}_1, \ldots, \mathbf{v}_n \}$ is a basis for $V$ if and only if every $\mathbf{x} \in V$ can be written uniquely as
+$$ \mathbf{x} = \sum_{i = 1}^{n} \alpha_i \mathbf{v}_i, \quad \alpha_i \in \mathbb{F} $$
+\end{theorem}
+
+hi
