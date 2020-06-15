@@ -89,13 +89,14 @@ $$ \det (AB) = \det (A) \det (B) . $$
 \subsection{Groups and fields}
 
 \begin{definition}{Group \cite{math2601_notes}}{group}
-A \textbf{group} is a a set, $G$, together with an operation $*$ (called the \textbf{group law} of $G$) that combines any two elements $a$ and $b$ to form another element, denoted $a * b$ or $ab$. To qualify as a group, the set and operation, $(G, *)$, must satisfy four requirements known as the \textbf{group axioms}:
-\begin{itemize}
- 	\item \textbf{Closure.} For all $a, b$ in $G$, the result of the operation, $a * b$, is also in $G$.
- 	\item \textbf{Associativity.} For all $a, b$ and $c$ in $G, (a * b) * c = a * (b * c)$.
- 	\item \textbf{Identity element.} There exists an element $e$ in $G$ such that, for every element $a$ in $G$, the equation $e * a = a * e = a$ holds. Such an element is unique, and thus one speaks of \textit{the} identity element.
- 	\item \textbf{Inverse element.} For each $a$ in $G$, there exists an element $b$ in $G$, commonly denoted $a^{-1}$ (or $-a$, if the operation is denoted ``$+$''), such that $a * b = b * a = e$, where $e$ is the identity element.
-\end{itemize}
+	A \textbf{group} is a a set, $G$, together with an operation $*$ (called the \textbf{group law} of $G$) that combines any two elements $a$ and $b$ to form another element, denoted $a * b$ or $ab$. To qualify as a group, the set and operation, $(G, *)$, must satisfy four requirements known as the \textbf{group axioms}:
+	\begin{itemize}
+		\item \textbf{Closure.} For all $a, b$ in $G$, the result of the operation, $a * b$, is also in $G$.
+		\item \textbf{Associativity.} For all $a, b$ and $c$ in $G, (a * b) * c = a * (b * c)$.
+		\item \textbf{Identity element.} There exists an element $e$ in $G$ such that, for every element $a$ in $G$, the equation $e * a = a * e = a$ holds. Such an element is unique, and thus one speaks of \textit{the} identity element.
+		\item \textbf{Inverse element.} For each $a$ in $G$, there exists an element $b$ in $G$, commonly denoted $a^{-1}$ (or $-a$, if the operation is denoted ``$+$''), such that $a * b = b * a = e$, where $e$ is the identity element.
+	\end{itemize}
+	If $G$ is a finite set then the \textbf{order} of $G$ is $\lvert G \rvert$, the number of elements in $G$.
 \end{definition}
 
 A group $G$ is \textbf{abelian} if the operation satisfies the \textbf{commutative law}
@@ -391,11 +392,95 @@ Let $V$ be a finite dimensional vector space and suppose $\dim (V) = n$.
 \end{enumerate}
 \end{lemma}
 
-\begin{theorem}{}{}
-Let $V$ be a finite dimensional vector space over $\mathbb{F}$.
+\begin{theorem}{\cite{math2601_notes}}{basis_written_uniquely}
+	Let $V$ be a finite dimensional vector space over $\mathbb{F}$.
 
-Then $\mathcal{B} = \{ \mathbf{v}_1, \ldots, \mathbf{v}_n \}$ is a basis for $V$ if and only if every $\mathbf{x} \in V$ can be written uniquely as
-$$ \mathbf{x} = \sum_{i = 1}^{n} \alpha_i \mathbf{v}_i, \quad \alpha_i \in \mathbb{F} $$
+	Then $\mathcal{B} = \{ \mathbf{v}_1, \ldots, \mathbf{v}_n \}$ is a basis for $V$ if and only if every $\mathbf{x} \in V$ can be written uniquely as
+	$$ \mathbf{x} = \sum_{i = 1}^{n} \alpha_i \mathbf{v}_i, \quad \alpha_i \in \mathbb{F} $$
+
+	\begin{proof}
+		Suppose that $\lvert S \rvert = q$; we shall prove the result by induction on $\lvert T \rvert = p \leq q$.
+
+		For the base case $p = 0$, simply choose $S' = S$.
+
+		Now suppose that the result is true for some specific non-negative integer $p < q$, and consider a linearly independent set
+		$$ T = \{ \mathbf{u}_1, \mathbf{u}_2, \ldots, \mathbf{u}_{p+1} \} . $$
+
+		As $\{ \mathbf{u}_1, \mathbf{u}_2, \ldots, \mathbf{u}_{p} \}$ is also linearly independent, there is a set
+		$$ S_1 = \{ \mathbf{u}_1, \mathbf{u}_2, \ldots, \mathbf{u}_{p}, \mathbf{v}_{p+1}, \ldots, \mathbf{v}_q \} $$
+		that spans $V$ by our inductive hypothesis. Thus
+		$$ S_2 = \{ \mathbf{u}_1, \mathbf{u}_2, \ldots, \mathbf{u}_{p}, \mathbf{u}_{p+1}, \mathbf{v}_{p+1}, \ldots, \mathbf{v}_q \} $$
+		is a linearly \textit{dependent} spanning set of $V$ (by the properties of dependent sets).
+
+		Now for $j = 1 \ldots q - p$, define the set
+		$$ S_2 = \{ \mathbf{u}_1, \mathbf{u}_2, \ldots, \mathbf{u}_{p}, \mathbf{u}_{p+1}, \mathbf{v}_{p+1}, \ldots, \mathbf{v}_{p+j} \} . $$
+		Let $T_k$ be the first of these sets that is linearly dependent. Then from our previous results we have
+			\begin{align*}
+				\mathbf{v}_{p+k} &\in \operatorname{span} (T_k \setminus \{ \mathbf{v}_{p+k} \}) \\
+				\implies \mathbf{v}_{p+k} &\in \operatorname{span} (S_2 \setminus \{ \mathbf{v}_{p+k} \}) \\
+				\\
+				\implies \operatorname{span} (S_2 \setminus \{ \mathbf{v}_{p+k} \}) &= \operatorname{span} (S_2) \\
+				&= V .
+			\end{align*}
+		Now take $S' = S_2 \setminus \{ \mathbf{v}_{p+k} \}$. Then we have shown that $S'$ spans $V$. Also, $T \subseteq S'$.
+
+		Moreoever, $S'$ has one element fewer than $S_2$, and as $S_2$ has one element more than $S_1$, we have that $\lvert S' \rvert = \lvert S_1 \rvert = q$. This completes the proof of the inductive step.
+
+		The result follows by induction.
+	\end{proof}
 \end{theorem}
 
-hi
+\subsubsection{Coordinates}
+
+\begin{definition}{\cite{math2601_notes}}{}
+	Suppose $V$ is a vector space of dimension $n$ over $\mathbb{F}$ and suppose $\mathcal{B} = \{ \mathbf{v}_1, \ldots, \mathbf{v}_n \}$ is an ordered basis for $V$ over $\mathbb{F}$.
+
+	If $\mathbf{v} \in V$ then $\mathbf{v} = \sum_{i = 1}^{n} \alpha_i \mathbf{v}_i$, with $\alpha_i$ unique, by theorem \ref{th:basis_written_uniquely}.
+
+	We call
+	$$ \boldsymbol{\alpha} = 
+		\begin{pmatrix}
+			\alpha_1 \\
+			\vdots \\
+			\alpha_n \\
+		\end{pmatrix}
+	$$
+	the \textbf{coordinate vector} of $\mathbf{v}$ with respect to $\mathcal{B}$, and refer to the $\alpha_i$ as the \textbf{coordinates} of $\mathbf{v}$.
+\end{definition}
+
+A useful notation is
+$$ \boldsymbol{\alpha} = [\mathbf{v}]_\mathcal{B} \quad
+	\text{if} \quad \mathbf{v} = \sum_{i = 1}^{n} \alpha_i \mathbf{v}_i . $$
+
+\subsubsection{Sums and Direct Sums}
+
+\begin{definition}{Sum of subspaces \cite{math2601_notes}}{sum_subspaces}
+	The \textbf{sum} $S + T$ of two subspaces is defined as
+	$$ S + T = \{ \mathbf{a} + \mathbf{b} : \mathbf{a} \in S, \mathbf{b} \in T \} . $$
+	If $S \cap T = \{ \mathbf{0} \}$, we call the sum a \textbf{direct sum} and denote it as $S \oplus T$.
+\end{definition}
+
+\begin{theorem}{\cite{math2601_notes}}{}
+	Suppose $S$ and $T$ are finite dimensional subspaces of vector space $V$. Then
+	$$ \dim (S) + \dim (T) = \dim (S + T) + \dim (S \cap T) . $$
+\end{theorem}
+
+\begin{corollary}{\cite{math2601_notes}}{}
+	For a direct sum of finite dimensional spaces,
+	$$ \dim (S) + \dim (T) = \dim (S \oplus T) . $$
+\end{corollary}
+
+\begin{lemma}{\cite{math2601_notes}}{}
+	Let $V$ be a finite dimensional vector space and $X \leq V$. Then there is a subspace $Y$ for which $V = X \oplus Y$.
+\end{lemma}
+
+\begin{definition}{External direct sum \cite{math2601_notes}}{external_direct_sum}
+	Let $X$ and $Y$ be two vector									 spaces over the same field $\mathbb{F}$. The Cartesian product $X \times Y$ can be made into a vector space over $\mathbb{F}$ with the obvious definitions
+	$$
+		(\mathbf{x}_1, \mathbf{y}_1) + (\mathbf{x}_2, \mathbf{y}_2)
+		= (\mathbf{x}_1 + \mathbf{x}_2, \mathbf{y}_1 + \mathbf{y}_2)
+	$$
+	and
+	$$ \lambda (\mathbf{x}_1, \mathbf{y}_1) = (\lambda \mathbf{x}_1, \lambda \mathbf{y}_1) . $$
+	With this structure we call the Cartesian product the \textbf{(external) direct sum} of $X$ and $Y$ --- $X \oplus Y$.
+\end{definition}
