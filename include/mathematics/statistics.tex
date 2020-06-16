@@ -213,7 +213,11 @@ In classical mechanics, the center of mass is an analogous concept to expectatio
 	$$
 \end{lemma}
 
-Usually, one is interested in computing $E(X^r)$ for $r \in \mathbb{N}$, which is called the $r$-th moment of $X$ \cite{math2901_notes}.
+Usually, one is interested in computing $E(X^r)$ for $r \in \mathbb{N}$, which is called the $r$-th moment of $X$. \cite{math2901_notes}
+
+In mathematics, a \textbf{moment} is a specific quantitative measure of the shape of a function.
+
+The concept is used in both mechanics and statistics. If the function represents physical density, then the zeroth moment is the total mass, the first moment divided by the total mass is the center of mass, and the second moment is the rotational inertia. If the function is a probability distribution, then the zeroth moment is the total probability (i.e. one), the first moment is the expected value, the second central moment is the variance, the third standardized moment is the skewness, and the fourth standardized moment is the kurtosis. The mathematical concept is closely related to the concept of moment in physics. \cite{wikipedia_moment_mathematics}
 
 \begin{lemma}{Linearity of expectation \cite{wikipedia_expected_value}}{lineary_expectation}
 	The expected value operator (or expectation operator) $E(\cdot)$ is linear in the sense that, for any random variables $X$ and $Y$, and a constant $a$,
@@ -222,4 +226,49 @@ Usually, one is interested in computing $E(X^r)$ for $r \in \mathbb{N}$, which i
 		E(aX) &= a E(X),
 	\end{align*}
 	whenever the right-hand side is well-defined.
+\end{lemma}
+
+\begin{definition}{Variance \cite{wikipedia_variance}}{variance}
+	The variance of a random variable $X$ is the expected value of the squared deviation from the mean of $X$, $\mu = E(X)$:
+	$$ \sigma^2 = \operatorname{Var}(X) = E((X - \mu)^2) . $$
+\end{definition}
+
+Intuitively, the variance measures on average how much the random variable deviates from its expectation/mean. \cite{math2901_notes}
+
+\begin{lemma}{Properties of variance \cite{math2901_notes}}{properties_variance}
+	Given a random variable $X$, for any constants $a, b \in \mathbb{R}$,
+	\begin{itemize}
+		\item $ \operatorname{Var}(X) = E(X^2) - (E(X))^2 $;
+		\item $ \operatorname{Var}(aX) = a^2 \operatorname{Var}(X) $;
+		\item $ \operatorname{Var}(X + b) = \operatorname{Var}(X) $;
+		\item $ \operatorname{Var}(b) = 0 $.
+	\end{itemize}
+\end{lemma}
+
+\begin{definition}{Standard deviation \cite{wikipedia_standard_deviation}}{standard_deviation}
+	Let $X$ be a random variable with mean value $\mu$:
+	$$ E(X) = \mu . $$
+	Here the operator $E$ denotes the average or expected value of $X$. Then the standard deviation of $X$ is the quantity
+	\begin{align*}
+		\sigma &= \sqrt{\operatorname{Var}(X)} \\
+		&= \sqrt{E((X - \mu)^2)} .
+	\end{align*}
+\end{definition}
+
+\begin{definition}{Moment-generating function \cite{wikipedia_moment_generating_function}}{moment_generating_function}
+	The moment-generating function of a random variable $X$ is
+	$$ M_X(t) = E(e^{tX}) , $$
+	wherever this expecation exists. In other words, the moment-generating function is the expectation of the random variable $e^{tX}$.
+\end{definition}
+
+The moment-generating function of $X$ exists if there exists $h > 0$ such that the $M_X(t)$ is finite for $x \in [-h, h]$.
+
+\begin{lemma}{Calculations of moments \cite{wikipedia_moment_generating_function}}{calculation_moments}
+	The moment-generating function is so called because if it exists on an open interval around $t = 0$, then it is the exponential generating function of the moments of the probability distribution:
+	\begin{align*}
+		m_{n} &= E\left(X^{n}\right) \\
+		&= M_{X}^{(n)}(0) \\
+		&= \left.{\frac {d^{n}M_{X}}{dt^{n}}}\right|_{t=0} .
+	\end{align*}
+	That is, with $n$ being a nonnegative integer, the $n$th moment about 0 is the $n$th derivative of the moment generating function, evaluated at $t = 0$.	
 \end{lemma}
