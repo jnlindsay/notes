@@ -272,3 +272,53 @@ The moment-generating function of $X$ exists if there exists $h > 0$ such that t
 	\end{align*}
 	That is, with $n$ being a nonnegative integer, the $n$th moment about 0 is the $n$th derivative of the moment generating function, evaluated at $t = 0$.	
 \end{lemma}
+
+\begin{theorem}{\cite{math2901_notes}}{}
+	Let $X$ and $Y$ be two random variables such that their respective moment-generating functions $M_X(t)$ and $M_Y(t)$ exist.
+
+	If both moment-generating functions are equal, then the cumulative distributive functions of $X$ and $Y$ are also equal, i.e.
+
+	\begin{align*}
+		M_X(t) &= M_Y(t) \\
+		\implies F_X(x) &= F_Y(x) \quad \text{for all } x \in \mathbb{R}
+	\end{align*}
+\end{theorem}
+
+The above theorem tells you that if the moment generating
+function exists then it uniquely characterises the cumulative
+distribution function of the random variable. \cite{math2901_notes}
+
+Note that if the moment-generating function of a random variable exists then all moments can be computed; the converse is not true in general.
+
+\begin{lemma}{Markov's inequality \cite{wikipedia_markovs_inequality}}{markovs_inequality}
+	If $X$ is a nonnegative random variable and $a > 0$, then the probability that $X$ is at least $a$ is at most the expectation of $X$ divided by $a$:
+
+	$$ \operatorname {P} (X\geq a)\leq {\frac {\operatorname {E} (X)}{a}} . $$
+\end{lemma}
+
+\begin{lemma}{Chebyshev's inequality \cite{wikipedia_chebyshevs_inequality}}{chebyshevs_inequality}
+	Let $X$ (integrable) be a random variable with finite expected value $\mu$ and finite non-zero variance $\sigma^2$. Then for any real number $k > 0$,
+
+	$$ P(\lvert X-\mu \rvert \geq k \sigma) \leq \frac {1}{k^{2}} . $$
+\end{lemma}
+
+\begin{definition}{Convex/concave function \cite{math2901_notes}}{convex_function}
+	Let $X$ be a convex set in a real vector space and let $f : X \to \mathbb{R}$ be a function.
+	\begin{itemize}
+		\item $f$ is called \textbf{convex} if $\forall x_1, x_2 \in X, \forall t \in [0, 1]$:
+		$$ f(t x_1 + (1 - t) x_2) \leq t f(x_1) + (1 - t) f(x_2) $$
+
+		\item $f$ is \textbf{strictly convex} if $\forall x_1 \neq x_2 \in X, \forall t \in (0, 1)$:
+		$$ f(t x_1 + (1 - t) x_2) < t f(x_1) + (1 - t) f(x_2) $$
+
+		\item A function $f$ is said to be (strictly) concave if $-f$ is (strictly) convex.
+	\end{itemize}	
+\end{definition}
+
+\begin{lemma}{Jensen's inequality \cite{wikipedia_jensens_inequality}}{jensens_inequality}
+	If $X$ is a random variable and $\phi$ is a convex function, then
+	$$ \phi(E(X)) \leq E(\phi(X)) . $$
+
+	If $\phi$ is a concave function, then
+	$$ \phi(E(X)) \geq E(\phi(X)) . $$
+\end{lemma}
