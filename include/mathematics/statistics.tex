@@ -127,3 +127,99 @@ $$
 = \dfrac{\mathbb{P}(B \vert A_j) \mathbb{P}(A_j)}{\sum_{i=1}^k \mathbb{P}(B|A_i) \mathbb{P}(A_i)}
 $$
 \end{theorem}
+
+\subsection{Statistics}
+
+\begin{definition}{Random variable \cite{wikipedia_random_variable}}{random_variable}
+	A \textbf{random variable} is a measurable function $X : \Omega \to E$ from a set of possible outcomes $\Omega$ to a measurable space $E$. The technical axiomatic definition requires $\Omega$ to be a sample space of a probability triple $(\Omega, \mathcal{F}, P)$.
+
+	The probability that $X$ takes on a vaue in a measurable set $S \subseteq E$ is written as
+	$$ P(X \in S) = P(\{ \omega \in \Omega \vert X(\omega) \in S \}) . $$
+\end{definition}
+
+When the image (or range) of $X$ is countable, the random variable is called a \textbf{discrete random variable} and its distribution is a discrete probability distribution, i.e. can be described by a probability mass function that assigns a probability to each value in the image of $X$. If the image is uncountably infinite then $X$ is called a \textbf{continuous random variable}. In the special case that it is absolutely continuous, its distribution can be described by a probability density function, which assigns probabilities to intervals; in particular, each individual point must necessarily have probability zero for an absolutely continuous random variable. Not all continuous random variables are absolutely continuous, for example a mixture distribution. Such random variables cannot be described by a probability density or a probability mass function.
+
+\begin{definition}{Cumulative distribution function \cite{wikipedia_cdf}}{cdf}
+	The \textbf{cumulative distribution function} of a real-valued random variable $X$ is the function given by
+	$$ F_X(x) = P(X \leq x) , $$
+	where the right-hand side represents the probability that the random variable $X$ takes on a value less than or equal to $x$.
+	
+	The probability that $X$ lies in the semi-closed interval $(a, b]$, where $a < b$, is therefore
+	$$ P(a < X \leq b) = F_X(b) - F_X(a) . $$
+\end{definition}
+
+Every cumulative distribution function $F_X$ is non-decreasing and right-continuous, which makes it a càdlàg function. Furthermore,
+$$ \lim_{x \to -\infty} F_X(x) = 0, \quad \lim_{x \to +\infty} F_X(x) = 1 . $$
+
+Also note that
+$$ P(X = x) = F_X(x) - F_X(x-) , $$
+where $F_X(x-)$ is shorthand notation for $\lim_{n \to \infty} F_X(x - 1/n)$. That is, the probability of $X = x$ is the size of the jump/change of the cumulative distribution function at the point $x$.
+
+\begin{definition}{Probability mass function \cite{wikipedia_probability_mass_function}}{probability_mass_function}
+	Probability mass function is the probability distribution of a discrete random variable, and provides the possible values and their associated probabilities. It is the function $p : \mathbb{R} \to [0, 1]$ defined by
+	$$ p_X(x_i) = P(X = x_i) $$
+	for $-\infty < x < \infty$, where $P$ is a probability measure; $p_X(x)$ can also be simplified as $p(x)$.
+
+	The probabilities associated with each possible values must be positive and sum up to 1. For all other values, the probabilities need to be 0:
+	\begin{align*}
+		\sum p_X(x_i) &= 1 ; \\
+		p(x_i) &> 0 ; \\
+		p(x) &= 0 \quad \text{for all other } x .
+	\end{align*}
+\end{definition}
+
+Thinking of probability as mass helps to avoid mistakes, since the physical mass is conserved as is the total probability for all hypothetical outcomes $x$.
+
+\begin{definition}{Probability density function \cite{wikipedia_probability_density_function}}{probability_density_function}
+	A random variable $X$ with values in a measurable space $(\mathcal{X}, \mathcal{A})$ (usually $\mathbb{R}^n$ with the Borel sets as a measurable subsets) has as probability distribution the measure $X_* P$ on $(\mathcal{X}, \mathcal{A})$: the \textbf{density} of $X$ with respect to a reference measure $\mu$ on $(\mathcal{X}, \mathcal{A})$ is the Radon-Nikodym derivative
+	$$ f = \dfrac{dX_* P}{d \mu} . $$
+	That is, $f$ is any measurable function with the property that
+	$$ P(X \in A) = \int_{X^{-1}A} dP = \int_A f d\mu $$
+	for any measurable set $A \in \mathcal{A}$.
+\end{definition}
+
+For a function $f : \mathbb{R} \to \mathbb{R}$ to be a valid density function, the function $f$ must satisfy the following properties \cite{math2901_notes}:
+\begin{enumerate}
+	\item for all $x \in \mathbb{R}$, $f(x) \geq 0$;
+	\item $\int_{-\infty}^{+\infty} f(x) dx = 1$.
+\end{enumerate}
+
+\begin{definition}{Expected value \cite{wikipedia_expected_value}}{expected_value}
+	\begin{itemize}
+
+		\item \textsc{Discrete case.} Let $X$ be a random variable with a finite number of finite outcomes $x_1, x_2, \ldots, x_k$ occurring with probabilities $p_1, p_2, \ldots, p_k$, repsectively. The \textbf{expectation} of $X$ is defined as
+		$$ E(X) = \sum_{i=1}^k x_i p_i. $$
+		Since the sum of all probabilites $p_i$ is 1, the expected value is the weighted average of the $x_i$ values, with the $p_i$ values being the weights.
+	
+		If all outcomes $x_{i}$ are equiprobable (that is, $p_{1} = p_{2} = \cdots = p_{k}$), then the weighted average turns into the simple average. If the outcomes $x_{i}$ are not equiprobable, then the simple average must be replaced with the weighted average, which takes into account the fact that some outcomes are more likely than the others.
+		
+		\item \textsc{Absolutely continuous case.} If $X$ is a random variable with a probability density function of $f$, then the expected value is deinfed as the Lebesgue integral
+		$$ E(X) = \int_{\mathbb{R}} x f(x) dx , $$
+		where the values on both sides are well defined or not well defined simultaneously.
+
+	\end{itemize}
+\end{definition}
+
+In classical mechanics, the center of mass is an analogous concept to expectation. For example, suppose $X$ is a discrete random variable with values $x_i$ and corresponding probabilities $p_i$. Now consider a weightless rod on which are placed weights, at locations $x_i$ along the rod and having masses $p_i$ (whose sum is 1). The point at which the rod balances is $E(X)$ \cite{wikipedia_expected_value}.
+
+\begin{lemma}{Expectation of transformed variable \cite{math2901_notes}}{expectation_transformed_variable}
+	Suppose $g : \mathbb{R} \to \mathbb{R}$. Then the expectation of the transformed random variable $g(X)$ is
+	$$
+	E(g(X)) = 
+		\begin{cases}
+			\int_{\mathbb{R}} g(x) f_X(x) dx \quad & \text{\textsc{Continuous case.}} \\
+			\sum_x g(x) P(X = x) \quad & \text{\textsc{Discrete case.}}
+		\end{cases}
+	$$
+\end{lemma}
+
+Usually, one is interested in computing $E(X^r)$ for $r \in \mathbb{N}$, which is called the $r$-th moment of $X$ \cite{math2901_notes}.
+
+\begin{lemma}{Linearity of expectation \cite{wikipedia_expected_value}}{lineary_expectation}
+	The expected value operator (or expectation operator) $E(\cdot)$ is linear in the sense that, for any random variables $X$ and $Y$, and a constant $a$,
+	\begin{align*}
+		E(X + Y) &= E(X) + E(Y); \\
+		E(aX) &= a E(X),
+	\end{align*}
+	whenever the right-hand side is well-defined.
+\end{lemma}
