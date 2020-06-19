@@ -671,3 +671,34 @@ $$ [T(\mathbf{v})]_\mathcal{C} = [T]_{\mathcal{C}}^{\mathcal{B}} [\mathbf{v}]_{\
 
 The point here is that a change of basis matrix can be used to change coordinates:
 $$ [\mathbf{v}]_\mathcal{C} = [\operatorname{id}]_\mathcal{C}^\mathcal{B} [\mathbf{v}]_\mathcal{B} . $$
+
+We can visualise a change of basis with a \textbf{commutative diagram} like so:
+$$
+	\begin{tikzcd}[row sep=huge, column sep=huge]
+		\begin{tabular}{c}
+			basis $\mathcal{S}$ \\
+			$T : V$
+		\end{tabular} \arrow[r, "A"]
+			& \begin{tabular}{c}
+				basis $\mathcal{S}'$ \\
+				$W$
+			\end{tabular} \\
+		\begin{tabular}{c}
+			$T : V$ \\
+			basis $\mathcal{B}$
+		\end{tabular} \arrow[u, "P"] \arrow[r, "M"']
+			&  \begin{tabular}{c}
+				$W$ \\
+				basis $\mathcal{C}$
+			\end{tabular} \arrow[u, "Q"']
+	\end{tikzcd}
+$$
+
+In the diagram,
+\begin{enumerate}[a)]
+	\item $\mathcal{S}$ and $\mathcal{S}'$ are standard bases.
+	\item The vertical arrows represent identity maps, so $P = [\operatorname{id}_V]_\mathcal{S}^\mathcal{B}$ and $Q = [\operatorname{id}_W]_{\mathcal{S}'}^\mathcal{C}$.
+	\item The matrix $A = [T]_{\mathcal{S}'}^\mathcal{S}$, which we assume is easy to find.
+	\item The matrix $M = [T]_\mathcal{C}^\mathcal{B}$, and
+	\item $M = Q^{-1} A P$, i.e. $[T]_\mathcal{C}^\mathcal{B} = [\operatorname{id}_W]_\mathcal{C}^{\mathcal{S}'} [T]_{\mathcal{S}'}^\mathcal{S} [\operatorname{id}_V]_\mathcal{S}^\mathcal{B}$.
+\end{enumerate}
