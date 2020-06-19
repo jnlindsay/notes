@@ -604,3 +604,28 @@ The isomorphism is an equivalence relation on vector spaces:
 
 \subsubsection{Spaces associated to matrices}
 
+Let $A$ be a $m \times n$ matrix over field $\mathbb{F}$, and define a map $T : \mathbb{F}^n \to \mathbb{F}^m$ by $T(\mathbf{x}) = A \mathbf{x}$.
+
+The kernel, image, nullity, and rank of $A$ are by definition the same as those of this map $T$.
+
+Now suppose $A$ has columns $\mathbf{c}_1, \ldots, \mathbf{c}_n$ (all in $\mathbb{F}^m$). Then
+\begin{align*}
+	\operatorname{im}(A) &= \{ A \mathbf{x} : \mathbf{x} \in \mathbb{F}^n \} \\
+	&= \{ x_1 \mathbf{c}_1 + \cdots + x_n \mathbf{c}_n : x_i \in \mathbb{F} \} \\
+	&= \operatorname{span}(\{ \mathbf{c}_1, \ldots, \mathbf{c}_n \})
+\end{align*}
+That is, $\operatorname{im}(A)$ is the space spanned by the columns of $A$: the \textbf{column space} of $A$, $\operatorname{col}(A)$, a subspace of $\mathbb{F}^m$.
+
+The rank of $A$ is thus the dimension of the column space of $A$.
+
+As an immediate corollary of the Rank-Nullity Theorem \cite{th:rank_nullity} for maps, we have the Rank-Nullity Theorem for matrices:
+
+\begin{theorem}{Rank-Nullity Theorem (matrices) \cite{math2601_notes}}{rank_nullity_matrices}
+	For $A \in M_{m,n}(\mathbb{F})$, $\operatorname{rank}(A) + \operatorname{nullity}(A) = n$, the number of columns of $A$.
+\end{theorem}
+
+The \textbf{row space} of $A$, $\operatorname{row}(A)$, is defined similarly as the space spanned by the rows: it is a subspace of $\mathbb{F}^n$.
+
+\begin{theorem}{\cite{math2601_notes}}{}
+	Let $A \in M_{m,n}(\mathbb{F})$. The spaces $\operatorname{row}(A)$ and $\operatorname{col}(A)$ have the same dimension.
+\end{theorem}
