@@ -629,3 +629,45 @@ The \textbf{row space} of $A$, $\operatorname{row}(A)$, is defined similarly as 
 \begin{theorem}{\cite{math2601_notes}}{}
 	Let $A \in M_{m,n}(\mathbb{F})$. The spaces $\operatorname{row}(A)$ and $\operatorname{col}(A)$ have the same dimension.
 \end{theorem}
+
+\subsubsection{Matrix of a linear map}
+
+\begin{theorem}{\cite{math2601_notes}}{linear_unique_matrix}
+	Let $V, W$ be two finite dimensional vector spaces over $\mathbb{F}$. Suppose $\dim (V) = q$ and $V$ has basis $\mathcal{B}$ and also $\dim (W) = p$ and $W$ has basis $\mathcal{C}$.
+
+	If $T : V \to W$ is linear then there is a unique $A \in M_{p,q}(\mathbb{F})$ with
+	\begin{equation}
+		[T(\mathbf{v})]_{\mathcal{C}} = A [\mathbf{v}]_{\mathcal{B}} . \label{matrix_linear_map}
+	\end{equation}
+
+	Conversely, for any $A \in M_{p,q}(\mathbb{F})$, equation \eqref{matrix_linear_map} defines a unique linear map from $V$ to $W$.
+\end{theorem}
+
+We call $A$ in the above theorem \ref{th:linear_unique_matrix} the \textbf{matrix of $T$ with respect to $\mathcal{B}$ and $\mathcal{C}$}.
+
+A useful notation is to denote this matrix by $[T]_{\mathcal{C}}^{\mathcal{B}}$ and then equation \eqref{matrix_linear_map} takes the form
+$$ [T(\mathbf{v})]_\mathcal{C} = [T]_{\mathcal{C}}^{\mathcal{B}} [\mathbf{v}]_{\mathcal{B}} . $$
+
+\begin{corollary}{\cite{math2601_notes}}{}
+	If $\dim (V) = q$ and $\dim (W) = p$ then $\dim (L(V, W)) = pq$.
+\end{corollary}
+
+\begin{theorem}{\cite{math2601_notes}}{}
+	Let $T : V \to W$ and $S : W \to X$ be linear maps between vector spaces and suppose $V$, $W$, and $X$ have bases $\mathcal{A}$, $\mathcal{B}$, and $\mathcal{C}$ respectively.
+
+	Then the matrix of $S \circ T : V \to X$ is the product of the matrices of $T$ and $S$, all taken with respect to the appropriate bases:
+	$$ [S \circ T]_\mathcal{C}^\mathcal{A} = [S]_\mathcal{C}^\mathcal{B} \cdot [T]_\mathcal{B}^\mathcal{A} . $$
+\end{theorem}
+
+\begin{corollary}{\cite{math2601_notes}}{}
+	If $T : V \to W$ is linear and invertible, the matrix of $T^{-1}$ is the inverse of the matrix of $T$.
+
+	Thus the group of invertible linear maps on an $n$-dimensional vector space over $\mathbb{F}$ is isomorphic to $\operatorname{GL}(n, \mathbb{F})$.
+\end{corollary}
+
+\begin{definition}{Change of basis \cite{math2601_notes}}{change_basis}
+	If vector space $V$ has two bases $\mathcal{B}$ and $\mathcal{C}$, the matrix $[\operatorname{id}]_\mathcal{C}^\mathcal{B}$ of the identity map is called the \textbf{change of basis matrix (from $\mathcal{B}$ to $\mathcal{C}$)}.
+\end{definition}
+
+The point here is that a change of basis matrix can be used to change coordinates:
+$$ [\mathbf{v}]_\mathcal{C} = [\operatorname{id}]_\mathcal{C}^\mathcal{B} [\mathbf{v}]_\mathcal{B} . $$
