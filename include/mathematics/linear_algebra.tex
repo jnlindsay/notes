@@ -484,3 +484,123 @@ $$ \boldsymbol{\alpha} = [\mathbf{v}]_\mathcal{B} \quad
 	$$ \lambda (\mathbf{x}_1, \mathbf{y}_1) = (\lambda \mathbf{x}_1, \lambda \mathbf{y}_1) . $$
 	With this structure we call the Cartesian product the \textbf{(external) direct sum} of $X$ and $Y$ --- $X \oplus Y$.
 \end{definition}
+
+\subsection{Linear transformations}
+
+\begin{definition}{Linear transformation \cite{math2601_notes}}{linear_transformation}
+	Suppose $V$ and $W$ are vector spaces over the field $\mathbb{F}$. A function $T : V \to W$ is a \textbf{linear transformation} or a \textbf{linear map} (or simply \textbf{linear}) if
+	\begin{itemize}
+		\item $T(\mathbf{u} + \mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v})$, and
+		\item $T(\lambda \mathbf{v}) = \lambda T(\mathbf{u})$,
+	\end{itemize}
+	for all $\mathbf{u}, \mathbf{v} \in V$ and for all $\lambda \in \mathbb{F}$.
+\end{definition}
+
+Note that we only define linear maps between vector spaces over the same field.
+
+\begin{lemma}{\cite{math2601_notes}}{}
+	Let $V$ and $W$ be vector spaces over field $\mathbb{F}$.
+	\begin{enumerate}[a)]
+		\item The identity map $\operatorname{id} : V \to V$ defined by $\operatorname{id} (\mathbf{v}) = \mathbf{v}$ is linear.
+		\item If $T : V \to W$ is linear then $T(\mathbf{0}) = \mathbf{0}$ and $T(-\mathbf{v}) = -T (\mathbf{v})$.
+	\end{enumerate}
+\end{lemma}
+
+\begin{lemma}{Linearity test \cite{math2601_notes}}{linearity_test}
+	A function $T : V \to W$ between vector spaces over the same field $\mathbb{F}$ is linear if and only if
+	$$ T(\lambda \mathbf{u} + \mathbf{v}) = \lambda T(\mathbf{u}) + T(\mathbf{v}) $$
+	for all $\lambda \in \mathbb{F}$ and $\mathbf{u},\mathbf{v} \in V$.
+\end{lemma}
+
+\begin{theorem}{\cite{math2601_notes}}{}
+	Let $V$ and $W$ be two vector spaces over field $\mathbb{F}$. The set $L(V, W)$ of all linear transformations from $V$ to $W$ is a vector space under the operations
+	$$
+		(S + T)(\mathbf{v}) = S(\mathbf{v}) + T(\mathbf{v}), \qquad
+		(\lambda S)(\mathbf{v}) = \lambda S(\mathbf{v}) .
+	$$
+\end{theorem}
+
+\begin{lemma}{\cite{math2601_notes}}{}
+	Let $T : V \to W$ and $S : W \to X$ be linear maps between vector spaces. Then $S \circ T : V \to X$ is also linear.
+\end{lemma}
+
+\begin{lemma}{\cite{math2601_notes}}{}
+	Let $T : V \to W$ be an invertible linear map between two vector spaces over field $\mathbb{F}$. Then $T^{-1} : W \to V$ is linear.
+\end{lemma}
+
+\begin{theorem}{\cite{math2601_notes}}{}
+	The invertible linear maps in $L(V, V)$ form a group under composition.
+\end{theorem}
+
+\begin{lemma}{Linearity of taking coordinates \cite{math2601_notes}}{linearity_taking_coordinates}
+	Let $V$ be a (finite-dimensional) vector space over $\mathbb{F}$ with a basis $\mathcal{B} = \{ \mathbf{v}_1, \ldots, \mathbf{v}_p \}$.
+
+	Then the function $S : V \to \mathbb{F}^p$ defined by $S(x) = [x]_{\mathcal{B}}$ is linear.
+\end{lemma}
+
+\subsubsection{Kernal and image}
+
+\begin{definition}{Kernel and image \cite{math2601_notes}}{kernel_image}
+	Let $T : V \to W$ be a linear transformation.
+	
+	The \textbf{kernel} (or \textbf{nullspace}) of $T$ is the set
+	$$ \operatorname{ker}(T) = \{ \mathbf{v} \in V : T(\mathbf{v}) = \mathbf{0} \} . $$
+
+	If $U \leq V$ then the \textbf{image} of $U$ is the set
+	$$ T(U) = \{ T(\mathbf{u}) : \mathbf{u} \in U \} . $$
+
+	We also define the image of $T$ (or \textbf{range} $T$), $\operatorname{im}(T)$ as the image of all of $V$; that is, $\operatorname{im}(T) = T(V)$.
+\end{definition}
+
+\begin{theorem}{\cite{math2601_notes}}{}
+	Let $T : V \to W$ be a linear transformation between vector spaces over $\mathbb{F}$ and $U \leq V$. Then
+	\begin{enumerate}[a)]
+		\item $\operatorname{ker}(T)$ is a subspace of $V$.
+		\item $T(U)$ is a subspace of $W$, and so $\operatorname{im}(T) \leq W$.
+		\item If $U$ is finite-dimensional, so is $T(U)$, so if $V$ is finie dimensional, so is $\operatorname{im}(T)$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{definition}{Nullity and rank \cite{math2601_notes}}{nullity_rank}
+	If $T$ is a linear transformation, then the dimension of the kernel of $T$ is called the \textbf{nullity} of $T$, and the dimension of its image is called the \textbf{rank} of $T$.
+\end{definition}
+
+\begin{lemma}{\cite{math2601_notes}}{}
+	A linear map $T : V \to W$ is one-to-one if and only if $\operatorname{nullity}(T) = 0$.
+\end{lemma}
+
+\begin{theorem}{Rank-Nullity Theorem \cite{math2601_notes}}{rank_nullity}
+	If $V$ is a finite dimensional vectors space over $\mathbb{F}$ and $T : V \to W$ is linear then
+	$$ \operatorname{rank}(T) + \operatorname{nullity}(T) = \dim (V) . $$
+\end{theorem}
+
+\begin{theorem}{}{}
+	Let $V, W$ be vector spaces over $\mathbb{F}$ with $\dim (V) = \dim (W)$ finite and $T : V \to W$ be linear. The following are equivalent:
+	\begin{enumerate}[a)]
+		\item $T$ is invertible (bijective).
+		\item $T$ is one-to-one (injective), i.e. $\operatorname{nullity}(T) = 0$.
+		\item $T$ is onto (surjective), i.e. $\operatorname{rank}(T) = \dim (V)$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{definition}{Isomorphism (vector spaces) \cite{math2601_notes}}{isomorphism_vector_spaces}
+	An invertible linear map $T : V \to W$ is called an \textbf{isomorphism} of the vector spaces $V$ and $W$.
+	
+	If there is an isomorphism between $V$ and $W$ we call the two spaces \textbf{isomorphic}.
+\end{definition}
+
+Note that this isomorphism isn't strictly the same as for groups.
+
+The isomorphism is an equivalence relation on vector spaces:
+\begin{itemize}
+	\item \textbf{Reflexive}: The identity map $\operatorname{id} : V \to V$ is an isomorphism from $V$ to itself.
+	\item \textbf{Symmetric}: If $T : V \to W$ is an isomorphism, then $T^{-1}$ is an isomorphism from $W$ to $V$.
+	\item \textbf{Transitive}: If $T : V \to W$ and $S : W \ to X$ are isomorphism, then $S \circ T$ is an isomorphism from $V$ to $X$.
+\end{itemize}
+
+\begin{theorem}{\cite{math2601_notes}}{}
+	Finite dimension vector spaces $V$ and $W$ over $\mathbb{F}$ are isomorphic if and only if they have the same dimension.
+\end{theorem}
+
+\subsubsection{Spaces associated to matrices}
+
