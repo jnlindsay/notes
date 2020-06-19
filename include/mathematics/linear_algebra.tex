@@ -538,7 +538,7 @@ Note that we only define linear maps between vector spaces over the same field.
 	Then the function $S : V \to \mathbb{F}^p$ defined by $S(x) = [x]_{\mathcal{B}}$ is linear.
 \end{lemma}
 
-\subsubsection{Kernal and image}
+\subsubsection{Kernel and image}
 
 \begin{definition}{Kernel and image \cite{math2601_notes}}{kernel_image}
 	Let $T : V \to W$ be a linear transformation.
@@ -702,3 +702,62 @@ In the diagram,
 	\item The matrix $M = [T]_\mathcal{C}^\mathcal{B}$, and
 	\item $M = Q^{-1} A P$, i.e. $[T]_\mathcal{C}^\mathcal{B} = [\operatorname{id}_W]_\mathcal{C}^{\mathcal{S}'} [T]_{\mathcal{S}'}^\mathcal{S} [\operatorname{id}_V]_\mathcal{S}^\mathcal{B}$.
 \end{enumerate}
+
+\begin{lemma}{\cite{math2601_notes}}{}
+	Let $T : V \to W$ be a linear map between finite dimensional vector spaces over $\mathbb{F}$ and $A$ its matrix with respect to any two bases in $V$ and $W$.
+
+	Then
+	$$ \operatorname{nullity} (A) = \operatorname{nullity} (T) \quad \text{and} \quad \operatorname{rank} (A) = \operatorname{rank} (T) . $$
+\end{lemma}
+
+\begin{definition}{Invariant subspace \cite{math2601_notes}}{invariant_subspace}
+	Let $V$ be a vector space over $\mathbb{F}$ and $T : V \to V$ a linear map.
+
+	If $X \leq V$ such that $T(X) \leq X$, we call $X$ an \textbf{invariant subspace of $T$}.
+\end{definition}
+
+\begin{theorem}{\cite{math2601_notes}}{}
+	Let $T : V \to V$ be a linear map on a finite dimensional vector space. Suppose $V = X \oplus Y$ with both $X$ and $Y$ invariant subspaces of $T$ with dimensions $p$ and $q$ respectively.
+
+	Then there is a basis $\mathcal{B}$ for $V$ in which the matrix $[T]_\mathcal{B}^\mathcal{B}$ of $T$ is of the form
+	$$ 
+		[T]_\mathcal{B}^\mathcal{B} =
+		\begin{pmatrix}
+			A & \mathbf{0} \\
+			\mathbf{0} & B
+		\end{pmatrix},
+	$$
+	with $A$ a $p \times p$ and $B$ a $q \times q$ matrix.
+\end{theorem}
+
+\subsubsection{Isomorphisms}
+
+\begin{theorem}{\cite{math2601_notes}}{}
+	Let $T : V \to W$ be a linear map between finite-dimensional spaces, and let $A$ be the matrix of $T$ (with respect to any bases).
+
+	Then $T$ is invertible if and only if $A$ is invertible.
+
+	If this is the case, then the matrix of $T^{-1}$ (with respect to the same bases) is $A^{-1}$.
+\end{theorem}
+
+\begin{theorem}{Normal form \cite{math2601_notes}}{normal_form}
+	Let $T : V \to W$ be a linear map between vector spaces over $\mathbb{F}$ where $\dim V = p$, $\dim W = q$, and $\operatorname{rank}(T) = r$.
+
+	Then there are bases $\mathcal{B}$ of $V$ and $\mathcal{C}$ of $W$ with respect to which the matrix of $T$ takes the form
+	$$
+		N_{q,p;r} =
+		\begin{pmatrix}
+			I_r & \mathbf{0} \\
+			\mathbf{0} & \mathbf{0}
+		\end{pmatrix}
+		\in M_{q,p} (\mathbb{F}) ,
+	$$
+	where $I_r$ is the $r \times r$ identity matrix and $\mathbf{0}$ are suitably sized zero matrices.
+\end{theorem}
+
+\begin{corollary}{\cite{math2601_notes}}{}
+	Let $A \in M_{q,p} (\mathbb{F})$ be rank $r$. Then there is a $q \times q$ invertible matrix $Q$ and a $p \times p$ invertible matrix $P$ such that
+	$$ Q^{-1} A P = N_{q,p;r} . $$
+\end{corollary}
+
+The $q \times p$ rank $r$ matrix $N_{q,p;r}$ in these resuls is called the \textbf{normal form} of the map or matrix.
