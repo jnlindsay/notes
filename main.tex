@@ -91,7 +91,7 @@
 	before skip=10pt,after skip=10pt, parbox=false,
 	borderline west={0.5mm}{0pt}{black}}
 
-% REDEFINITIONS
+% DEFINITIONS & REDEFINITIONS
 
 % Credit to @StefanKottwitz on Tex Stack Exchange
 % This redefinition allows matrices to be stretched on the fly like so:
@@ -103,6 +103,10 @@
   \let\@ifnextchar\new@ifnextchar
   \array{*\c@MaxMatrixCols c}}
 \makeatother
+
+% Credit to @Mico on Tex Stack Exchange
+% This definition allows for larger fractions
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
 
 % #################################################################
 
@@ -120,6 +124,8 @@ Notes\\
 \newpage
 
 \tableofcontents
+
+\sloppy
 
 \include{include/mathematics}
 %\include{include/computing}
