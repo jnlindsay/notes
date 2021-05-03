@@ -1,0 +1,266 @@
+\chapter{Abstract algebra}
+
+\section{Cheat sheet}
+
+$$ \text{fields} \subset \text{EDs} \subset \text{PIDs} \subset \text{UFDs}
+    \subset \text{integral domains} $$
+
+Rings:
+    \begin{itemize}
+        \item Not commutative: $M_n(\mathbb{R})$ ($n \times n$ matrices over $\mathbb{R}$)
+        \item Quotient rings:
+            \begin{itemize}
+                \item Definition:
+                    $$ R/I = \{ [r] = r + I : r \in R \} $$
+                \item Intuition:
+                    $$ \frac{\mathbb{Q}[x]}{x^4 - 2} = \{ \text{polynomials of degree $<4$, or reduced with $x^4 - 2 \equiv 0$} \} $$
+                \item $R/R = \{0\}$
+                \item $R/\{0\} = R$
+            \end{itemize}
+    \end{itemize}
+
+Ideals:
+    \begin{itemize}
+        \item Prove: nonempty, closed under subtraction, closed under multiplication by all elements of $R$
+        \item $\mathbb{Z}$: $n\mathbb{Z}$
+        \item $\mathbb{Z}[i]$: $(a + bi) \mathbb{Z}[i]$
+        \item Maximal ideals:
+            \begin{itemize}
+                \item $2\mathbb{Z}$, but not $10\mathbb{Z}$, in $\mathbb{Z}$
+            \end{itemize}
+        \item Prime ideal that is not maximal: $\{0\}$ in $\mathbb{Z}$ (see propositions \ref{maximal-ideal-field} and \ref{prime-ideal-domain})
+        \item Commutative ring that is not a PID, but in which every ideal is principal: $\mathbb{Z}/4\mathbb{Z}$
+    \end{itemize}
+
+Fields:
+    \begin{itemize}
+        \item $\mathbb{Q}, \mathbb{R}, \mathbb{C}$ but \textit{not} $\mathbb{Z}$ (every element must have an inverse)
+        \item $\mathbb{F}_p = \mathbb{Z}/p\mathbb{Z}$, where $p$ is prime
+    \end{itemize}
+    
+Field extensions:
+    \begin{itemize}
+        \item Finitely generated but not finite: $\mathbb{Q}(\pi)/\mathbb{Q}$
+    \end{itemize}
+    
+Fraction fields:
+    \begin{itemize}
+        \item $\mathbb{Q} = \operatorname{Frac}(\mathbb{Z})$
+        \item $\mathbb{Q}[i] = \operatorname{Frac}(\mathbb{Z}[i])$
+    \end{itemize}
+
+Euclidean domains:
+    \begin{itemize}
+        \item \underline{Not a field}: $\mathbb{Z}$
+    \end{itemize}
+
+Principal ideal domains:
+    \begin{itemize}
+        \item \underline{Not an ED}: $\mathbb{Z}[(1 + \sqrt{19}) / 2]$
+        \item Any field $\mathbb{F}$, including $\mathbb{Q}, \mathbb{R}, \mathbb{C}$
+        \item $\mathbb{Z}$
+        \item $\mathbb{F}[x]$: rings of polynomials in one variable with coefficients in a \textit{field}
+        \item $\mathbb{Z}[i]$: the Gaussian integers
+    \end{itemize}
+    
+Unique factorisation domains:
+    \begin{itemize}
+        \item \underline{Not a PID}: $\mathbb{Z}[x]$, $\mathbb{C}[x, y]$
+    \end{itemize}
+    
+Integral domains:
+    \begin{itemize}
+        \item \underline{Not a UFD}: $\mathbb{Z}[\sqrt{-5}]$
+        \item Commutative, not a field: $\mathbb{Z}$
+    \end{itemize}
+    
+Irreducibility:
+    \begin{itemize}
+        \item $2x$ is irreducible over $\mathbb{Q}[x]$ but not over $\mathbb{Z}[x]$
+        \item $2$ is irreducible but not prime in $\mathbb{Z}[\sqrt{5}]$
+        \item Irreducible polynomial in $\mathbb{F}_3[x]$: the polynomial $x^3 - x + 1$ (no roots in $\mathbb{F}_2$, so it has no linear factors, so it must be irreducible)
+    \end{itemize}
+    
+Units:
+    \begin{itemize}
+        \item $\alpha$ is a unit in $R$ iff $\nu(\alpha) = 1$
+        \item $\{\pm 1, \pm i\}$ in $\mathbb{Z}[i]$
+    \end{itemize}
+
+\newpage
+
+\loadgeometry{margins}
+
+\section{Ring homomorphisms}
+
+\begin{problem}{Q11, wk8\textsuperscript{1}}{}
+
+    \marginnote{Kernel of ring homomorphism.}
+
+    Describe the kernel of the following ring homomorphisms:
+    \begin{enumerate}[a)]
+        \item $\varphi : \mathbb{R}[x] \to \mathbb{C}$ defined by $p \mapsto p(2 + i)$,
+        \item $\psi : \mathbb{Z}[x] \to \mathbb{R}$ defined by $p \mapsto p(1 + \sqrt{2})$.
+    \end{enumerate}
+
+    \hrulefill
+
+    \begin{enumerate}[a)]
+        \item Let $z = 2 + i$. Then
+                \begin{align}
+                    z - 2 &= i \\
+                    (z - 2)^2 &= -1 \\
+                    z^2 - 4z + 5 &= 0 .
+                \end{align}
+            Define $q(z) = z^2 - 4z + 5$ so that $q \subseteq \ker(\varphi)$. Now $q$ is irreducible over $\mathbb{R}$, so $(q)$ is a maximal ideal of $\mathbb{R}[x]$ (see diagram).  $\langle q \rangle$ 
+    \end{enumerate}
+
+\end{problem}
+
+\section{Ideals}
+
+\begin{proposition}{Maximal/prime ideal}{maximal-prime-ideal}
+    \textsc{Suppose}:
+        \begin{itemize}
+            \item $R$ is a commutative ring
+            \item $I$ is an ideal of $R$
+        \end{itemize}
+    \textsc{Then}:
+        \begin{align*}
+            I \ \text{is maximal} &\iff R/I \ \text{is a field} \\
+            I \ \text{is prime}   &\iff R/I \ \text{is an integral domain}            
+        \end{align*}
+\end{proposition}
+
+\begin{problem}{Q3 wk8\textsuperscript{1}}{}    
+
+    \marginnote{Ideal zero on some set.}
+
+    Let $Y \subseteq \mathbb{C}^n$. The \textit{ideal of polynomials zero on} $Y$ is
+        $$ I(Y) = \{ f \in \mathbb{C}[x_1, \ldots, x_n] : f(\mathbf{y}) = 0 \ \text{for all} \ y \in Y \} . $$
+    \begin{enumerate}[a)]
+        \item Show that $I(Y) \trianglelefteq \mathbb{C}[x_1, \ldots, x_n]$.
+        \item Let $Y = \{ (0, m) : m \in \mathbb{Z} \} \subset \mathbb{C}^2$. Compute the ideal $I(Y)$.
+    \end{enumerate}
+
+    \tcblower
+
+    \begin{enumerate}[a)]
+        \item
+            \begin{itemize}
+                \item For any $f, g \in I(Y)$, $(f - g)(y) = f(y) - g(y) = 0$ for all $y \in Y$, so $I(Y)$ is closed under subtraction and therefore a subgroup of $\mathbb{C}[x_1, \ldots, x_n]$.
+                \item Now $I(Y)$ is an absorbing subset of $\mathbb{C}[x_1, \ldots, x_n]$ under multiplication: take $f \in \mathbb{C}[x_1, \ldots, x_n]$ and $g \in I(Y)$; then $(fg)(y) = f(y) g(y) = 0$ for all $y \in Y$.
+            \end{itemize}
+            Therefore $I(Y)$ is an ideal of $\mathbb{C}[x_1, \ldots, x_n]$.
+        \item $I(Y) = \{ f \in \mathbb{C}[x, y] : f(0, m) = 0 \ \text{for all} \ m \in \mathbb{Z} \}$. All such $f$ must therefore have infinite zeros in $y$, which is only possible when $y = 0$. Hence all polynomials in $I(Y)$ are of the form $ax$ for some $a \in \mathbb{C}$.
+    \end{enumerate}
+
+\end{problem}
+
+\begin{problem}{Q4 wk8\textsuperscript{1}}{}
+
+    \marginnote{First/Second Isomorphism Theorems. Ideal zero on some set. Maximal ideal (Prop \ref{prop:maximal-prime-ideal}).}
+
+    Let $Y \subseteq \mathbb{C}^n$ and $\mathbf{y} \in Y$.
+        \begin{enumerate}[a)]
+            \item Show that $I(\mathbf{y}) \supseteq I(Y)$.
+            \item Show that $I(\mathbf{y})/I(Y)$ is a maximal ideal of $\mathbb{C}[Y] = \mathbb{C}[x_1, \ldots, x_n]/I(Y)$.
+        \end{enumerate}
+
+    \tcblower
+
+    \begin{enumerate}[a)]
+        \item Take any $f \in I(Y)$. Then $f(\mathbf{x}) = 0$ for all $\mathbf{x} \in Y$, so in particular $f \in I(\mathbf{y})$, and the statement follows.
+        \item By the Second Isomorphism Theorem,
+            $$ \cfrac{\ \cfrac{\mathbb{C}[Y]}{I(Y)} \ }{\cfrac{I(\mathbf{y})}{I(Y)}} \cong \frac{\mathbb{C}[Y]}{I(\mathbf{y})} . $$
+        We want to show that this expression is a field. Consider the homomorphism
+            $$ \varphi_\mathbf{y} : \mathbb{C}[Y] \to \mathbb{C} \quad \text{given by} \quad f \mapsto f(\mathbf{y}) . $$
+        Now $\ker(\varphi_\mathbf{y}) = \{ f \in \mathbb{C}[Y] : f(\mathbf{y}) = 0 \} = I(\mathbf{y})$. By the First Isomorphism Theorem,
+            $$ \frac{\mathbb{C}[Y]}{\ker(\varphi_\mathbf{y})} = \frac{\mathbb{C}[Y]}{I(\mathbf{y})} \cong \mathbb{C} , $$
+        and so $\mathbb{C}[Y] / I(\mathbf{y})$ is a field. By Proposition 23.7, $I(\mathbf{y})/I(Y)$ is therefore the maximal ideal of $\mathbb{C}[Y]$.
+    \end{enumerate}
+
+\end{problem}
+
+\begin{problem}{Q8, wk8\textsuperscript{1}}{}
+
+    \marginnote{Generated subring.}
+
+    Find the subring $\mathbb{C}[x^2, x^3]$ of $\mathbb{C}[x]$ generated by $\mathbb{C}$, $x^2$, and $x^3$. The nicest description is obtained by writing a basis for the underlying complex vector space of $\mathbb{C}[x^2, x^3]$.
+
+    \tcblower
+
+    The basis of $\mathbb{C}[x^2, x^3]$ is $\{ x^{2k + 3\ell} : k, \ell \in \mathbb{N}_0 \}$, so that
+        $$ \mathbb{C}[x^2, x^3] = \Bigl\{ \sum_{k, \ell} a_{k, \ell} x^{2k + 3\ell} : i, j \in \mathbb{N}_0 \Bigr\} . $$
+
+\end{problem}
+
+\begin{problem}{Q9, wk8\textsuperscript{1}}{}
+
+    \marginnote{Existence of nonzero integer in ideal of Gaussian intgers.}
+
+    Prove that any nonzero ideal of $\mathbb{Z}[i]$ (the Gaussian integers) contains a nonzero integer.
+
+    \tcblower
+
+    The representatives of any ideal $I$ of $\mathbb{Z}[i]$ are of the form $a + bi$ where $a, b \in \mathbb{Z}$. If we stipulate that $I$ be nonzero, then at least one of $a, b$ must be nonzero. Now take $a + bi \in I$ and $a - bi \in \mathbb{Z}[i]$. Necessarily (by the properties of ideals), $(a + bi)(a - bi) = a^2 + b^2 \in \mathbb{Z}$ must be in $I$, so $I$ contains at least one nonzero integer.
+
+\end{problem}
+
+\section{Euclidean Algorithm}
+
+Note that the greatest common denominator of two polynomials is unique \textit{up to multiplication by an invertible constant}.
+
+\begin{problem}{Q10, wk8\textsuperscript{1}}{}
+
+    \marginnote{Euclidean algorithm on polynomials.}
+
+    Let $I$ be the ideal of $\mathbb{Z}[i]$ generated by $5$ and $-4 + 2i$. Find some $z \in \mathbb{Z}[i]$ such that $I$ is generated by $z$.
+
+    \tcblower
+
+    We will use the extended Euclidean Algorithm to find $\gcd(5, -4 + 2i)$. Using the norm $N(a + bi) = a^2 + b^2$, we find $N(5) > N(-4 + 2i)$. (In the calculations below, round any fractional quotients \textit{down} to the nearest Gaussian integer, before finding the remainder, similar to the algorithm on integers: $7 = 3.5 \times 2 = 3 \times 2 + 1$.)
+    \begin{align*}
+        5 &= (-1-i)(-4 + 2i) + (-1 - 2i) \\
+        -4 + 2i &= (-2i) (-1 - 2i)
+    \end{align*}
+    The last nonzero remainder is $-1 - 2i$, which is the gcd we are looking for. (Note: we could also write the gcd as $1 + 2i$.) Hence $I = (-1 - 2i) = (1 + 2i)$.
+
+\end{problem}
+
+\begin{problem}{Q2b, 2015 final}{}
+
+    \marginnote{Euclidean algorithm on $\mathbb{Z}[\sqrt{-2}]$.}
+
+    Let $\alpha = \sqrt{-2}$ and let $\nu : \mathbb{Z}[\alpha] \to \mathbb{Z}$ be the usual Euclidean function given by $\nu(x + y \alpha) = x^2 + 2y^2$.
+
+    Given $b = 7 - 2 \alpha$ and $c = 3 + \alpha$, find $q, r \in \mathbb{Z}[\alpha]$ such that $b = qc + r$ and $\nu(r) < \nu(c)$.
+
+    \tcblower
+
+    First we find
+        $$ \frac{b}{c} = \frac{7 - 2\alpha}{3 + \alpha} \cdot \frac{3 - \alpha}{3 - \alpha}
+            = \frac{17}{11} - \frac{13}{11} \alpha . $$
+    Rounding to the \textit{nearest lattice point} gives $q = 2 - \alpha$, and so $r = b - qc = -1 - \alpha$, so that
+        $$ 7 - 2 \alpha = (3 + 2 \alpha)(2 - \alpha) + (-1 - \alpha) . $$
+
+\end{problem}
+
+\section{Chinese remainder theorem}
+
+\begin{theorem}{Chinese remainder theorem}{chinese-remainder-theorem}
+    \textsc{Suppose}:
+        \begin{itemize}
+            \item $R$ is a ring
+            \item $I_1, \ldots, I_n$ ideals of $R$
+                \begin{itemize}
+                    \item $I_i + I_j = R$ for each pair $i \neq j$
+                    \item Let $I = \bigcap_j I_j$
+                \end{itemize}
+            \item Homomorphism $\phi_j : R/I \to R/I_j$
+        \end{itemize}
+    \textsc{Then}:
+        $$ \phi : R/I \to R/I_1 \times \cdots \times R/I_n, \qquad
+            r + I \mapsto (r + I_1, r + I_2, \ldots, r + I_n) $$
+    is an isomorphism.
+\end{theorem}

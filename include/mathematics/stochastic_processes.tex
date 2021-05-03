@@ -1,0 +1,399 @@
+\restoregeometry
+
+\chapter{Stochastic processes}
+
+\section{The exponential distribution and the Poisson process}
+
+\textbf{Common random variables}:
+\begin{itemize}
+    \item $X_i$, inter-arrival times, exponentially distributed
+    \item $S_n = \sum_{i = 1}^n X_i$, time of $n$th arrival, gamma-distributed (see property 1 below)
+    \item $N(t)$, number of arrivals by time $t$, Poisson-distributed.
+\end{itemize}
+
+\textbf{Properties of the exponential distribution}:
+    \begin{enumerate}
+        \item Suppose we have $n$ lots of i.i.d. random variables
+            $$ X_i \sim \operatorname{Exp}(\lambda) . $$
+        Then
+            $$ S_n = \sum_{i = 1}^n X_i \sim \Gamma(n, \lambda) . $$
+        \item Let $X_1$ and $X_2$ be independent exponential random variables with respective rates $\lambda_1$ and $\lambda_2$. Then
+            $$ \mathbb{P}(X_1 < X_2) = \frac{\lambda_1}{\lambda_1 + \lambda_2} . $$
+        \item \textbf{Minimum exponential random variable}: suppose we have $n$ lots of independently distributed random variables
+            $$ X_i \sim \operatorname{Exp}(\lambda_i) . $$
+        Then
+            $$ X_{(1)} \sim \operatorname{Exp}\biggl( \sum_{i = 1}^n \lambda_i \biggr) , $$
+        where $X_{(1)} = \min_i X_i$.
+    \end{enumerate}
+
+\textbf{Other facts}:
+    \begin{enumerate}
+        \item From Q1, Week 5: if $X \sim \operatorname{Exp}(\lambda_1)$ then
+            $$ \frac{X}{\lambda_2} \sim \operatorname{Exp}(\lambda_1 \lambda_2) . $$
+    \end{enumerate}
+    
+\textbf{Stationary increment property}: for every $0 \leq t_1 \leq t_2$, we have
+    $$ N(t_2) - N(t_1) \sim N(t_2 - t_1) . $$
+\textbf{Independent increment property}: if $(t_1, t_2]$ and $(t_3, t_4]$ are disjoint intervals, then $(N(t_2) - N(t_1))$ and $(N(t_4) - N(t_3))$ are independent.
+
+\loadgeometry{margins}
+
+\begin{problem}{Q4, wk5}{}
+
+    \marginnote{Minimum exponential random variable.}
+
+    One hundred items are simultaneously put on a life test. Suppose that the lifetime of the individual items are independent exponential random variables with mean 200 hours. The test will end when there have been a total of 5 failures. If $T$ is the time at which the test ends, find
+    \begin{enumerate}[a)]
+        \item $\mathbb{E}(T)$, and
+        \item $\operatorname{Var}(T)$.
+    \end{enumerate}
+
+    \tcblower
+
+    Let $T_i$ be the time between the $(i -1)$th and $i$th failure. By property 3 in the preamble, the minimum variable out of 100 items is
+        $$ T_1 \sim \operatorname{Exp} \biggl( \frac{100}{200} \biggr) , $$
+    and generalising,
+        $$ T_i \sim \operatorname{Exp} \biggl( \frac{101 - i}{200} \biggr) . $$
+    Then
+        \begin{enumerate}[a)]
+            \item
+                $$ \mathbb{E}(T) = \sum_{i = 1}^5 \mathbb{E}(T_i)
+                    = \sum_{i = 1}^5 \frac{200}{101 - i}
+                    \approx 10.21 \ \text{hours} $$
+            \item 
+                $$ \operatorname{Var}(T) = \sum_{i = 1}^5 \operatorname{Var}(T_i)
+                    = \sum_{i = 1}^5 \frac{200^2}{(101 - i)^2}
+                    \approx 20.84 \ \text{hours}^2 $$
+    \end{enumerate}
+
+\end{problem}
+
+\begin{problem}{Q7, wk5}{}
+
+    \marginnote{Relationship between $X_i$, $S_n$, and $N(t)$.}
+
+    Let $\{ N(t), t \geq 0 \}$ be a Poisson process with rate $\lambda$. Let $S_n$ denote the time of the $n$th arrival. Find
+    \begin{enumerate}[a)]
+        \item $\mathbb{E}(S_4)$
+        \item $\mathbb{E}(S_4 \ \vert \ N(1) = 2)$
+        \item $\mathbb{E}(N(4) - N(2) \ \vert \ N(1) = 3)$
+    \end{enumerate}
+
+    \tcblower
+
+    \begin{enumerate}[a)]
+        \item By property 1, $S_4 \sim \Gamma(4, \lambda)$, so $\mathbb{E}(S_4) = 4/\lambda$.
+        \item By the memoryless property,
+            $$ \mathbb{E}(S_4 \ \vert \ N(1) = 2) = 1 + \mathbb{E}(S_2) = 1 + 2/\lambda . $$
+        \item We have
+            \begin{align*}
+                \mathbb{E}(N(4) - N(2) \ \vert \ N(1) = 3)
+                    &= \mathbb{E}(N(4) - N(2)) \qquad &&\text{(ind. inc. prop.)} \\
+                &= \mathbb{E}(N(4 - 2)) \qquad &&\text{(stat. inc. prop.)} \\
+                &= 2 \lambda \qquad &&\text{(mean of Poiss. dist.)}
+            \end{align*}
+    \end{enumerate}
+
+\end{problem}
+
+\begin{problem}{}{}
+
+    \marginnote{Maximising chances of winning a Poisson game.}
+
+    Events occur according to a Poisson process with rate $\lambda$. Each time an event occurs, we must decide whether or not to stop, with our objective being to stop at the last event to occur prior to some specified time $\tau$, where $\tau > 1/\lambda$.  That is, if an event occurs at time $t, 0 \leq t \leq \tau$,and we decide to stop, then we win if there are no additional events by time $\tau$, and we lose otherwise. If we do not stop when an event occurs and no additional events occur by time $\tau$, then we lose. Also, if no events occur by time $\tau$, then we lose. Consider the strategy that stops at the first event to occur after some fixed time $s, 0 \leq s \leq \tau$.
+    \begin{enumerate}[a)]
+        \item Using this strategy, what is the probability of winning?
+        \item What value of $s$ maximises the probability of winning?
+        \item Show that one's probability of winning when using the preceding strategy with the optimal value of $s$ is $1/e$.
+    \end{enumerate}
+
+    \tcblower
+
+    \begin{enumerate}[a)]
+        \item We win if there is one and only occurrence between times $s$ and $\tau$. Note that $N(t) \sim \mathcal{P}(\lambda t)$, so
+            \begin{align*}
+                \mathbb{P}(N(\tau) - N(s) = 1) &= \mathbb{P}(N(\tau - s) = 1) \\
+                &= \lambda (\tau - s) e^{-\lambda (\tau - s)} .
+            \end{align*}
+        \item Differentiating the expression in part a) with respect to $s$, and setting to $0$, gives
+            $$ e^{-\lambda (\tau - s)} = \lambda (\tau - s) e^{-\lambda (\tau - s)} . $$
+        To balance this equation we find that $s = \tau - 1/\lambda$, which is the value of $s$ that maximises our probability of winning.
+        \item Setting $s = \tau - 1/\lambda$ in the answer to part a) gives $e^{-1} \approx 0.37$.
+    \end{enumerate}
+
+\end{problem}
+
+\begin{problem}{Q21, wk5}{}
+
+    \marginnote{Waiting times at two servers with exponentially distributed waiting times.}
+
+    In a certain system, a customer must first be served by server 1 and then by server 2, with exponentially distributed service times with rate $\mu_1$ and $\mu_2$ respectively.  An arrival finding server 1 busy waits in line for that server. Upon completion of service at server 1, a customer either enters service with server 2 if that server is free or else remains with server 1 (blocking any other customer from entering the service) until server 2 is free. Customers depart the system after being served by server 2.
+    \begin{enumerate}[a)]
+        \item Suppose that when you arrive there is one customer in the system and that customer is being served by server 1. What is the expected total time you spend in the system?
+        \item Suppose now that you arrive to find two others in the system, one being served by server1 and the other by server 2. What is the expected time you spend in the system?
+    \end{enumerate}
+
+    \tcblower
+
+    \begin{enumerate}[a)]
+        \item Let $T$ be the total time spent in the system, and let $T_1$ and $T_2$ be the respective waiting times at server 1 and 2. Then
+            $$ T = 2T_1 + T_2 \mathbf{1}_{\{T_2 > T_1\}} + T_2 , $$
+        so
+            \begin{align*}
+                \mathbb{E}(T) &= 2 \mathbb{E}(T_1) + \mathbb{E}(T_2) \mathbb{P}(T_1 > T_2)
+                    + \mathbb{E}(T_2) \\
+                    &= \frac{2}{\mu_1} + \frac{1}{\mu_2} \cdot \frac{\mu_1}{\mu_1 + \mu_2}
+                        + \frac{1}{\mu_2} \\
+                    &= \frac{2}{\mu_1} + \frac{2\mu_1 + \mu_2}{\mu_1 + \mu_2} .
+            \end{align*}
+        \item Let $T'$ be the total time spent in the system for this particular scenario. Then
+            \begin{align*}
+                T' &= T \mathbf{1}_{\{T_1 > T_2\}} + (T_2 + T) \mathbf{1}_{\{T_1 < T_2\}} \\
+                &= T (\mathbf{1}_{\{T_1 > T_2\}} + \mathbf{1}_{\{T_1 < T_2\}})
+                    + T_2 \mathbf{1}_{\{T_1 < T_2\}}
+            \end{align*}
+        where $T$ is the total time from part a). Therefore
+            \begin{align*}
+                \mathbb{E}(T') &= \mathbb{E}(T) \times 1 + \mathbb{E}(T_2) \mathbb{P}(T_1 < T2) \\
+                &= \frac{2}{\mu_1} + \frac{2 \mu_1}{\mu_2(\mu_1 + \mu_2)} + \frac{1}{\mu_2} .
+            \end{align*}
+    \end{enumerate}
+
+\end{problem}
+
+\section{Continuous-time Markov chains}
+
+\subsection{Generators}
+
+Generator in terms of probability matrix: $q_{ij} = v_i P_{ij}$.
+
+Note: \underline{rows} of a generator sum to 0.
+
+\begin{problem}{Q14, wk6}{}
+
+    \marginnote{Relationship between probability matrix and generator.}
+
+    Consider the probability transition matrix
+        $$ \mathbf{P} = 
+            \begin{pmatrix}
+                0 & 1/3 & 2/3 \\
+                1/3 & 0 & 2/3 \\
+                1 & 0 & 0
+            \end{pmatrix} .
+        $$
+    The time spent in states 0, 1, and 2 are exponentially distributed with parameters $1/3$, $1/3$, and $1/6$ respectively. Let $\{X(t), t \geq 0\}$ be the continuous-time Markov chain describing the states over time. Assume the time units are days.
+        \begin{enumerate}[a)]
+            \item What is the generator matrix of this chain?
+            \item Find the vector of long-run proportions.
+        \end{enumerate}
+    
+    \tcblower
+
+    \begin{enumerate}[a)]
+        \item We have
+                $$ v_0 = \frac{1}{3} \qquad v_1 = \frac{1}{3} \qquad v_2 = \frac{1}{6} $$
+            Using the formula in the preamble (e.g. $G_{0, 1} = v_0 P_{0, 1}$) gives
+                $$ \mathbf{G} =
+                    \begin{pmatrix}
+                        -1/3 & 1/9 & 2/9 \\
+                        1/9 & -1/3 & 2/9 \\
+                        1/6 & 0 & -1/6
+                    \end{pmatrix} .
+                $$
+        \item We want to solve the equation $\mathbf{\pi} \mathbf{G} = \mathbf{0}$, where $\mathbf{\pi}$ is a horizontal vector and $\mathbf{0}$ a vertical one. We get the system of equations
+            \begin{align*}
+                -\frac{1}{3} \pi_0 + \frac{1}{9} \pi_1 + \frac{1}{6} \pi_2 &= 0 \\
+                \frac{1}{9} \pi_0 - \frac{1}{3} \pi_1 &= 0 \\
+                \pi_0 + \pi_1 + \pi_2 &= 1 .
+            \end{align*}
+        (Note that the equation using the third column of $\mathbf{G}$ is redundant.) Solving yields
+            $$ \mathbf{\pi} = \biggl( \frac{9}{28}, \frac{3}{28}, \frac{16}{28} \biggr) . $$
+    \end{enumerate}
+
+\end{problem}
+
+\subsection{Balance equations}
+
+The balance equation says that
+    $$ \text{long run rate into state $i$} = \text{long run rate out of state $i$} . $$
+When we consider a birth and death process, this can be greatly simplified to the following:
+    $$ \text{long run rate from $i$ to $i + 1$} = \text{long run rate from $i + 1$ to $i$} . $$
+
+\begin{problem}{Q20, wk6}{}
+
+    \marginnote{Balance equations of birth and death processes.}
+
+    A job shop consists of three machines and two repairmen. The amount of time a machine works before breaking down is exponentially distributed with mean 10, and the amount of time it takes a single repairman to fix a machine is exponentially distributed with mean 8.
+        \begin{enumerate}[a)]
+            \item What is the average number of machines not in use at any given point in time?
+            \item What proportion of time are both repairmen busy?
+        \end{enumerate}
+
+    \tcblower
+
+    \begin{enumerate}[a)]
+        \item We let state $i$ represent the state where $i$ machines have broken down. Then we have (draw a diagram)
+            $$ \begin{matrix}
+                    q_{01} = \frac{3}{10} & q_{12} = \frac{2}{10} & q_{23} = \frac{1}{10} \\ \\
+                    q_{10} = \frac{1}{8} & q_{21} = \frac{2}{8} & q_{32} = \frac{2}{8} .
+                \end{matrix}
+            $$
+        This (see preamble) gives the system of equations
+            $$
+                \frac{3}{10} \pi_0 = \frac{1}{8} \pi_1 \qquad
+                \frac{2}{10} \pi_1 = \frac{2}{8} \pi_2 \qquad
+                \frac{1}{10} \pi_2 = \frac{2}{8} \pi_3 \qquad 
+                \sum_i \pi_i = 1
+            $$
+        which yields
+            $$
+                \pi_0 = \frac{125}{761} \qquad
+                \pi_1 = \frac{300}{761} \qquad
+                \pi_2 = \frac{240}{761} \qquad
+                \pi_3 = \frac{96}{761} .
+            $$
+        Hence the average number of machines not in use is
+            $$ \pi_1 + 2 \pi_2 + 3 \pi_3 = \frac{1068}{761} \approx 1.40 . $$
+        \item Only in states 2 and 3 are both repairmen busy, so we are looking for the quantity
+            $$ \pi_2 + \pi_3 \approx 0.44 . $$
+    \end{enumerate}
+
+\end{problem}
+
+\begin{problem}{}{}
+
+    \marginnote{Long-run proportions of a population that can be totally wiped out in an instant}
+
+    Consider a population for which new members are born according to a Poisson process with constant  rate $\lambda$ (the  birth  rate  does  not  depend  on  the  population  size).   After  a  random amount of time, which is independent of the population size, a disaster occurs and the whole population immediately dies out.  Then the population starts to grow all over again, that is, after an exponential time with rate $\lambda$ the first member is born, and so on until the next disaster occurs. Disasters occur according to a Poisson process with rate $\mu$.
+    \begin{enumerate}[a)]
+        \item Find the long-run fraction of time the population consists of $n$ members.
+        \item What is the long-run average population size?
+        \item Determine the mean population size just before a disaster.
+    \end{enumerate}
+
+    \tcblower
+
+    \begin{enumerate}[a)]
+        \item Using the balance equations (see preamble),
+            \begin{align*}
+                \lambda \pi_0 &= \mu \biggl( \sum_{k = 1}^\infty \pi_k \biggr) \\
+                &= \mu (1 - \pi_0) .
+            \end{align*}
+        This gives
+            $$ \pi_0 = \frac{\mu}{\lambda + \mu} . $$
+        Again, using the balance equations we find
+            $$ \pi_n = \biggl( \frac{\lambda}{\lambda + \mu} \biggr)^n \biggl( \frac{\mu}{\lambda + \mu} \biggr) . $$
+        \item Let $N$ be the size of the population. We have
+            \begin{align*}
+                \mathbb{P}(N = n) &= \pi_n \\
+                &= \biggl( 1 - \frac{\mu}{\lambda + \mu} \biggr)^n \biggl( \frac{\mu}{\lambda + \mu} \biggr)
+            \end{align*}
+            We can therefore conclude that
+                $$ N + 1 \sim \operatorname{Geom}\biggl( \frac{\mu}{\lambda + \mu} \biggr) , $$
+            so
+                $$ \mathbb{E}(N + 1) = \frac{\lambda + \mu}{\mu} , $$
+            which gives
+                $$ \mathbb{E}(N) = \frac{\lambda}{\mu} . $$
+        \item
+            $$ 1 + \frac{\lambda}{\mu} $$
+    \end{enumerate}
+
+\end{problem}
+
+\section{Brownian motion}
+
+\begin{problem}{Q2, wk10}{}
+
+    \marginnote{Stationary and independent increment properties.}
+
+    Consider $\{B(t), \ t \geq 0\}$, a standard Brownian motion process. What is the distribution of $B(s) + B(t)$. where $0 \leq s \leq t$?
+
+    \tcblower
+
+    \textit{Note}: try to algebraically \underline{force} independent increments.
+
+    Rewrite as follows:
+        \begin{align*}
+            B(s) + B(t) &= B(s) + B(t) + B(s) - B(s) \\
+            &= 2B(s) + B(t) - B(s) \\
+            &= 2B(s) + B(t - s) \qquad \text{(stat. inc. prop.)}
+        \end{align*}
+    Note that $2B(s)$ and $B(t - s)$ are independent. In addition $\mathbb{E}(2B(s)) = 0$, $\operatorname{Var}(2B(s)) = 4s$, $\mathbb{E}(B(t - s)) = 0$, and $\operatorname{Var}(B(t - s)) = t - s$. Hence
+        \begin{align*}
+            B(s) + B(t) &\sim \mathcal{N}(0, 4s + t - s) \\
+            &\sim \mathcal{N}(0, 3s + t) .
+        \end{align*}
+
+\end{problem}
+
+
+\begin{problem}{Q4, wk10}{}
+
+    \marginnote{Non-symmetrical (?) hitting times.}
+
+    Define $T_a$ as the time it takes a standard Brownian motion to hit the value $a$. What is $\mathbb{P}(T_1 < T_{-1} < T_2)$?
+
+    \tcblower
+
+    Write
+    \begin{align*}
+        \mathbb{P}(T_1 < T_{-1} < T_2) &= \mathbb{P}(T_1 < T_{-1}) \mathbb{P}(T_{-1} < T_2 \ \vert \ T_1 < T_{-1}) \\
+        &= \frac{1}{2} \times \frac{1}{3}  \\
+        &= \frac{1}{6} .
+    \end{align*}
+    In the second-last equality, let $p = \mathbb{P}(T_{-1} < T_2 \ \vert \ T_1 < T_{-1})$. Then, starting at 1, we want to find the probability of going down two steps before going up one, so $p = \frac{1}{2}(\frac{1}{2} + \frac{p}{2})$ which yields $p = \frac{1}{3}$.
+
+\end{problem}
+
+\subsection{Maximum value }
+
+Let $T_a$ be the first time $\{ B(t), \ t \geq 0 \}$ attains $a$. We have
+    $$ \mathbb{P}(T_a \leq t) = 2 \phi \biggl( \frac{a}{\sqrt{t}} \biggr) . $$
+Let $M(t) = \max_{0 \leq s \leq t} B(s)$ (note that we are considering the interval $[0, t]$). Then for $a > 0$,
+    $$ \mathbb{P}(M(t) \geq a) = \mathbb{P}(T_a \leq t) , $$
+so
+    \begin{align*}
+        \mathbb{P}(M(t) \leq a) &= 1 - \mathbb{P}(T_a \leq t) \\
+        &= 2\phi \biggl( \frac{a}{\sqrt{t}} \biggr) - 1 . \qquad \text{(VERY STRANGE)}
+    \end{align*}
+
+\begin{problem}{Q5, wk10}{}
+
+    \marginnote{Hitting times, maximum variables, absolute value of variables.}
+
+    \begin{enumerate}[a)]
+        \item For a fixed $t > 0$, show that $M(t) = \max_{0 \leq s \leq t} B(s)$ and $\lvert B(t) \rvert$ have the same probability distribution.
+        \item Deduce that $\mathbb{E}(M(t)) = \mathbb{E}(\lvert B(t) \rvert) = \sqrt{2 t / \pi}$. (\textit{Hint}: $\int_0^\infty z \phi(z) \ dz = \frac{1}{\sqrt{2 \pi}}$.)
+    \end{enumerate}
+
+    \tcblower
+
+    \begin{enumerate}[a)]
+        \item Consider the following manipulations:
+                \begin{align*}
+                    \mathbb{P}(\lvert B(t) \rvert \leq a) &= 1 - \mathbb{P}(\vert B(t) \rvert > a) \\
+                    &= 1 - \mathbb{P}(\{B > a\} \cup \{B < -a\}) \\
+                    &= 1 - 2\mathbb{P}(B > a) \\
+                    &= 1 - 2(1 - \mathbb{P}(B \leq a)) \\
+                    &= 2 \mathbb{P}(B \leq a) - 1 \\
+                    &= 2 \phi \biggl( \frac{a}{\sqrt{t}} \biggr) - 1 .
+                \end{align*}
+            This final expression is the same distribution function as that of $M(t)$ (see preamble).
+        \item Differentiating the distribution function from part a) gives
+            $$ \frac{2}{\sqrt{t}} \phi \biggl( \frac{a}{\sqrt{t}} \biggr) . $$
+            Note that $a > 0$. Then
+                \begin{align*}
+                    \mathbb{E}(M(t)) = \int_0^\infty \frac{2 a}{\sqrt{t}} \phi \biggl( \frac{a}{\sqrt{t}} \biggr) \ da
+                \end{align*}
+            Substituting $z = a / \sqrt{t}$ and using the hint gives
+                \begin{align*}
+                    \mathbb{E}(M(t)) &= 2 \sqrt{t} \int_0^\infty z \phi (z) \ dz \\
+                    &= 2 \sqrt{t} \frac{1}{\sqrt{2 \pi}} \\
+                    &= \sqrt{\frac{2t}{\pi}} ,
+                \end{align*}
+            as required.
+    \end{enumerate}
+        
+\end{problem}
+
+

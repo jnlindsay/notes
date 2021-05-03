@@ -1,6 +1,7 @@
 \documentclass[oneside]{book}
 
 % PACKAGES
+\usepackage[a4paper, margin=30mm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[
 	backend=biber,
@@ -18,7 +19,8 @@
 \usepackage{amssymb}			    % symbols
 \usepackage{amsthm}
 \usepackage{mathtools}              % various
-\usepackage{tcolorbox}				% boxes for theorems, definitions, etc.
+\usepackage[many]{tcolorbox}				% boxes for theorems, definitions, etc.
+% \usepackage{breakable}              % allow tcolorboxes to break pages
 \usepackage{xcolor}
 \usepackage{bm}                     % bold symbols in maths mode
 \usepackage{framed}    				% paragraph shading
@@ -26,12 +28,17 @@
 \usepackage[italic]{esdiff}			% differentiation notation
 \usepackage[shortlabels]{enumitem}
 \usepackage{tikz-cd}
+\usepackage{marginnote}             % margin notes
+\usepackage{comment}
 
 % SETTINGS
 \colorlet{shadecolor}{lightgray!20}
 \setlength{\parindent}{0em}
 \addbibresource{bibliography.bib}
 \tcbuselibrary{most}
+
+% override bullets in itemised lists
+\renewcommand\labelitemii{$\bullet$}
 
 % code
 \newcommand{\code}{\lstinline} %} (fix for TexMaker parsing because it's retarded)
@@ -51,45 +58,65 @@
     upquote=true
 }
 
-
 % 'THEOREM' ENVIRONMENTS
+
+% Definition
 \newtcbtheorem[number within=section]{definition}{Definition}%
-    {colback=blue!5, colframe=blue!35!black, sharp corners,
+    {colback=blue!5, colframe=blue!35!black, boxrule=1pt, sharp corners,
     	 fonttitle=\bfseries, parbox=false,
     	 separator sign={\ ---}}{def}
 
+% Theorem
 \newtcbtheorem[number within=section]{theorem}{Theorem}%
-    {colback=red!5, colframe=red!35!black, sharp corners,
+    {colback=red!5, colframe=red!35!black, boxrule=1pt, sharp corners,
      fonttitle=\bfseries, parbox=false,
      separator sign={\ ---}}{th}
-     
+
+% Proposition
+\newtcbtheorem[number within=section,
+               use counter from=theorem]{proposition}{Proposition}%
+    {colback=red!5, colframe=red!35!black, boxrule=1pt, sharp corners,
+     fonttitle=\bfseries, parbox=false,
+     separator sign={\ ---}}{prop}
+
+% Lemma
 \newtcbtheorem[number within=section,
                use counter from=theorem]{lemma}{Lemma}%
-    {colback=red!5, colframe=red!35!black, sharp corners,
+    {colback=red!5, colframe=red!35!black, boxrule=1pt, sharp corners,
      fonttitle=\bfseries, parbox=false,
      separator sign={\ ---}}{lem}
-     
+
+% Corollary
 \newtcbtheorem[number within=section,
                use counter from=theorem]{corollary}{Corollary}%
-    {colback=red!5, colframe=red!35!black, sharp corners,
+    {colback=red!5, colframe=red!35!black, boxrule=1pt, sharp corners,
      fonttitle=\bfseries, parbox=false,
      separator sign={\ ---}}{cor}
-     
+
+% Law
 \newtcbtheorem[number within=section,
                use counter from=theorem]{law}{Law}%
-    {colback=red!5, colframe=red!35!black, sharp corners,
+    {colback=red!5, colframe=red!35!black, boxrule=1pt, sharp corners,
      fonttitle=\bfseries, parbox=false,
      separator sign={\ ---}}{law}
 
+% Formula
 \newtcbtheorem[number within=section]{formula}{Formula}%
-    {colback=green!5, colframe=green!35!black, sharp corners,
+    {colback=green!5, colframe=green!35!black, boxrule=1pt, sharp corners,
      fonttitle=\bfseries, parbox=false,
      separator sign={\ ---}}{form}
-       
+
+% Proof
 \tcolorboxenvironment{proof}{% 'proof' from 'amsthm'
 	blanker,breakable,left=3mm,
 	before skip=10pt,after skip=10pt, parbox=false,
 	borderline west={0.5mm}{0pt}{black}}
+
+% Problem
+\newtcbtheorem[number within=section]{problem}{Problem}%
+    {breakable, colback=white, colframe=black, boxrule=1pt,
+        sharp corners, fonttitle=\bfseries, parbox=false,
+    	 separator sign={\ ---}}{prob}
 
 % DEFINITIONS & REDEFINITIONS
 
@@ -108,16 +135,24 @@
 % This definition allows for larger fractions
 \newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
 
+% heading
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\rightmark}
+\fancyhead[R]{\thepage}
+
 % #################################################################
 
-\title{%
-Notes\\
-\large Git hash:\\
-}
+\title{Notes}
 \author{Jeremy Lindsay}
 \date{}
 
 \begin{document}
+
+% geometry
+\newgeometry{left=20mm, top=30mm, right=40mm, bottom=30mm}
+\savegeometry{margins}
+\restoregeometry
 
 \maketitle
 
@@ -128,8 +163,8 @@ Notes\\
 \sloppy
 
 \include{include/mathematics}
-%\include{include/computing}
-%\include{include/finance}
+% \include{include/computing}
+% \include{include/finance}
 
 \printbibliography
 
