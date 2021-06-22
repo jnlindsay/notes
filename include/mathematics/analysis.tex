@@ -1,0 +1,491 @@
+\chapter{Analysis}
+
+\section{Introduction}
+
+\begin{problem}{p. 2}{}
+
+    \marginnote{Newton's method.}
+
+    We want to approximate the solution of the equation $x^2 - 2 = 0$. Newton's method uses the following calculation:
+        $$ x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)} . $$
+    So we have
+        \begin{align*}
+            f(x) &= x^2 - 2 \\
+            f'(x) &= 2x \\
+            x_0 &= 1 \qquad \text{(initial guess)} \\
+            x_1 &= 3/2 \\
+            x_2 &= \ldots
+        \end{align*}
+\end{problem}
+
+\begin{itemize}
+    \item $L^p$ metric on $\mathbb{R}^n$:
+        $$ d_p(\mathbf{x}, \mathbf{y})
+            = \biggl( \sum_{i = 1}^n 
+            \lvert y_i - x_i \rvert^p \biggr)^\frac{1}{p} $$
+    \item $L^\infty$ metric on $\mathbb{R}^n$:
+        $$ d_\infty(\mathbf{x}, \mathbf{y}) = \max\{ \lvert x_1 - y_1 \rvert,
+            \lvert x_2 - y_2 \rvert, \ldots, 
+            \lvert x_n - y_n \rvert \} . $$
+\end{itemize}
+
+\begin{problem}{p. 6}{}
+
+    \marginnote{$L^p$ metrics on $\mathbb{R}^n$.}
+
+    What does the set
+        $$ \{ (x, y) : d_p((x, y), (0, 0)) \leq 1 \} $$
+    look like for $p = 1, 2, 3, \infty$?
+
+    \tcblower
+
+    \begin{align*}
+        p < 1 \qquad &\text{`pushed in' diamond} \\
+        p = 1 \qquad &\text{diamond} \\
+        p = 2 \qquad &\text{circle} \\
+        p = 3 \qquad &\text{`pushed out' circle} \\
+        \vdots \\
+        p = \infty \qquad &\text{square}
+    \end{align*}
+
+\end{problem}
+
+\begin{itemize}
+    \item $L^p$ metric on $C[0, 1]$:
+        $$ d_p(f, g) = \biggl( \int_0^1 \lvert f(x) - g(x) \rvert^p dx \biggr)^\frac{1}{p} $$
+    \item $L^\infty$ metric on $C[0, 1]$:
+        $$ d_\infty(f, g) = \sup_{x \in [0, 1]} \lvert f(x) - g(x) \rvert $$
+\end{itemize}
+
+\underline{See lecture notes.} \marginnote{$L^p$ metrics on $C[0, 1]$.}
+
+\section{Sets and cardinality}
+
+\begin{itemize}
+    \item \textbf{Cartesian product}. Given $\{A_i\}_{i \in I}$,
+        $$ \prod_{i \in I} A_i = \{ (a_i)_{i \in I}
+            : a_i \in A_i, \forall i \in I \} $$
+        \underline{Note} that $\{A_i\}_{i \in I}$ is a \textit{set of sets}, whereas $(a_i)_{i \in I}$ is a \textit{sequence}.
+    \item Formally, the \textbf{Cartesian product} is
+        $$ \{ f : I \to \cup_{i \in I} A_i
+            : f(i) \in A_i, \forall i \in I \} . $$
+        (Try $\mathbb{R} \times \mathbb{N}$.)
+\end{itemize}
+
+\begin{problem}{N/A}{}
+
+    \marginnote{Formal definition of Cartesian product (easy).}
+
+    Describe the formal definition of $\mathbb{R} \times \mathbb{N}$.
+
+    \tcblower
+
+    The set of all $f : \{1, 2\} \to \mathbb{R}$ such that
+        $$ f(1) \in \mathbb{R} \quad 
+            \text{and} \quad f(2) \in \mathbb{N} . $$
+\end{problem}
+
+\begin{problem}{N/A}{}
+
+    \marginnote{Formal definition of Cartesian product (hard).}
+
+    Describe the Cartesian product $\prod_{i \in I} A_i$ where $I \in [0, 1]$ and
+        $$ A_i = 
+            \begin{cases}
+                \mathbb{R} \quad \text{for} \quad i \in [0, \frac{1}{2}] \\
+                \mathbb{N} \quad \text{for} \quad i \in (\frac{1}{2}, 1]
+            \end{cases} $$
+
+    \tcblower
+
+    The set of functions $f : [0, 1] \to \mathbb{R}$ with the restriction that $f(x) \in \mathbb{N}$ when $x > \frac{1}{2}$.
+\end{problem}
+
+\begin{itemize}
+    \item Set of \textbf{functions} $f : A \to B$:
+        \begin{itemize}
+            \item $\{ \forall x \in A, \exists ! y \in B : f(x) = y \}$
+            \item Set theorist's interpretation: $\{ (x, y) \in A \times B :
+                f(x) = y \subseteq A \times B \}$
+        \end{itemize}
+\end{itemize}
+
+\begin{problem}{p. 17}{}
+
+    \marginnote{Show $\mathbb{N} \sim \mathbb{N} \times \mathbb{N}$ (tedious method).}
+
+    \begin{enumerate}[a)]
+        \item Show $\mathbb{N} \sim \mathbb{N} \times \mathbb{N}$.
+        \item Show $\mathbb{N} \sim \mathbb{N} \times \mathbb{N} \times \ldots \times \mathbb{N}$.
+    \end{enumerate}
+
+    \tcblower
+
+    \begin{enumerate}[a)]
+        \item 
+    \end{enumerate}
+
+\end{problem}
+
+\begin{problem}{p. 18}{}
+    
+    \marginnote{Proof of Cantor's theorem. (Similar to Russell's paradox.)}
+
+    Prove Cantor's theorem: $\lvert A \rvert \neq \lvert \mathcal{P}(A) \rvert$.
+
+    \tcblower
+
+    Suppose by contradiction that $\lvert A \rvert = \lvert \mathcal{P}(A) \rvert$. Then there is a bijection $f : A \to \mathcal{P}(A)$.
+
+    Consider the set $S = \{ a \in A : a \not \in f(a) \}$. (\underline{Example}: suppose $f(a) = \{a, b, c\}$ and $f(b) = \{a, c\}$. Then $a \not \in S$ but $b \in S$.)
+
+    Since $f$ is surjective, there exists a $y \in A$ such that $f(y) = S$, since $S \in \mathcal{P}(A)$. But
+        \begin{itemize}
+            \item $y \in S \implies y \in \mathcal{P}(A) \implies y \not \in S$, and
+            \item $y \not \in S \implies y \in S$,
+        \end{itemize}
+    so we have a paradoxical contradiction
+        $$ y \in S \iff y \not \in S . $$
+    
+\end{problem}
+
+\begin{itemize}
+    \item $\lvert A \rvert \leq \lvert B \rvert$ if there is an \textit{injection} $f : A \to B$.
+    \item \textbf{Injection} notation: $f : A \xhookrightarrow{} B$
+    \item \textbf{Surjection} notation: $f : A \twoheadrightarrow B$
+    \item \textbf{Schröder-Bernstein theorem}: let $A$ and $B$ be sets. If there exists injections $f : A \to B$ and $g : B \to A$, then there exists a bijection $h : A \to B$.
+\end{itemize}
+
+\begin{problem}{24}{}
+
+    \marginnote{Show that $[0, 1]$ and $[0, 1)$ have the same cardinality.}
+
+    See margin.
+
+    \tcblower
+
+    Consider the two injections:
+    \begin{itemize}
+        \item $f : [0, 1] \to [0, 1)$ \quad with \quad $x \mapsto \frac{x}{2}$
+        \item $g : [0, 1) \to [0, 1]$ \quad with \quad $x \mapsto x$
+    \end{itemize}
+    By the Schröder-Bernstein theorem, there exists a bijection between $[0, 1]$ and $[0, 1)$, so they have the same cardinality.
+
+\end{problem}
+
+\begin{problem}{N/A}{cardinality_reals_0_1}
+
+    \marginnote{$\lvert [0, 1] \rvert = \lvert \mathbb{R} \rvert$.}
+
+    Prove the margin.
+
+    \tcblower
+
+    See problem \ref{prob:cardinality_set_functions}.
+
+\end{problem}
+
+\begin{problem}{p. 25}{}
+
+    \marginnote{Show that $\mathbb{N}$ and $\mathbb{N} \times \mathbb{N}$ have the same cardinality.}
+
+    See margin.
+
+    \tcblower
+
+    Consider the following injections:
+    \begin{itemize}
+        \item $f : \mathbb{N} \to \mathbb{N} \times \mathbb{N}$ \quad with \quad $n \mapsto (0, n)$
+        \item $g : \mathbb{N} \times \mathbb{N} \to \mathbb{N}$ \quad with \quad $(m, n) \mapsto 2^m 3^n$
+    \end{itemize}
+
+    By Schröder-Bernstein, $\lvert \mathbb{N} \rvert = \lvert \mathbb{N} \times \mathbb{N} \rvert$.
+
+\end{problem}
+
+\begin{itemize}
+    \item A set $S$ is \textbf{Dedekind-infinite} if there is a bijection from $S$ to a \textit{proper} subset of itself. (Otherwise, $S$ is Dedekind-finite).
+        \begin{itemize}
+            \item \textit{Assuming AC},
+                \begin{align*}
+                    \text{Dedekind-infinite} &\iff \text{infinite} \\
+                    \text{Dedekind-finite} &\iff \text{finite}
+                \end{align*} 
+        \end{itemize}
+\end{itemize}
+
+\begin{problem}{p. 33}{}
+
+    \marginnote{Show $\mathbb{Q}$ is countable.}
+
+    See margin.
+
+    \tcblower
+
+    Take any $q = \frac{a}{b}$ (simplified) and write it as $(a, b)$. Therefore
+        $$ \mathbb{Q} \sim \mathbb{Z} \times \mathbb{Z}
+            \sim \mathbb{N} \times \mathbb{N} \sim \mathbb{N} . $$
+    Hence $\mathbb{Q}$ is countable.
+    
+\end{problem}
+
+\begin{itemize}
+    \item The set $\mathcal{P}(\mathbb{N})$ can be identified with the set of \textbf{infinite binary bitstrings}. These sets are uncountably infinite.
+\end{itemize}
+
+\begin{problem}{p. 36}{}
+    
+    \marginnote{Show that $[0, 1]$ is uncountable using bitstrings.}
+
+    See margin.
+
+    \tcblower
+
+    We can inject infinite binary bitstrings into $[0, 1]$. But the set of infinite binary bitstrings has the same cardinality as $\mathcal{P}(\mathbb{N})$, which is uncountably infinite.
+    
+    Therefore $\lvert [0, 1] \rvert \leq \lvert \mathcal{P}(\mathbb{N}) \rvert$, so $[0, 1]$ is uncountably infinite.
+
+\end{problem}
+
+See lecture notes: Theorem 1.3.6. Nice proof.
+
+\begin{problem}{p. 39}{}
+
+    \marginnote{Countable union of countable sets is countable.}
+
+    Show that the set $S$ of finite subsets of $\mathbb{N}$ is countable.
+
+    \tcblower
+
+    Let $S_n$ be the set of finite subsets of $S$ of size $n$. Then show $S = \cup_{n \in \mathbb{N}} S_n$.
+
+    We want to show that $S_n$ is comparable to $\mathbb{N}^n$; i.e. it is countable.
+    
+    Using the theorem above, we conclude $S$ is countable.
+    
+\end{problem}
+
+\begin{problem}{Problem sheet 1, Q2}{}
+
+    \marginnote{Explicit bijection between $\mathbb{N}$ and $\mathbb{N} \times \mathbb{N}$.}
+
+    See margin.
+
+    \tcblower
+
+    Use diagonals from upper right to lower left. Then note (where $T_n$ is the $n$th triangular number):
+
+    $$ A_{m, 0} = T_{m+1} = \sum_{i=1}^{m+1} = \frac{(m+1)(m+2)}{2} $$
+
+    Therefore:
+
+    \begin{align*}
+        A_{m, n} &= A_{m, n-1} + m + n \\
+        &= A_{m, n-2} + (m + n - 1) + (m + n) \\
+        &\ \ \vdots \\
+        &= A_{m, 0} + (m + 1) + (m + 2) + \cdots + (m + n) \\
+        &= A_{m, 0} + nm + \frac{n (n+1)}{2} \\
+        &= \frac{(m+1)(m+2)}{2} + nm + \frac{n (n+1)}{2} ,
+    \end{align*}
+
+    i.e. our bijection is the function
+        $$ (m, n) \mapsto \frac{(m+1)(m+2)}{2} + nm + \frac{n (n+1)}{2} $$
+    
+\end{problem}
+
+\begin{problem}{Problem sheet 1, Q3}{}
+
+    \marginnote{Transitivity property of cardinality.}
+
+    Prove carefully from the definition that if $\lvert A \rvert \leq \lvert B \rvert$ and $\lvert B \rvert \leq \lvert C \rvert$, then $\lvert A \rvert \leq \lvert C \rvert$.
+
+    \tcblower
+
+    From the definition, $\lvert A \rvert \leq \lvert B \rvert$ implies that there is an injection from $A$ to $B$. Similarly, there is an injection from $B$ to $C$.
+
+    Now the entirety of $A$ is mapped to a subset of $B$, and the entirety of $B$ (and hence $\operatorname{range}(A)$) is mapped to a subset of $C$. Therefore there exists an injection from $A$ to $C$; that is, $\lvert A \rvert \leq \lvert C \rvert$.
+    
+\end{problem}
+
+\begin{problem}{Problem sheet 1, Q4}{}
+
+    \marginnote{Surjectivity as definition of cardinality inequality.}
+
+    Prove that if $A$ is a nonempty set, then $\lvert A \rvert \leq \lvert B \rvert$ if and only if there exists an onto map $g : B \to A$ (assuming Axiom of Choice).
+
+    \tcblower
+
+    \underline{$f \ \text{injective} \ \implies g \ \text{surjective}$}:
+    
+    Define $g$ as follows: for each element in $\operatorname{range}(f)$, let $g = f^{-1}$. For those leftover elements $C = B \setminus \operatorname{range}(f)$, (assuming AC) choose any element $x_0 \in A$ and define $g(y) = x_0$ for all $y \in C$. We have therefore constructed $g$ to be a surjective function.
+
+    \underline{$g \ \text{surjective} \ \implies f \ \text{injective}$}:
+
+    For each $x \in A$, there is some set $S_x \subseteq B$ such that $g(y) = x$ for each $y \in S_x$. Define $f$ so that for each $x \in A$, (assuming AC) choose one element $y_0$ from $S_x$ and set $f(x) = y_0$. Then $f$ is injective.
+    
+\end{problem}
+
+\begin{problem}{Problem set 1, Q5}{ps1_q5}
+
+    \marginnote{$\lvert A \rvert = \lvert A \cup B \rvert$ when $A$ is infinite and $B$ is countable.}
+    
+    Prove the margin.
+
+    \tcblower
+
+    Interleaving method: take $\{a_n\}_{n \in \mathbb{N}}$ in $A$ and $\{b_n\}_{n \in \mathbb{N}}$ in $B$ and `interleave' $\{b_n\}_{n \in \mathbb{N}}$ between $\{a_n\}_{n \in \mathbb{N}}$.
+
+\end{problem}
+
+\begin{problem}{Problem set 1, Q6}{}
+
+    \marginnote{Countable union of \textit{uncountable} sets.}
+
+    Suppose that $\lvert A_n \rvert = \lvert \mathbb{R} \rvert$, for $n = 1, 2, 3, \ldots$. Prove that
+        $$ \biggl\vert \bigcup_{n=1}^\infty A_n \biggr\vert
+            = \lvert \mathbb{R} \rvert . $$
+
+    \tcblower
+
+    ?
+
+\end{problem}
+
+\begin{problem}{Problem set 1, Q7}{}
+
+    \marginnote{$\lvert \mathbb{R} \setminus \mathbb{Q} \rvert = \lvert \mathbb{R} \rvert$}
+
+    Prove the margin.
+
+    \tcblower
+
+    Using problem \ref{prob:ps1_q5}, let $A = \mathbb{R} \setminus \mathbb{Q}$ and $B = \mathbb{Q}$. Then $\lvert A \rvert = \lvert A \cup B \rvert$, i.e.
+        $$ \lvert \mathbb{R} \setminus \mathbb{Q} \rvert = \lvert \mathbb{R} \rvert , $$
+    as required.
+
+\end{problem}
+
+\begin{problem}{Problem sheet 1, Q8}{}
+
+    how's it goin' fellas
+
+\end{problem}
+
+\begin{problem}{Problem sheet 1, Q9 (assignment 1)}{}
+
+    \marginnote{Number of chess games with finite moves is countable.}
+
+    In the game of chess, two players take turns moving pieces on an $8 \times 8$ grid.  The game ends when a state called \textit{checkmate} is reached.  Is the number of different possible chess games countable or uncountable?  (By a ``chess game'', we mean a game which ends in checkmate; we do not consider games that go on forever). Prove your answer.
+    
+    \underline{Hint}: You do not need to know the specific rules for how chess pieces move or what is considered checkmate to answer the question.
+
+    \tcblower
+
+    \textit{I claim that the number chess games with finite moves is countable. To prove this, I represent positions and games as sets and sequences, and then use the theorem on slide 38 of Chapter 1.}
+        
+    There are 64 squares on a chess board and 32 pieces. Assuming all pieces are distinguishable from each other (e.g. Mike and Pradeep are the two white bishops), there are a total of $\frac{64!}{32!}$ ways to put the pieces on the board. The number of \textit{legal} positions $P$ --- that is, positions reachable only by a sequence of legal moves --- is less than $\frac{64!}{32!}$ and is hence finite.
+
+    Let $P_n$ be the set of legal board positions that require $n$ moves to reach, starting from the initial position $p_0 \in P_0$. (Note that there are positions that are in multiple distinct $P_n$; this is irrelevant.) Now $P_n \subset P$ for any number of moves $n$, so $P_n$ is always finite.
+
+    What is a chess game, then? It is simply a sequence of legal transitions between legal positions. We can describe the set $C_m$ of all chess games of $m$ moves as a subset of the Cartesian product
+        $$ P_0 \times P_1 \times P_2 \times \cdots \times P_m . $$
+    (Note that this product contains games with illegal moves between legal positions.) Now the Cartesian product of finitely many finite sets is finite, so any $C_m$ is finite.
+
+    For the last step, note that the set of all possible games $C$ (with potentially illegal moves) is 
+        $$ C = \bigcup_{m \in \mathbb{N}} C_m , $$
+    which is a countable union of finite sets. Hence $C$ is countable. Now the number of \textit{legal} chess games of finite moves is a subset of $C$, and is also therefore countable.
+\end{problem}
+
+\begin{problem}{Problem sheet 1, Q10 (assignment 1)}{cardinality_set_functions}
+    
+    \marginnote{Cardinality of a set of functions.}
+
+    Which of the following two sets has a greater cardinality, or are the cardinalities equal?
+
+    \begin{enumerate}
+        \item The set $S$ of functions from the interval $[0, 1]$ to $\mathbb{N}$
+        \item The set $\mathbb{R}$ of real numbers
+    \end{enumerate}
+
+    Prove your answer.
+
+    \tcblower
+
+    I claim that
+        $$ \lvert S \rvert
+            \geq \lvert \mathcal{P}([0, 1]) \rvert
+            > \lvert [0, 1] \rvert
+            = \lvert \mathbb{R} \rvert , $$
+    and hence that $\lvert S \rvert > \lvert \mathbb{R} \rvert$.
+
+    To prove the first inequality, we can show that there is an injection
+        $$ g : \mathcal{P}([0, 1]) \to S 
+            \qquad \text{given by} \qquad
+            T \mapsto f$$
+    such that
+        $$ f(y) = 
+            \begin{cases}
+                1 \qquad \text{if} \ y \in T \\
+                0 \qquad \text{otherwise}.
+            \end{cases} $$
+
+    The second inequality comes from (the inequality version of) Cantor's theorem.
+
+    To prove the equality, note that the sigmoid function
+        $$ f(x) = \frac{e^x}{1 + e^x} $$
+    is an injection from $\mathbb{R}$ to $(0, 1) \subset [0, 1]$. On the other hand, the map $x \mapsto x$ injects $[0, 1]$ into $\mathbb{R}$, and so by the Schröder-Bernstein theorem, the two sets are in bijection and hence $\lvert [0, 1] \rvert = \lvert \mathbb{R} \rvert$.
+
+\end{problem}
+
+\section{Metric spaces}
+
+\begin{itemize}
+    \item \textbf{Metric} conditions:
+        \begin{enumerate}
+            \item $d(x, y) = 0 \iff x = y$
+            \item $d(x, y) = d(y, x)$
+            \item $d(x, y) + d(y, z) \geq d(x, z)$ \quad (triangle inequality)
+        \end{enumerate}
+    \item \textbf{Interior} (greatest open subset):
+        $$ \operatorname{Int}(Y) = \{ y \in Y : \exists \epsilon > 0 
+            \ \text{such that} \ B(y, \epsilon) \subseteq Y \} . $$
+    \item \textbf{Closure} (smallest closed superset)
+    \item \textbf{Sequences}: in general,
+        $$ \text{convergent} \implies \text{Cauchy} , $$
+    but not vice versa.
+\end{itemize}
+
+\begin{problem}{4}{}
+    \marginnote{Triangle inequality of metric space.}
+
+    Show that $(\mathbb{R}, d)$ with $d(x, y) = \lvert x - y \rvert$ is a metric space.
+
+    \tcblower
+
+    Property 3: let $x' = x - y$ and $y' = y - z$. Then we have
+        $$ \lvert x' \rvert + \lvert y' \rvert = \lvert x' + y' \rvert, $$
+    which is true.
+\end{problem}
+
+\begin{itemize}
+    \item \textbf{Minkowski's inequality}
+\end{itemize}
+
+\begin{problem}{5}{}
+    .
+\end{problem}
+
+\begin{problem}{6}{}
+    .    
+\end{problem}
+
+\begin{problem}{12}{}
+    prove property 1 (iff 0)
+\end{problem}
+
+
+\section{Sequences and series of functions}
+
+\section{Topological spaces}
+
+\section{Compactness}

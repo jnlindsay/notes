@@ -17,10 +17,11 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}			    % symbols
+\usepackage{pifont}                 % dingbats
 \usepackage{amsthm}
 \usepackage{mathtools}              % various
-\usepackage[many]{tcolorbox}				% boxes for theorems, definitions, etc.
-% \usepackage{breakable}              % allow tcolorboxes to break pages
+\usepackage[many]{tcolorbox}		% boxes for theorems, definitions, etc.
+% \usepackage{breakable}            % allow tcolorboxes to break pages
 \usepackage{xcolor}
 \usepackage{bm}                     % bold symbols in maths mode
 \usepackage{framed}    				% paragraph shading
@@ -30,12 +31,32 @@
 \usepackage{tikz-cd}
 \usepackage{marginnote}             % margin notes
 \usepackage{comment}
+\usepackage{hhline}                 % double hlines
+
+% OPERATORS
+
+\DeclareMathOperator{\cosec}{cosec}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arcCot}
+\DeclareMathOperator{\arccsc}{arcCsc}
+\DeclareMathOperator{\arccosh}{arcCosh}
+\DeclareMathOperator{\arcsinh}{arcsinh}
+\DeclareMathOperator{\arctanh}{arctanh}
+\DeclareMathOperator{\arcsech}{arcsech}
+\DeclareMathOperator{\arccsch}{arcCsch}
+\DeclareMathOperator{\arccoth}{arcCoth} 
 
 % SETTINGS
 \colorlet{shadecolor}{lightgray!20}
 \setlength{\parindent}{0em}
 \addbibresource{bibliography.bib}
 \tcbuselibrary{most}
+
+% dingbats
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
 
 % override bullets in itemised lists
 \renewcommand\labelitemii{$\bullet$}

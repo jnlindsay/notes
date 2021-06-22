@@ -3,7 +3,42 @@
 \section{Cheat sheet}
 
 $$ \text{fields} \subset \text{EDs} \subset \text{PIDs} \subset \text{UFDs}
-    \subset \text{integral domains} $$
+    \subset \text{integral domains} \subset \text{rings} $$
+
+\begin{center}
+    \begin{tabular}{ |c||c|c|c|c|c|c|c| } 
+        \hline
+            & comm.
+            & \begin{tabular}{@{}c@{}}no 0 \\ divs.\end{tabular}
+            & \begin{tabular}{@{}c@{}}prime iff \\ irreduc.\end{tabular}
+            & \begin{tabular}{@{}c@{}}ideals \\ p'pal\end{tabular}
+            & \begin{tabular}{@{}c@{}}ideal max if\\$\neq$ 0, pr./irr.\end{tabular}
+            & \begin{tabular}{@{}c@{}}Euclid. \\ alg.\end{tabular}
+            & \begin{tabular}{@{}c@{}}unit if \\ $\neq$ 0\end{tabular} \\
+        \hhline{|=||=|=|=|=|=|=|=|}
+            ring & & & & & & & \\ 
+        \hline
+            domain & \cmark & \cmark 
+            & \begin{tabular}{@{}c@{}} prime \\ $\implies$ irr.\end{tabular} 
+            & & & & \\ 
+        \hline
+            UFD & \cmark & \cmark & \cmark & & & & \\ 
+        \hline
+            PID & \cmark & \cmark & \cmark & \cmark & \cmark & & \\
+        \hline
+            ED & \cmark & \cmark & \cmark & \cmark & \cmark & \cmark & \\
+        \hline
+            field & \cmark & \cmark & \cmark & \cmark & \cmark & \cmark & \cmark \\
+        \hline
+    \end{tabular}
+    \newline
+    \small Note: prime ideal has no `fundamental' definition
+\end{center}
+
+\begin{align*}
+    r = ab &\implies a \ \text{or} \ b \ \text{a unit} &&\textbf{Irreducible} \\
+    p \mid ab &\implies p \mid a \ \text{or} \ p \mid b &&\textbf{Prime}
+\end{align*}
 
 Rings:
     \begin{itemize}
@@ -21,7 +56,6 @@ Rings:
 
 Ideals:
     \begin{itemize}
-        \item Prove: nonempty, closed under subtraction, closed under multiplication by all elements of $R$
         \item $\mathbb{Z}$: $n\mathbb{Z}$
         \item $\mathbb{Z}[i]$: $(a + bi) \mathbb{Z}[i]$
         \item Maximal ideals:
@@ -35,7 +69,15 @@ Ideals:
 Fields:
     \begin{itemize}
         \item $\mathbb{Q}, \mathbb{R}, \mathbb{C}$ but \textit{not} $\mathbb{Z}$ (every element must have an inverse)
-        \item $\mathbb{F}_p = \mathbb{Z}/p\mathbb{Z}$, where $p$ is prime
+    \end{itemize}
+
+Finite fields:
+    \begin{itemize}
+        \item $\mathbb{F}_p$ is a field with $p$ elements
+            \begin{itemize}
+                \item $\mathbb{Z}/p\mathbb{Z} = \mathbb{F}_p$ when $p$ is prime because $(p)$ is maximal.
+            \end{itemize}
+        \item Consider $f = x^2 + x + 1$, which is irreducible in $\mathbb{F}_2[x]$. Then $K = \mathbb{F}_2[x]/f$ is a field of order 4 (any $x^k$ with $k \geq 2$ is reduced somehow). Let $\alpha$ be the coset of $x$; then $K = \{ 0, 1, \alpha, \alpha + 1 \}$.
     \end{itemize}
     
 Field extensions:
@@ -83,15 +125,52 @@ Irreducibility:
     
 Units:
     \begin{itemize}
-        \item $\alpha$ is a unit in $R$ iff $\nu(\alpha) = 1$
+        \item $\pm 1$ in $\mathbb{Z}$
+        \item $\mathbb{Q} - \{0\}$ in $\mathbb{Q}$
         \item $\{\pm 1, \pm i\}$ in $\mathbb{Z}[i]$
+    \end{itemize}
+
+Conjugacy classes:
+    \begin{itemize}
+        \item $S_4 : \{ 1, (12), (123), (1234), (12)(34) \}$
+        \item $A_4 : \{ 1, (123), (132), (12)(34) \}$
     \end{itemize}
 
 \newpage
 
 \loadgeometry{margins}
 
+\section{Group actions}
+
+Let $G$ act on $A$, and let $J \subseteq G$.
+\begin{itemize}
+    \item \textbf{Kernel}: $\ker(G) = \{ g \in G : ga = a \quad \forall a \in A \}$
+        \begin{itemize}
+            \item \textbf{Centraliser} (kernel under conjugation): $C_G(A) = \{ g \in G : aga^{-1} = g \quad \forall a \in A \}$
+                \begin{itemize}
+                    \item \textbf{Centre}: $Z(G) = C_G(G) = \{ g \in G : hg = gh \quad \forall h \in G \}$
+                \end{itemize}
+        \end{itemize}
+    \item \textbf{Stabiliser} (fixed $a$): $\operatorname{stab}_G(a) = G_a = \{ g \in G : g a = a \}$
+    \item \textbf{Orbit}: $[a] = Ga = \{ ga : g \in G \}$
+        \begin{itemize}
+            \item \textbf{Conjugacy class} (orbit under conjugation): $[a] = Ga = \{ gag^{-1} : g \in G \}$
+        \end{itemize}
+    \item \textbf{Fixed point set} of $J$: $A^J = \{ a \in A : ja = a \quad j \in J \}$
+\end{itemize}
+
 \section{Ring homomorphisms}
+
+Ring homomorphism $\phi : R \to R'$:
+    \begin{itemize}
+        \item $\phi(r + s) = \phi(r) + \phi(s)$
+        \item $\phi(rs) = \phi(r) \phi(s)$
+        \item $\phi(1_R) = 1_{R'}$
+    \end{itemize}
+
+\begin{itemize}
+    \item \textbf{Kernel}: $\ker(\phi) = \{r \in R : \phi(r) = 0_{R'}\}$
+\end{itemize}
 
 \begin{problem}{Q11, wk8\textsuperscript{1}}{}
 
@@ -118,6 +197,10 @@ Units:
 \end{problem}
 
 \section{Ideals}
+
+\begin{itemize}
+    \item Prove: nonempty, closed under subtraction, closed under multiplication by all elements of $R$
+\end{itemize}
 
 \begin{proposition}{Maximal/prime ideal}{maximal-prime-ideal}
     \textsc{Suppose}:
@@ -264,3 +347,9 @@ Note that the greatest common denominator of two polynomials is unique \textit{u
             r + I \mapsto (r + I_1, r + I_2, \ldots, r + I_n) $$
     is an isomorphism.
 \end{theorem}
+
+\section{Finite fields}
+
+\begin{itemize}
+    \item If $F$ is a field, then $\lvert F \rvert = p^n$, where $p$ is prime and called the \textbf{characteristic} of $F$.
+\end{itemize}
