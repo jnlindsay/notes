@@ -2,7 +2,7 @@
 
 \section{Linear Ordinary Differential Equations}
 
-\subsection{Forms cheat sheet}
+\subsection{Basic methods}
 
 \begin{itemize}
     \item \textbf{Separable}:
@@ -21,16 +21,9 @@
     is called \textbf{exact} if
         $$ \frac{\partial F}{\partial y}
             = \frac{\partial G}{\partial x} . $$
-    \item \textbf{Reduction of order} method: given $u = u_1(x) \neq 0$, a solution to the ODE
-        $$ u'' + p(x)u' + q(x)u = 0 , $$
-    on some interval $I$, then a second solution is
-        $$ u = u_1(x) \int \frac{1}{u_1^2
-            \operatorname{exp}\bigl\{ \int p(x) dx \bigr\}} dx . $$
 \end{itemize}
 
 \newpage
-
-\subsection{Basic methods}
 
 \begin{problem}{Problem set 1, Q1}{}
 
@@ -107,14 +100,32 @@
     
 \end{problem}
 
-\begin{problem}{Problem set 1, Q1 (iii, iv)}{}
+\subsection{Ansätze}
+
+\underline{NOTE 1}: $p(x)$ is the \textit{characteristic polynomial} and NOT the differential operator.
+
+\underline{NOTE 2}: MAKE SURE $p(\mu)$ AND $p(0)$ ARE DISTINGUISHED.
+
+\begin{itemize}
+    \item \textbf{Polynomials} (where $L = p(D)$, and assuming $a_0 = p(0) \neq 0$, i.e. we need a non-zero constant term). The polynomial $u_P$ of degree $r \in \mathbb{N}$ solves $ Lu_P = x^r . $
+    \item \textbf{Polynomials (special)} (assuming at most $p^{(k)}(0) \neq 0$). Then there is a unique polynomial $v$ of degre $r$ such that $u_p(x)= x^k v(x)$ satisfies $Lu_P = x^r$.
+    \item \textbf{Exponentials} (where $L = p(D)$ and $\mu \in \mathbb{C}$, and $p(\mu) \neq 0$). The function
+        $$ u_P(x) = \frac{e^{\mu x}}{p(\mu)} $$
+    satisfies $Lu_p = e^{\mu x}$.
+    \item \textbf{Product of polynomial and exponential} (similar assumptions as above). There exists a unique polynomial $v$ of degree $r$ such that $u_P = v(x) e^{\mu x}$ satisfies $Lu_P = x^r e^{\mu x}$.
+    \item \textbf{Product of polynomial and exponential (special)} (similar assumptions to above, but also assuming at most $p^{(\mu)}(0) \neq 0$). Then there is a unique polynomial $v$ of degree $r$ such that $u_P(x) = x^k v(x) e^{\mu x}$.
+\end{itemize}
+
+\begin{problem}{Problem set 1, Q2, Q7}{}
         
     \marginnote{Second-order ODEs (incl. complex solutions).}
 
-    Find general solutions of:
+    Find general solutions of the following equations. For part 3, find the solution of $p(D)u = 0$.
     \begin{enumerate}
         \item $u''+ 2u' + 2u = 0$
         \item $u'' + 6u' + 9 = 0$
+        \item $p(z) = z^4 - 2z^3 - 2z^2 + 8
+            = (z - 2)^2 (z^2 + 2z + 2)$
     \end{enumerate}
 
     \tcblower
@@ -134,6 +145,11 @@
             \end{align*}
         \item Characteristic polynomial factorises to $(r + 3)^2 = 0$, so the solution is
             $$ u(x) = e^{-3x} (c_1 + c_2 x) . $$
+        \item Solutions so characteristic polynomial are:
+            $$ z = 2 \ \text{multiplicity $2$}, z = -1 \pm i . $$
+        Therefore the general solution Is
+            $$ p(z) = c_1 e^{2x} + c_2 x e^{2x}
+                + e^{-x} (c_3 \cos x + c_4 \sin x) . $$
     \end{enumerate}
 
 \end{problem}
@@ -179,6 +195,14 @@
     \end{enumerate}
 
 \end{problem}
+
+\subsection{Reduction of order}
+
+Given $u = u_1(x) \neq 0$, a solution to the ODE
+    $$ u'' + p(x)u' + q(x)u = 0 , $$
+on some interval $I$, then a second solution is
+    $$ u = u_1(x) \int \frac{1}{u_1^2
+        \operatorname{exp}\bigl\{ \int p(x) dx \bigr\}} dx . $$
 
 \begin{problem}{Problem set 1, Q5}{}
 
@@ -286,7 +310,7 @@ For solutions to a non-singular, linear, homogeneous, $m$th-order ODE $Lu = 0$ o
     \tcblower
 
     \begin{enumerate}
-        \item For $x \geq 0$ and $x < 0$, the Wronskians are respectively
+        \item \marginnote{[Wronskian $0$ but not l.d.]} For $x \geq 0$ and $x < 0$, the Wronskians are respectively
             $$ 
                 \begin{vmatrix}
                     x^3 & x^3 \\
@@ -301,7 +325,7 @@ For solutions to a non-singular, linear, homogeneous, $m$th-order ODE $Lu = 0$ o
         In both cases the determinant is $0$, however we can set up the equation
             $$ ax^3 + b \lvert x \rvert^3 = 0 , $$
         and, substituting (for example) $x = 1$ and $x = -1$ shows $a = b = 0$ so the two functions are, in fact, linearly independent.
-        \item Using the Wolfram Mathematica command
+        \item \marginnote{[Mathematica command.]} Using the Wolfram Mathematica command
             \begin{center}
                 \lstinline|Wronskian[{E^(d x), x E^(d x), x^2 E^(d x)}, x]|
             \end{center}
@@ -311,6 +335,10 @@ For solutions to a non-singular, linear, homogeneous, $m$th-order ODE $Lu = 0$ o
 \end{problem}
 
 \subsection{Variation of parameters}
+
+\begin{center}
+    \underline{NOTE: MAKE SURE LEADING COEFFICIENT IS $1$.}
+\end{center}
 
 We seek $v_1$ and $v_2$ such that
     $$ u_P(x) = v_1(x) u_1(x) + v_2(x) u_2(x) , $$
@@ -389,4 +417,72 @@ where $W(x)$ is the Wronskian of $u_1$ and $u_2$.
 
 \end{problem}
 
-  
+\subsection{Solutions via power series}
+
+\textbf{Ratio test}:
+    $$ \lim_{k \to \infty} \frac{A_{k + 2}
+        z^{k + 2}}{A_k z^k} . $$
+
+\subsection{Cauchy-Euler ODEs}
+
+A second-order Cauchy-Euler ODE has the form
+    $$ Lu = ax^2 u'' + bxu' + cu = f(x) $$
+and with $u = x^r$, has the characteristic equation
+    $$ ar(r - 1) + br + c = 0 . $$
+General solution when $r_1 \neq r_2$:
+    $$ u_G(x) = c_1 x^{r_1} + c_2 x^{r_2} ,
+        \qquad x > 0 . $$
+When $r_1 = r_2$:
+    $$ u_G(x) = c_1 x^{r_1} + c_2 x^{r_1} \ln \lvert x \rvert,
+        \qquad x > 0 . $$
+
+\begin{problem}{Lecture notes p. 88; Problem Set 1, Q23}{}
+
+    \marginnote{Cauchy-Euler ODEs: selected problems.}
+
+    Find the general solution of the following ODEs.
+
+    \begin{enumerate}
+        \item $x^2 u'' - x u' + u = 0$
+        \item $x^2 u'' + 3x u' + \frac{5u}{4} = 0$
+    \end{enumerate}
+
+    \tcblower
+
+    \begin{enumerate}
+        \item \marginnote{[Repeated roots.]} Characteristic equation is
+            $$ r(r - 1) - r  + 1 = 0 $$
+        which yields the solutions $r = 1$ with multiplicity $2$. Therefore, the general solution is
+            $$ u_G(x) = c_1 x + c_2 x \log \lvert x \rvert . $$
+        \item \marginnote{[Complex case.]} Characteristic equation is
+            $$ r(r - 1) + 3r + \frac{5}{4} = 0 , $$
+        giving $r = -1 \pm \frac{i}{2}$. A basis for our solution space is then
+            $$ \{ x^{-1} \cdot x^{i/2},
+                x^{-1} \cdot x^{-i/2} \} , $$
+        but we can write (for example)
+            $$ x^{i/2} = e^{\frac{i}{2} \log \lvert x \rvert} $$
+        which (after some algebra) means we can write
+            $$ u_G(x) = x^{-1} \biggl[
+                c_1 \cos \Bigl( \frac{1}{2} \log x \Bigr)
+                + c_2 \sin \Bigl( \frac{1}{2} \log x \Bigr)
+                \biggr] . $$
+    \end{enumerate}
+
+\end{problem}
+
+\begin{problem}{Problem set 1, Q26}{}
+
+    \marginnote{Ansatz for $\frac{24}{x^2}$ (Cauchy-Euler).}
+
+    Solve the initial value problem
+        $$ x^2 u'' - 2xu' + 2u = \frac{24}{x^2},
+            \qquad u(1) = 2, u'(1) = -5 . $$
+    
+    Cauchy-Euler gives the homogeneous solution basis $\{x, x^2\}$. \underline{Note} that variation of parameters gives a solution that is linearly dependent on this basis. Instead, we can use the Ansatz
+        $$ u(x) = \frac{A}{x} + \frac{B}{x^2} $$
+    so find a particular solution
+        $$ u_P(x) = \frac{2}{x^2} , $$
+    yielding the final solution
+        $$ u(x) = x - x^2 + \frac{2}{x^2} . $$
+
+\end{problem}
