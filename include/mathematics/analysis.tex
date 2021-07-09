@@ -381,6 +381,8 @@ See lecture notes: Theorem 1.3.6. Nice proof.
 
     \tcblower
 
+    [\underline{NOTE}: This answer is unnecessarily complicated and does not consider positions where pieces have been captured and removed from the board.]
+
     \textit{I claim that the number chess games with finite moves is countable. To prove this, I represent positions and games as sets and sequences, and then use the theorem on slide 38 of Chapter 1.}
         
     There are 64 squares on a chess board and 32 pieces. Assuming all pieces are distinguishable from each other (e.g. Mike and Pradeep are the two white bishops), there are a total of $\frac{64!}{32!}$ ways to put the pieces on the board. The number of \textit{legal} positions $P$ --- that is, positions reachable only by a sequence of legal moves --- is less than $\frac{64!}{32!}$ and is hence finite.
@@ -446,25 +448,222 @@ See lecture notes: Theorem 1.3.6. Nice proof.
             \item $d(x, y) = d(y, x)$
             \item $d(x, y) + d(y, z) \geq d(x, z)$ \quad (triangle inequality)
         \end{enumerate}
-    \item \textbf{Interior} (greatest open subset):
-        $$ \operatorname{Int}(Y) = \{ y \in Y : \exists \epsilon > 0 
-            \ \text{such that} \ B(y, \epsilon) \subseteq Y \} . $$
-    \item \textbf{Closure} (smallest closed superset)
-    \item \textbf{Sequences}: in general,
-        $$ \text{convergent} \implies \text{Cauchy} , $$
-    but not vice versa.
 \end{itemize}
 
-\begin{problem}{4}{}
-    \marginnote{Triangle inequality of metric space.}
+\begin{problem}{Problem set 2, Q1}{}
+    
+    \marginnote{Metric spaces: proofs.}
 
-    Show that $(\mathbb{R}, d)$ with $d(x, y) = \lvert x - y \rvert$ is a metric space.
+    Which of the following are metric spaces? (If they are not, can you `fix' the problem?)
+
+    \begin{enumerate}[i)]
+        \item $X = \mathbb{R}$ with $d(x, y) = \sqrt{\lvert x - y \rvert}$.
+        \item $X = c_{00}$, the set of real sequences $\mathbf{x} = (x_k)_{k = 1}^\infty$ which have only finitely many non-zero terms, with $d(x,y) = \sum_{k = 1}^\infty \lvert x_k - y_k \rvert$.
+        \item $X = $ all airports served by Qantas, with $d(A, B) = $ minimum travel time on Qantas flights to get from $A$ to $B$.
+        \item $X = $ all $100$ digit bit-strings, with $d(v, w) = $ the number of digits where $v$ and $w$ differ.
+        \item $X = $ the vector space of all real polynomials, with $d(p, q) = \displaystyle\int_0^3 \lvert p(t) - q(t) \rvert \ dt$.
+        \item $X = $ the vector space of all real polynomials, with $d(p, q) = \displaystyle\sum_{k = 0}^\infty \frac{\lvert p(k) - q(k) \rvert}{2^k}$.
+    \end{enumerate}
 
     \tcblower
 
-    Property 3: let $x' = x - y$ and $y' = y - z$. Then we have
-        $$ \lvert x' \rvert + \lvert y' \rvert = \lvert x' + y' \rvert, $$
-    which is true.
+    \begin{enumerate}[i)]
+        \item $(X, d)$ is a metric space. Criteria 1 and 2 are easy. Then, if $x' = x - y$ and $y' = y - z$, we have
+            \begin{align*}
+                d(x, y) + d(y, z) &= \sqrt{\lvert x - y \rvert}
+                    + \sqrt{\lvert y - z \rvert} \\
+                &\geq \sqrt{\lvert x - z \lvert} \\
+                &= d(x, z) ,
+            \end{align*}
+        since $\lvert x' \rvert + \lvert y' \rvert \geq \lvert x' + y' \rvert$.
+        \item $(X, d)$ is a metric space for similar reasons to part i).
+        \item $(X, d)$ is not a metric space because the minimum flying time from $A$ to $B$ may not be the same as from $B$ to $A$. Also, it is not guaranteed that Qantas has flights from every airport to \textit{every other} airport.
+        \item $(X, d)$ is a metric space. Criteria 1 and 2 are easy. By contradiction, let us suppose that this space fails to meet criterion 3. Then, there must be at least one $k$ such that $d(x_k, y_k) + d(y_k, z_k) < d(x_k, z_k)$, in which case $d(x_k, z_k) \neq 0$ and hence $d(x_k, z_k) = 1$. Then there are two cases: $x_k = y_k$, and $x_k \neq y_k$. In both cases, we have $d(x_k, y_k) + d(y_k, z_k) = 1$ and so by contradiction transitivity must hold.
+        \item $(X, d)$ is a metric space. Proof is similar to part i) with some additional subtlety when dealing with criterion 1: first, note that polynomials are continuous so we cannot have a constant zero polynomial with discontinuous jumps. Second, $d(p, q) = 0$ requires $p$ and $q$ to be zero on the interval $[0, 3]$. However, the only way for $p$ and $q$ to have uncountably many zeros is if they are identically $0$.
+        \item $(X, d)$ is a metric space.
+    \end{enumerate}
+    
+\end{problem}
+
+\begin{problem}{Problem set 2, Q4}{}
+
+    \marginnote{$\operatorname{Int}(Y) = Y$ in finite metric spaces.}
+
+    Let $(X, d)$ be a metric space with only finitely many elements. Prove that every subset of $X$ must be open (and closed!).
+
+    \tcblower
+
+    Since $X$ is finite, for any $y \in Y$, there is some $z_y \in X$ that is \textit{closest} to $y$. Setting $\epsilon = \frac{1}{2} \cdot d(y, z_y)$ then yields a ball that sits entirely within $Y$. Hence, $\operatorname{Int(Y) = Y}$ and so every subset of $X$ is open. This also means that every subset is closed.
+    
+\end{problem}
+
+\begin{problem}{Problem set 2, Q5}{}
+
+    \marginnote{Symmetric difference of sets as metric.}
+
+    Let $X = \mathcal{P}(S)$ where $S$ is finite, and let $d(A, B) = \lvert A \Delta B$. Show that $(X, d)$ is a metric space.
+    
+    \tcblower
+
+    For criterion 3, use a Venn diagram and label the sub sections $D$ through $F$ (we can ignore) $A \cap B \cap C$. Then the desired inequality is easy to prove.
+
+\end{problem}
+
+\subsection{Interior, closure, boundary}
+
+\begin{itemize}
+    \item \textbf{Interior} (greatest open subset):
+        $$ \operatorname{Int}(Y) = \{ y \in Y : \exists \epsilon > 0 
+            \ \text{such that} \ B(y, \epsilon) \subseteq Y \} . $$
+    \item \textbf{Closure} (smallest closed superset): $\operatorname{Cl}(Y) = \operatorname{Int}(Y) \sqcup \operatorname{Bd}(Y)$
+    \item A set $Y \subset (X, d)$ is \textbf{open} if $\operatorname{Int}(Y) = Y$, and \textbf{closed} if $Y^c$ is open.
+    \item \textbf{Boundary}:
+        $$ \operatorname{Bd}(Y) = X \setminus (\operatorname{Int}(Y)
+            \cup \operatorname{Int}(Y^c)) . $$
+\end{itemize}
+
+\begin{problem}{Problem sheet 2, Q10}{}
+
+    \marginnote{\textit{Limit points}, interior, closure, boundary of union of varied sets (interesting).}
+
+    Let $X = \mathbb{R}$ with the usual metric and let
+        $$ Y = \{\sin k\}_{k = 1}^\infty \cup (0, 2)
+            \cup \{ 3, 3.1, 3.14, 3.141, 3.1415, \ldots \} . $$
+    
+    \begin{enumerate}[i)]
+        \item What are the interior points of $Y$?
+        \item What are the boundary points of $Y$?
+        \item What are the limit points of $Y$?
+        \item What is the closure of $Y$?
+    \end{enumerate}
+
+    \underline{Note}: \textit{limit points} are points in the closure of a set that aren't `isolated'.
+
+    \tcblower
+
+    \begin{enumerate}[i)]
+        \item $(0, 2)$
+        \item $[-1, 0] \cup \{2\} \cup \{ 3, 3.1, 3.14, \ldots \}
+            \cup \{ \pi \}$
+        \item $[-1, 2] \cup \{ \pi \}$
+        \item $[-1, 2] \cup \{ 3, 3.1, 3.14, \ldots \}
+            \cup \{ \pi \}$
+    \end{enumerate}
+
+\end{problem}
+
+\begin{problem}{Problem sheet 2, Q11}{}
+
+    \marginnote{Closure theorems.}
+
+    Suppose that $Y$ is a subset of a metric space $(X, d)$.
+
+    \begin{enumerate}[i)]
+        \item Prove that $\operatorname{cl(Y)}$ is closed in $(X, d)$.
+        \item Prove that $Y$ is closed if and only if $Y = \operatorname{cl}(Y)$.
+        \item Let $\mathcal{S}$ denote the set of all closed subsets of $X$ which contain $Y$, that is
+            $$ \mathcal{S} = \{ C \subseteq X : C \
+            \text{is closed and} \ Y \subseteq C \} . $$
+        \begin{enumerate}[(a)]
+            \item Explain why $\mathcal{S}$ is always nonemtpy.
+            \item Prove that if $C \in \mathcal{S}$ then $\operatorname{cl}(Y) \subseteq C$ (and hence that $\operatorname{cl}(Y)$ is the `smallest' closed set cotaining $Y$).
+            \item Prove that $\operatorname{cl}(Y) = \cap_{C \in \mathcal{S}} C$.
+        \end{enumerate}
+    \end{enumerate}
+
+    \tcblower
+
+    \begin{enumerate}[i)]
+        \item $\operatorname{cl}(Y)^c = \operatorname{Int}(Y^c)$ is open, so $\operatorname{cl}(Y)$ is closed.
+        \item \begin{align*}
+            Y \ \text{closed} &\iff Y^c \ \text{open} \\
+                &\iff \operatorname{Int}(Y^c) = Y^c \\
+                &\iff \operatorname{cl}(Y) = Y .
+                    &&\text{(complement of both sides)}
+        \end{align*}
+        \item \begin{enumerate}[(a)]
+            \item The entire metric space is closed and contains $Y$, so at the very least $X \subseteq \mathcal{S}$.
+            \item Since $\operatorname{cl}(Y)$ is closed, Q\ref{prob:closed_alternate} says that the limit of all of its convergent sequences are contained within $\operatorname{cl}(Y)$. But since $Y \subseteq C$, and because $C$ is also closed, the limit of every convergent sequence in $\operatorname{cl}(C)$ is also contained in $C$. Hence $\operatorname{cl}(C) \subseteq C$.
+            \item Consider $C_1 \subseteq C_2 \subseteq \cdots \subseteq X$. Then
+                \begin{align*}
+                    c \in C_1 &\iff c \in C_1
+                        \ \text{and} \ c \in C_2
+                        \ \text{and} \ \cdots 
+                        \ \text{and} \ c \in X \\
+                        &\iff c \in \bigcap_{C \in \mathcal{S}} C .
+                \end{align*}
+            But from part (b), $\operatorname{cl}(Y) = C_1$, so
+                $$ \operatorname{cl}(Y)
+                    = \bigcap_{C \in \mathcal{S}} C . $$
+        \end{enumerate}
+    \end{enumerate}
+    
+\end{problem}
+
+\begin{problem}{Problem sheet 3, Q1 (assignment 2)}{}
+
+    \marginnote{Interior, closure, boundary of subset of $(\ell^1, \lVert \cdot \rVert_1)$.}
+
+    Let $S \subset (\ell^1, \lVert \cdot \rVert_1)$ be the set of sequences $\{ x_n \}_{n=1}^\infty \in \ell^1$ such that
+        $$ x_{2n} = x_{2n - 1}, \quad \forall n . $$
+    What are the interior, closure, and boundary of $S$? (Prove your answer.)
+
+    \tcblower
+
+    An $\epsilon$-ball around any sequence in $(\ell^1, \lVert \cdot \rVert_1)$ can be written as
+        \begin{align*}
+            B \bigl( \{ x_n \}_{n=1}^\infty, \epsilon \bigr)
+                &= \biggl\{ \{ y_n \}_{n=1}^\infty \in S :
+                \Bigl\Vert
+                    \{ y_n \}_{n=1}^\infty
+                    - \{ x_n \}_{n=1}^\infty 
+                \biggr\Vert_1 < \epsilon \Bigr\} \\
+            &= \biggl\{
+                \{ y_n \}_{n=1}^\infty \in S :
+                \sum_{n = 1}^\infty
+                \bigl\vert x_n - y_n \bigr\vert < \epsilon
+            \biggr\} .
+        \end{align*}
+    Given \textit{any} sequence $\{ x_n \}_{n=1}^\infty \in S$ and \textit{any} positive $\epsilon$, we can choose some positive $\delta$ less than $\frac{\epsilon}{2}$ and construct a new sequence
+        $$ \{ x'_n \}_{n=1}^\infty = (x_1 - \delta, x_1 + \delta, x_3, x_3, x_5, x_5, \ldots) , $$
+    which lies outside $S$ but within $\ell^1$, since
+        $$ \sum_{n = 1}^\infty
+            \bigl\vert x_n - x'_n \bigr\vert
+            = 2 \delta < \epsilon < \infty . $$
+    However, $\{ x'_n \}_{n=1}^\infty$ also lies in the $\epsilon$-ball of $\{ x_n \}_{n=1}^\infty$, so the interior of $S$ is empty.
+
+    Next, let us consider sequences in $S^c$. For \textit{any} such sequence, choose
+        $$ \epsilon < \frac{1}{2} \cdot \inf_{i, j \in \mathbb{Z}^+} \bigl\{ \lvert x_i - x_j \rvert \bigr\}, \quad x_i \neq x_j . $$
+    Then the $\epsilon$-ball around $\{ x_n \}_{n=1}^\infty$ is wholly contained within $S^c$; this means that the interior of $S^c$ is itself.
+
+    To conclude, we have
+        \begin{align*}
+            \operatorname{Bd}(S)
+                &= \ell^1 \setminus (\operatorname{Int}(S) \cup \operatorname{Int}(S^c)) \\
+            &= \ell^1 \setminus S^c \\
+            &= S ,
+        \end{align*}
+    which also implies that the closure of $S$ is itself.
+        
+\end{problem}
+
+\subsection{Topology}
+
+\begin{itemize}
+    \item $\mathcal{O}(X)$ is the \textbf{topology} of $X$, with properties:
+        \begin{enumerate}
+            \item $\emptyset, X \in \mathcal{O}(X)$
+            \item Union of open sets is open
+            \item \textit{Finite} intersection of open sets is open
+        \end{enumerate}
+\end{itemize}
+
+\begin{problem}{Problem sheet 2, Q8}{}
+
+    \marginnote{Unions of open sets.}
+
+    
+    
 \end{problem}
 
 \begin{itemize}
@@ -481,6 +680,175 @@ See lecture notes: Theorem 1.3.6. Nice proof.
 
 \begin{problem}{12}{}
     prove property 1 (iff 0)
+\end{problem}
+
+\subsection{Convergence}
+
+\marginnote{\underline{IMPORTANT} \underline{NOTE}} `Open' and `closed' are NOT logical opposites, so one must use the $\epsilon$-ball definition \textit{directly} when proving via contradiction or via contrapositive.
+
+\begin{itemize}
+    \item \textbf{Cauchy sequences}: in general,
+        $$ \text{convergent} \implies \text{Cauchy} , $$
+    but not vice versa. The utility of Cauchy sequences is that they don't \textit{presuppose} the existence of a limit. In a complete metric space, though, all Cauchy sequences converge to a limit.
+\end{itemize}
+
+\begin{problem}{Problem sheet 2, Q7}{closed_alternate}
+
+    \marginnote{Sequences in $Y$ converge iff $Y$ closed (important).}
+
+    Let $(X, d)$ be a metric space, and let $Y \subseteq X$. Show that $Y$ is closed iff the limit of every convergent sequence $\{y_n\}_{n=1}^\infty \subseteq Y$ is in $Y$.
+
+    \tcblower
+
+    Note that
+        \begin{align*}
+            Y \ \text{closed} &\iff Y^c \ \text{open} \\
+                &\iff \forall x \in Y^c, \ \exists \epsilon > 0
+                \ \text{such that} \ B(x, \epsilon)
+                \subseteq Y^c \tag{$A$} .
+        \end{align*}
+    We can also write the contrapositive of the second statement as
+        \begin{equation}
+            y \in Y \qquad
+            \forall \{y_n\} \subseteq Y
+                \ \text{where} \ y_n \to y .  \tag{$B$}
+        \end{equation}
+    Let us first prove $A \implies B$. If $A$ is true, then there is an $\epsilon$-ball around any $x \in Y^c$, so if there is a sequence in $Y$ that converges, its limit must be within $Y$.
+
+    For $A \impliedby B$, let us prove the contrapositive $\neg A \implies \neg B$. We can write $\neg A$ as:
+        \begin{equation}
+            \exists x \in Y^c
+                \ \text{such that} \ B(x, \epsilon) \not \subseteq Y^c
+                \ \forall \epsilon > 0 . \tag{$\neg A$}
+        \end{equation}
+    Then $\neg B$ is:
+        \begin{equation}
+            \exists \{y_n\} \subseteq Y \ \text{where} \ y_n \to x
+            \ \text{such that} \ x \in Y^c . \tag{$\neg B$}
+        \end{equation}
+    Now if $\neg A$ is true, then we can form an $\epsilon$-ball around $x$ that necessarily intersects with $Y$---therefore, we can construct a sequence wholly within $Y$ that converges to $x$, and so $\neg B$ is also true.
+    
+\end{problem}
+
+\begin{problem}{Problem sheet 3, Q10 (assignment 2)}{}
+
+    \marginnote{Cauchy sequence in $L^1$. Showing no limit in $L^1$.}
+
+    Let $X = C[0,1]$ with the metric $d_1$. Consider the sequence of piecewise linear functions
+    $$ f_n(x) =
+        \begin{cases}
+            0 & 0 \leq x \leq \frac{1}{2} - \frac{1}{n} \\
+            \frac{1}{2} - \frac{n}{4} + \frac{n}{2} x
+                & \frac{1}{2} - \frac{1}{n} < x
+                < \frac{1}{2} + \frac{1}{n} \\
+            1 & \frac{1}{2} + \frac{1}{n} \leq x \leq 1
+        \end{cases} ,
+        \qquad n \geq 2 .
+    $$
+    \begin{enumerate}
+        \item Sketch the first few functions in the sequence.
+        \item Show that this is a Cauchy sequence.
+        \item Show that the sequence does not converge. (Do not refer to any larger spaces such as $L^p$ spaces---rather, show directly that the sequence does not converge in the $d_1$ metric to any function in $C[0,1])$.
+    \end{enumerate}
+
+    \tcblower
+
+    \begin{enumerate}
+        \item Use the following Mathematica code:
+        \begin{lstlisting}
+f[x_, n_] = Piecewise[{{0, 0 <= x <= 1/2 - 1/n}, {1/2 - n/4 + (n x)/2, 1/2 - 1/n <= x <= 1/2 + 1/n}, {1, 1/2 + 1/n <= x <= 1}}]
+Plot[f[x, 4], {x, 0, 1}]
+        \end{lstlisting}
+        \item Let $m, n \in \mathbb{Z}^+$ and assume without loss of generality that $m < n$. Then
+            $$ d_1 \bigl( f_m(x), f_n(x) \bigr)
+                = \int_0^1 \bigl\vert f_m(x) - f_n(x) \bigr\vert \ dx . $$
+        Instead of solving this integral directly, we can draw a picture of $f_m$ and $f_n$ like so:
+
+        \begin{center}
+            \begin{tikzpicture}[scale=0.5]
+                \draw (0, 0) -- (10/6, 0)
+                    -- (50/6, 10) -- (10, 10);
+                \draw (0, 0) -- (3, 0)
+                    -- (7, 10) -- (10, 10);
+                \draw[densely dotted] (27/13, 40/64) -- (3, 0);
+                \draw[dotted] (5, 10) -- (5, 0);
+                \node at (10/6, 0) [below] {A};
+                \node at (5, 5) [right] {B};
+                \node at (3, 0) [below] {C};
+                \node at (27/13, 40/64) [left] {M};
+            \end{tikzpicture}
+        \end{center}
+
+        and find the areas of the two triangles. Let us begin by calculating the perpendicular distance between $\overline{AB}$ and $C$. The line $\overline{AB}$ has equation
+            $$ 2mx - 4y + (2 - m) = 0 , $$
+        so its perpendicular distance to $C$ is
+            $$
+                \lvert \overline{MC} \rvert = \frac{\Bigl\vert 
+                    2m \cdot (\frac{1}{2} - \frac{1}{n})
+                    + (2 -  m) \Bigr\vert}
+                    {\sqrt{4m^2 + 16}}
+                    = \frac{\Bigl\vert 
+                    \frac{2}{n} (n - m) \Bigr\vert}
+                    {\sqrt{4m^2 + 16}} 
+                    = \frac{\frac{2}{n} (n - m)}
+                    {\sqrt{4m^2 + 16}} .
+            $$
+        (The absolute value signs are redundant since $n > m$.) Next, we have
+            $$
+                \lvert \overline{AB} \rvert
+                    = \sqrt{\biggl( \frac{1}{2} \biggr)^2
+                    + \Biggl( \frac{1}{2} 
+                    - \biggl( \frac{1}{2} - \frac{1}{m} \biggr)
+                    \Biggr)^2 }
+                    = \frac{1}{4m} \sqrt{4m^2 + 16} ,
+            $$
+        and so the two triangles have a total area of
+            $$ 
+                d_1 \bigl( f_m(x), f_n(x) \bigr)
+                    = 2 \cdot \frac{1}{2}
+                    \cdot \lvert \overline{AB} \rvert
+                    \cdot \lvert \overline{MC} \rvert
+                    = \frac{n - m}{2mn} .
+            $$
+        We can now show that the sequence is Cauchy. Set $K(\epsilon) = \frac{1}{2 \epsilon}$. Then whenever $m, n > K$,
+            \begin{align*}
+                \frac{n - m}{2mn}
+                    &= \frac{1}{2m} - \frac{1}{2n} \\
+                    &< \frac{1}{2m} \\
+                    &< \frac{1}{2 K} \\
+                    &= \frac{1}{2 \frac{1}{2 \epsilon}} \\
+                    &= \epsilon .
+            \end{align*}
+        In other words, for any $\epsilon > 0$, there is a $K(\epsilon)$ such that
+            $$ m, n > K \qquad \implies
+                \qquad d_1 \bigl( f_m(x), f_n(x) \bigr)
+                < \epsilon , $$
+        and therefore $\{ f_n \}_{n = 2}^\infty$ is a Cauchy sequence.
+        \item \textit{My idea for the following argument was inspired by the MathSoc Discord channel; I improved the idea by being more careful with how I split the integral.} Suppose there is some function $f(x)$ to which the sequence converges. Then we would have
+            $$ \lim_{n \to \infty} d_1(f_n(x), f(x)) = 0 , $$
+        i.e.
+            $$ \lim_{n \to \infty} \int_0^1 \bigl\vert
+                f_n(x) - f(x) \bigr\vert \ dx = 0 . $$
+        We can split the integral like so:
+            \begin{align*}
+                \lim_{n \to \infty} \int_0^1 \bigl\vert
+                f_n(x) - f(x) \bigr\vert \ dx
+                &= \lim_{n \to \infty} \biggl(
+                    \int_0^{\frac{1}{2} - \frac{1}{n}}
+                    \bigl\vert f_n(x) - f(x) \bigr\vert \ dx \\
+                &\qquad \qquad + \int_{\frac{1}{2} - \frac{1}{n}}^
+                    {\frac{1}{2} + \frac{1}{n}}
+                    \bigl\vert f_n(x) - f(x) \bigr\vert \ dx \\
+                &\qquad \qquad + \int_{\frac{1}{2} + \frac{1}{n}}^1 
+                    \bigl\vert f_n(x) - f(x) \bigr\vert \ dx \biggr) \\
+                &= \int_0^\frac{1}{2}
+                    \bigl\vert 0 - f(x) \bigr\vert \ dx
+                    + \int_\frac{1}{2}^1
+                    \bigl\vert 1 - f(x) \bigr\vert \ dx .
+            \end{align*}
+        We want this expression to equal zero, which, because of the absolute value signs, necessitates \textit{both} integrals equalling zero. Therefore, when $0 \leq x \leq \frac{1}{2}$, the function $f(x)$ must equal $0$ except for at finitely many points. Similarly, when $\frac{1}{2} \leq x \leq 1$, $f(x)$ must equal $1$---except at finitely many points. However, this means that $f(x)$ will necessarily be discontinuous at $x = \frac{1}{2}$, and so the sequence $\{ f_n \}_{n = 2}^\infty$ does not converge in $C[0, 1]$.
+    \end{enumerate}
+
 \end{problem}
 
 
